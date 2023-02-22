@@ -2,7 +2,7 @@
 %  For support, please attach all files needed for compiling as well as the log file, and specify your operating system, LaTeX version, and LaTeX editor.
 
 %=================================================================
-\documentclass[jimaging,article,submit,pdftex,moreauthors]{Definitions/mdpi} 
+\documentclass[jmse,article,submit,pdftex,moreauthors]{Definitions/mdpi} 
 
 %=================================================================
 % MDPI internal commands
@@ -17,7 +17,7 @@
 \copyrightyear{2023}
 %\externaleditor{Academic Editor: Firstname Lastname}
 \datereceived{15 March 2023} 
-%\daterevised{} % Only for the journal Acoustics
+\daterevised{} 
 \dateaccepted{} 
 \datepublished{} 
 \hreflink{https://doi.org/} % If needed use \linebreak
@@ -35,10 +35,10 @@
 
 %=================================================================
 % Full title of the paper (Capitalized)
-\Title{Environmental Changes of Mangrove Forests in the Coastal Landscapes of Niger Delta, Nigeria}
+\Title{Environmental Changes of Mangrove Forests in the Coastal Landscapes of Niger Delta, Nigeria Evaluated by Satellite Images}
 
-% MDPI internal command: Title for citation in the left column
-\TitleCitation{Environmental Changes of Mangrove Forests in the Coastal Landscapes of Niger Delta, Nigeria}
+% MDPI internal command: Title for citation in the left column along the Southwestern Coast of Nigeria
+\TitleCitation{Environmental Changes of Mangrove Forests in the Coastal Landscapes of Niger Delta, Nigeria Evaluated by Satellite Images}
 
 % Author Orchid ID: enter ID or remove command
 \newcommand{\orcidauthorA}{0000-0002-5759-1089} % Polina Add \orcidA{} behind the author's name
@@ -68,20 +68,27 @@ $^{1}$ \quad Laboratory of Image Synthesis and Analysis (LISA), École polytechn
 %\firstnote{Current address: Affiliation 3.} 
 
 % Abstract (Do not insert blank lines, i.e. \\) 
-\abstract{Besides, changes in urban spaces of the major cities in this region (Onitsha, Sapele, Warri, Benin CIty and smaller villages in the Delta State) caused by the urbanisation were evaluated and visualised. }
+\abstract{Besides, changes in urban spaces of the major cities caused by the urbanisation in this region (Onitsha, Sapele, Warri, Benin CIty and smaller villages in the Delta State) were evaluated and visualised. }
 
 % Keywords
 \keyword{Image processing; Nigeria; West Africa; remote sensing; cartography; Niger River; Niger Delta; R language; programming; climate change} 
 
 % The fields PACS, MSC, and JEL may be left empty or commented out if not applicable
-%\PACS{J0101}
-%\MSC{}
-%\JEL{}
+\PACS{91.10.Da; 91.10.Jf; 91.10.Sp; 91.10.Xa; 96.25.Vt; 91.10.Fc; 95.40.+s; 95.75.Qr; 95.75.Rs; 42.68.Wt}
+\MSC{86A30; 86-08; 86A99; 86A04}
+\JEL{Y91; Q20; Q24; Q23; Q3; Q01; R11; O44; O13; Q5; Q51; Q55; N57; C6; C61}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 
 \section{Introduction}
+
+\begin{figure}[H]
+\centering
+	\includegraphics[width=14.0 cm]{Fig_01.jpg}
+	\caption{Topographic map of Nigeria. Software: Generic Mapping Tools (GMT) version 6.1.1, \cite{Wessel}. Data source: GEBCO/SRTM \cite{GEBCO,SRTM}. Cartography source: authors.
+	\label{fig01}}
+\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Materials and Methods}
@@ -154,7 +161,7 @@ $^{1}$ \quad Laboratory of Image Synthesis and Analysis (LISA), École polytechn
 
 \dataavailability{Not applicable} 
 
-\acknowledgments{The authors thank the anonymous reviewers of Land for reading, suggestions and comments that improved an earlier version of this manuscript.}
+\acknowledgments{The authors thank the anonymous reviewers for reading, suggestions and comments that improved an earlier version of this manuscript.}
 
 \conflictsofinterest{The authors declare no conflict of interest.} 
 
@@ -170,41 +177,16 @@ LD & Linear dichroism
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Optional
-\appendixtitles{no} % Leave argument "no" if all appendix headings stay EMPTY (then no dot is printed after "Appendix A"). If the appendix sections contain a heading then change the argument to "yes".
-\appendixstart
-\appendix
-\section[\appendixname~\thesection]{}
-\subsection[\appendixname~\thesubsection]{}
-The appendix is an optional section that can contain details and data supplemental to the main text---for example, explanations of experimental details that would disrupt the flow of the main text but nonetheless remain crucial to understanding and reproducing the research shown; figures of replicates for experiments of which representative data are shown in the main text can be added here if brief, or as Supplementary Data. Mathematical proofs of results not central to the paper can be added as an appendix.
-
-\begin{table}[H] 
-\caption{This is a table caption.\label{tab5}}
-\newcolumntype{C}{>{\centering\arraybackslash}X}
-\begin{tabularx}{\textwidth}{CCC}
-\toprule
-\textbf{Title 1}	& \textbf{Title 2}	& \textbf{Title 3}\\
-\midrule
-Entry 1		& Data			& Data\\
-Entry 2		& Data			& Data\\
-\bottomrule
-\end{tabularx}
-\end{table}
-
-\section[\appendixname~\thesection]{}
-All appendix sections must be cited in the main text. In the appendices, Figures, Tables, etc. should be labeled, starting with ``A''---e.g., Figure A1, Figure A2, etc.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{adjustwidth}{-\extralength}{0cm}
 %\printendnotes[custom] % Un-comment to print a list of endnotes
 
+\bibliography{Nigeria.bib}
 \reftitle{References}
 \nocite{*}
 
 %=====================================
 % References, variant A: external bibliography
 %=====================================
-\bibliography{Nigeria.bib}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{adjustwidth}
