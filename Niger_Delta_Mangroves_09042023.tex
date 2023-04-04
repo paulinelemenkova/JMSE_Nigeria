@@ -235,18 +235,7 @@ The Green Atmospherically Resistant Index (GARI) is more perceptive to a wide ra
 	GARI = \frac{NIR - (Green - (Blue - Red))}{NIR + (Green - (Blue - Red))}
 \end{equation} 
 
-The computation of GARI in the GRASS GIS is done according to the embedded equation and is performed by Listing \ref{lst03}: 
-
-\begin{lstlisting}[language=bash,caption=GRASS GIS script for computing the GARI,style=mystyle,label={lst03}]
-g.region raster=lsat8_2013_toar.3 -p
-i.vi blue=lsat8_2013_toar.2 green=lsat8_2013_toar.3 red=lsat8_2013_toar.4 \
-     nir=lsat8_2013_toar.5 viname=gari output=lsat8_2013.gari --overwrite
-r.colors lsat8_2013.gari color=rainbow -e
-d.mon wx2
-d.rast lsat8_2013.gari
-d.legend raster=lsat8_2013.gari range=-0.5,0.7 title="GARI" title_fontsize=14 font="Helvetica" fontsize=12 -t -b bgcolor=white label_step=0.1 border_color=white thin=8 -d
-d.out.file output=Nigeria_GARI_2013 format=jpg --overwrite
-\end{lstlisting}
+The computation of GARI in the GRASS GIS is done according to the embedded equation and is performed by Listing \ref{lst03}\hl{ in Appendix.} 
 
 %------------------------->
 \subsection{Green Vegetation Index (GVI)}
@@ -260,17 +249,7 @@ The Tasselled Cap GVI provides more detailed information on the distinct  featur
 \end{split}
 \end{equation}
 
-We have Listing \ref{lst04} used for the computation of GVI:
- 
-\begin{lstlisting}[language=bash,caption=GRASS GIS script for computing the GVI,style=mystyle,label={lst04}]
-g.region raster=lsat8_2013_toar.3 -p
-i.vi blue=lsat8_2013_toar.2 green=lsat8_2013_toar.3 red=lsat8_2013_toar.4 nir=lsat8_2013_toar.5 band5=lsat8_2013_toar.6 band7=lsat8_2013_toar.7 viname=gvi output=lsat8_2013.gvi --overwrite
-r.colors.stddev lsat8_2013.gvi
-d.mon wx3
-d.rast lsat8_2013.gvi
-d.legend raster=lsat8_2013.gvi range=-1,0.7 title="GVI" title_fontsize=14 font="Helvetica" fontsize=12 -t -b bgcolor=white label_step=0.1 border_color=white thin=8 -d
-d.out.file output=Nigeria_GVI_2013 format=jpg --overwrite
-\end{lstlisting}
+We have Listing \ref{lst04} used for the computation of GVI\hl{ shown in Appendix.}
 
 The technique of the Tasselled Cap transformation in remote sensing domain is originally developed by \cite{KauthThomas} and performs linear processing which separates green gradient, yellow development and soil brightness of the satellite images. It is based on the conversion of the data in a set of bands into the colour composite values. In this way it modifies the values from the weighted sums of pixels in the given Landsat bands.
 %------------------------->
@@ -287,17 +266,7 @@ This is the original formula used later in a modified version for computing the 
 	NDVI = \frac{(NIR - Red)}{(NIR + Red)}
 \end{equation}
 
-The above formulae are embedded in the function 'dvi' used when computing the DVI index. This is done by Listing \ref{lst05} used for the calculation of DVI as follows:
-
-\begin{lstlisting}[language=bash,caption=GRASS GIS script for computing the DVI,style=mystyle,label={lst05}]
-g.region raster=lsat8_2013_toar.1 -p
-i.vi blue=lsat8_2013_toar.2 red=lsat8_2013_toar.4 nir=lsat8_2013_toar.5 viname=dvi output=lsat8_2013.dvi --overwrite
-r.colors lsat8_2013.dvi color=bgyr -e
-d.mon wx4
-d.rast lsat8_2013.dvi
-d.legend raster=lsat8_2013.dvi range=-0.1,0.3 title="DVI" title_fontsize=14 font="Helvetica" fontsize=12 -t -b bgcolor=white label_step=0.02 border_color=white thin=8 -d
-d.out.file output=Nigeria_DVI_2013 format=jpg --overwrite
-\end{lstlisting}
+The above formulae are embedded in the function 'dvi' used when computing the DVI index. This is done by Listing \ref{lst05} used for the calculation of DVI as \hl{demonstrated in the Appendix.}
 
 %------------------------->
 \subsection{Perpendicular Vegetation Index (PVI)}
@@ -314,17 +283,7 @@ where \emph{a} and \emph{b} are the constants that stand for slope and gradient 
 	PVI = sin(a)NIR-cos(a)Red
 \end{equation} 
 
-Using the syntax of GRASS GIS, we define the PVI as follows in Listing \ref{lst06}:
-
-\begin{lstlisting}[language=bash,caption=GRASS GIS script for computing the PVI,style=mystyle,label={lst06}]
-g.region raster=lsat8_2013_toar.1 -p
-i.vi red=lsat8_2013_toar.4 nir=lsat8_2013_toar.5 viname=pvi output=lsat8_2013.pvi --overwrite
-r.colors lsat8_2013.pvi color=bgyr -e
-d.mon wx5
-d.rast lsat8_2013.pvi
-d.legend raster=lsat8_2013.pvi range=-0.1,0.3 title="PVI" title_fontsize=14 font="Helvetica" fontsize=12 -t -b bgcolor=white label_step=0.02 border_color=white thin=8 -d
-d.out.file output=Nigeria_PVI_2013 format=jpg --overwrite
-\end{lstlisting}
+Using the syntax of GRASS GIS, we define the PVI as follows in Listing \ref{lst06}\hl{ shown in the Appendix.}
 
 \subsection{Global Environmental Monitoring Index (GEMI)}
 
@@ -889,6 +848,55 @@ d.rast lsat8_2013.arvi
 d.legend raster=lsat8_2013.arvi range=-0.7,0.3 title="ARVI" title_fontsize=14 font=Helvetica fontsize=12 -t -s -b border_color=white thin=12 label_step=0.1 -d
 d.out.file output=Nigeria_ARVI_2013 format=jpg --overwrite
 \end{lstlisting}
+
+\subsection[\appendixname~\thesubsection]{GRASS GIS script for computing the GARI}
+\begin{lstlisting}[language=bash,caption=GRASS GIS script for computing the GARI,style=mystyle,label={lst03}]
+g.region raster=lsat8_2013_toar.3 -p
+i.vi blue=lsat8_2013_toar.2 green=lsat8_2013_toar.3 red=lsat8_2013_toar.4 \
+     nir=lsat8_2013_toar.5 viname=gari output=lsat8_2013.gari --overwrite
+r.colors lsat8_2013.gari color=rainbow -e
+d.mon wx2
+d.rast lsat8_2013.gari
+d.legend raster=lsat8_2013.gari range=-0.5,0.7 title="GARI" title_fontsize=14 font="Helvetica" fontsize=12 -t -b bgcolor=white label_step=0.1 border_color=white thin=8 -d
+d.out.file output=Nigeria_GARI_2013 format=jpg --overwrite
+\end{lstlisting}
+
+\subsection[\appendixname~\thesubsection]{GRASS GIS script for computing the GVI}
+\begin{lstlisting}[language=bash,caption=GRASS GIS script for computing the GVI,style=mystyle,label={lst04}]
+g.region raster=lsat8_2013_toar.3 -p
+i.vi blue=lsat8_2013_toar.2 green=lsat8_2013_toar.3 red=lsat8_2013_toar.4 nir=lsat8_2013_toar.5 band5=lsat8_2013_toar.6 band7=lsat8_2013_toar.7 viname=gvi output=lsat8_2013.gvi --overwrite
+r.colors.stddev lsat8_2013.gvi
+d.mon wx3
+d.rast lsat8_2013.gvi
+d.legend raster=lsat8_2013.gvi range=-1,0.7 title="GVI" title_fontsize=14 font="Helvetica" fontsize=12 -t -b bgcolor=white label_step=0.1 border_color=white thin=8 -d
+d.out.file output=Nigeria_GVI_2013 format=jpg --overwrite
+\end{lstlisting}
+
+\subsection[\appendixname~\thesubsection]{GRASS GIS script for computing the DVI}
+\begin{lstlisting}[language=bash,caption=GRASS GIS script for computing the DVI,style=mystyle,label={lst05}]
+g.region raster=lsat8_2013_toar.1 -p
+i.vi blue=lsat8_2013_toar.2 red=lsat8_2013_toar.4 nir=lsat8_2013_toar.5 viname=dvi output=lsat8_2013.dvi --overwrite
+r.colors lsat8_2013.dvi color=bgyr -e
+d.mon wx4
+d.rast lsat8_2013.dvi
+d.legend raster=lsat8_2013.dvi range=-0.1,0.3 title="DVI" title_fontsize=14 font="Helvetica" fontsize=12 -t -b bgcolor=white label_step=0.02 border_color=white thin=8 -d
+d.out.file output=Nigeria_DVI_2013 format=jpg --overwrite
+\end{lstlisting}
+
+\subsection[\appendixname~\thesubsection]{GRASS GIS script for computing the PVI}
+\begin{lstlisting}[language=bash,caption=GRASS GIS script for computing the PVI,style=mystyle,label={lst06}]
+g.region raster=lsat8_2013_toar.1 -p
+i.vi red=lsat8_2013_toar.4 nir=lsat8_2013_toar.5 viname=pvi output=lsat8_2013.pvi --overwrite
+r.colors lsat8_2013.pvi color=bgyr -e
+d.mon wx5
+d.rast lsat8_2013.pvi
+d.legend raster=lsat8_2013.pvi range=-0.1,0.3 title="PVI" title_fontsize=14 font="Helvetica" fontsize=12 -t -b bgcolor=white label_step=0.02 border_color=white thin=8 -d
+d.out.file output=Nigeria_PVI_2013 format=jpg --overwrite
+\end{lstlisting}
+
+\subsection[\appendixname~\thesubsection]{GRASS GIS script for computing the }
+
+\subsection[\appendixname~\thesubsection]{GRASS GIS script for computing the }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{adjustwidth}{-\extralength}{0cm}
