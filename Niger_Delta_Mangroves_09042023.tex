@@ -298,18 +298,7 @@ GEMI = \Bigl( \frac{2*((NIR * NIR)-(Red * Red)) +
        \frac{Red - 0.125}{1 - Red}
 \end{align*}
 
-The algorithm for computing and plotting the GEMI is presented in Listing \ref{lst07}:
-
-\begin{lstlisting}[language=bash,caption=GRASS GIS script for computing the GEMI,style=mystyle,label={lst07}]
-# Calculation of GEMI: Global Environmental Monitoring Index
-g.region raster=lsat8_2013_toar.1 -p
-i.vi red=lsat8_2013_toar.4 nir=lsat8_2013_toar.5 viname=gemi output=lsat8_2013.gemi --overwrite
-r.colors lsat8_2013.gemi color=roygbiv -e
-d.erase
-d.rast lsat8_2013.gemi
-d.legend raster=lsat8_2013.gemi range=-0.5,1.0 title="GEMI" title_fontsize=14 font="Helvetica" fontsize=12 -t -b bgcolor=white label_step=0.1 border_color=white thin=8 -d
-d.out.file output=Nigeria_GEMI_2013 format=jpg --overwrite
-\end{lstlisting}
+The algorithm for computing and plotting the GEMI is presented in Listing \ref{lst07}\hl{ shown in Appendix.}
 
 Although GEMI is in general comparable to NDVI, it shows less sensitivity to atmospheric effects. Instead, it is influenced by the brightness of the bare soil. To these reasons, it does not work well in desert arid and semi-arid regions covered by sands, rocks and soil with sparse or no vegetation. For the case of southern Nigeria, however, GEMI works well since tropical dense forests are suitable for the performance of this index. Moreover, the decline of mangroves is well depicted using comparison of GEMI several satellite images.
 
@@ -327,17 +316,7 @@ Another formula of the NDWI is proposed by \cite{GAO1996257}, which is a differe
 	NDWI = \frac{NIR - SWIR}{NIR + SWIR}
 \end{equation} 
 
-However, this is more actual for the semi-arid and arid regions covered by savannah. In this study, we used the NDWI proposed by \cite{McFeeters} using Green and NIR bands for detecting areas covered by Niger Delta, tributaries and lagoon.  Using the embedded algorithm in the GRASS GIS we can identify the NDWI using its syntax by the script showed in Listing \ref{lst08}:
-
-\begin{lstlisting}[language=bash,caption=GRASS GIS script for computing the NDWI,style=mystyle,label={lst08}]
-g.region raster=lsat8_2013_toar.1 -p
-i.vi green=lsat8_2013_toar.3 nir=lsat8_2013_toar.5 viname=ndwi output=lsat8_2013.ndwi --overwrite
-r.colors lsat8_2013.ndwi color=viridis -e
-d.mon wx0
-d.rast lsat8_2013.ndwi
-d.legend raster=lsat8_2013.ndwi range=-1.0,0.5 title="NDWI" title_fontsize=14 font="Helvetica" fontsize=12 -t -b bgcolor=white label_step=0.1 border_color=white thin=8 -d
-d.out.file output=Nigeria_NDWI_2013 format=jpg --overwrite
-\end{lstlisting}
+However, this is more actual for the semi-arid and arid regions covered by savannah. In this study, we used the NDWI proposed by \cite{McFeeters} using Green and NIR bands for detecting areas covered by Niger Delta, tributaries and lagoon.  Using the embedded algorithm in the GRASS GIS we can identify the NDWI using its syntax by the script showed in Listing \ref{lst08}\hl{ demonstrated in Appendix.}
 
 \subsection{Second Modified Soil Adjusted Vegetation Index (MSAVI2)}
 
@@ -893,6 +872,31 @@ d.rast lsat8_2013.pvi
 d.legend raster=lsat8_2013.pvi range=-0.1,0.3 title="PVI" title_fontsize=14 font="Helvetica" fontsize=12 -t -b bgcolor=white label_step=0.02 border_color=white thin=8 -d
 d.out.file output=Nigeria_PVI_2013 format=jpg --overwrite
 \end{lstlisting}
+
+\subsection[\appendixname~\thesubsection]{GRASS GIS script for computing the GEMI}
+\begin{lstlisting}[language=bash,caption=GRASS GIS script for computing the GEMI,style=mystyle,label={lst07}]
+# Calculation of GEMI: Global Environmental Monitoring Index
+g.region raster=lsat8_2013_toar.1 -p
+i.vi red=lsat8_2013_toar.4 nir=lsat8_2013_toar.5 viname=gemi output=lsat8_2013.gemi --overwrite
+r.colors lsat8_2013.gemi color=roygbiv -e
+d.erase
+d.rast lsat8_2013.gemi
+d.legend raster=lsat8_2013.gemi range=-0.5,1.0 title="GEMI" title_fontsize=14 font="Helvetica" fontsize=12 -t -b bgcolor=white label_step=0.1 border_color=white thin=8 -d
+d.out.file output=Nigeria_GEMI_2013 format=jpg --overwrite
+\end{lstlisting}
+
+\subsection[\appendixname~\thesubsection]{GRASS GIS script for computing the NDWI}
+\begin{lstlisting}[language=bash,caption=GRASS GIS script for computing the NDWI,style=mystyle,label={lst08}]
+g.region raster=lsat8_2013_toar.1 -p
+i.vi green=lsat8_2013_toar.3 nir=lsat8_2013_toar.5 viname=ndwi output=lsat8_2013.ndwi --overwrite
+r.colors lsat8_2013.ndwi color=viridis -e
+d.mon wx0
+d.rast lsat8_2013.ndwi
+d.legend raster=lsat8_2013.ndwi range=-1.0,0.5 title="NDWI" title_fontsize=14 font="Helvetica" fontsize=12 -t -b bgcolor=white label_step=0.1 border_color=white thin=8 -d
+d.out.file output=Nigeria_NDWI_2013 format=jpg --overwrite
+\end{lstlisting}
+
+\subsection[\appendixname~\thesubsection]{GRASS GIS script for computing the }
 
 \subsection[\appendixname~\thesubsection]{GRASS GIS script for computing the }
 
