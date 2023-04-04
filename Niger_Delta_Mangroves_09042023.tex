@@ -212,28 +212,6 @@ The images were imported into the GRASS GIS  software and processed for data ana
 
 GRASS GIS code used for data preprocessing is presented in Listing \ref{lst01}. It shows the steps of importing Landsat channels by the Geospatial Data Abstraction Library (GDAL) and auxiliary modules. The GDAL library was applied to import raster images of subset with 11 Landsat bands into the GRASS GIS mapset using \emph{r.in.gdal} module. After import, the data were checked and listed using the \emph{g.list} module which lists the available files in the working folder. Then, the metadata of the selected random bands were checked by the \emph{gdalinfo}. The raster metadata were displayed using the \emph{r.info} module for further display of the raster maps. The principal approach here is the converting of the digital numbers (DN) of pixel values to reflectance values which were used for computing the VI. Listing \ref{lst01}.  
 
-\begin{lstlisting}[language=bash,caption=GRASS GIS script - 1 for converting the DN pixel values to reflectance for correction of the top-of-atmosphere radiance,style=mystyle,label={lst01}]
-#!/bin/sh
-r.info -r LC08_L2SP_189056_20131220_20200912_02_T1_SR_B1
-gdalinfo LC08_L2SP_189056_20131220_20200912_02_T1_SR_B7.TIF
-r.in.gdal LC08_L2SP_189056_20131220_20200912_02_T1_SR_B1.TIF out=L8_2013_01
-r.in.gdal LC08_L2SP_189056_20131220_20200912_02_T1_SR_B2.TIF out=L8_2013_02
-r.in.gdal LC08_L2SP_189056_20131220_20200912_02_T1_SR_B3.TIF out=L8_2013_03
-r.in.gdal LC08_L2SP_189056_20131220_20200912_02_T1_SR_B4.TIF out=L8_2013_04
-r.in.gdal LC08_L2SP_189056_20131220_20200912_02_T1_SR_B5.TIF out=L8_2013_05
-# repeated likewise until Band 11
-g.list rast
-g.copy raster=L8_2013_01,lsat8_2013.1
-g.copy raster=L8_2013_02,lsat8_2013.2
-g.copy raster=L8_2013_03,lsat8_2013.3
-g.copy raster=L8_2013_04,lsat8_2013.4
-g.copy raster=L8_2013_05,lsat8_2013.5
-# repeated likewise until Band 11
-i.landsat.toar input=lsat8_2013. output=lsat8_2013_toar. sensor=oli8 \
-    method=dos1 date=2013-12-20 sun_elevation=51.85549756 \
-    product_date=2013-12-20 gain=HHHLHLHHL
-\end{lstlisting}
-
 Afterwards, the data were copied as 11 Landsat bands to match the input structure of the \emph{i.landsat.toar} through the \emph{g.copy} module. In order to get rid of the haze effect on the original scenes by correction for the top-of-atmosphere radiance of the bands using the \emph{i.landsat.toar} module. The converting of the DN pixel values to reflectance values was done using DOS1 method. After the completing of the data preprocessing, the ten VI were computed using the processed bands by the \emph{i.vi} module, described in relevant subsections below. 
 
 %------------------------->
@@ -245,18 +223,7 @@ The Atmospherically Resistant Vegetation Index (ARVI) is based on using bands wi
 	ARVI = \frac{NIR - (2.0*Red - Blue)}{NIR + (2.0*Red - Blue)}
 \end{equation}
 
-In the GRASS GIS, the ARVI was computed using the Listing \ref{lst02} as follows: 
-
-\begin{lstlisting}[language=bash,caption=GRASS GIS script for computing the ARVI,style=mystyle,label={lst02}]
-g.region raster=lsat8_2013_toar.3 -p
-i.vi blue=lsat8_2013_toar.2 red=lsat8_2013_toar.4 nir=lsat8_2013_toar.5 \
-       viname=arvi output=lsat8_2013.arvi --overwrite
-r.colors lsat8_2013.arvi color=bcyr -e
-d.mon wx1
-d.rast lsat8_2013.arvi
-d.legend raster=lsat8_2013.arvi range=-0.7,0.3 title="ARVI" title_fontsize=14 font=Helvetica fontsize=12 -t -s -b border_color=white thin=12 label_step=0.1 -d
-d.out.file output=Nigeria_ARVI_2013 format=jpg --overwrite
-\end{lstlisting}
+In the GRASS GIS, the ARVI was computed using the Listing \ref{lst02}\hl{ presented in Appendix.} 
 
 The advantages of ARVI is that it reduces the role of atmospheric scattering that affects the images. Such effects are caused by the aerosols of both natural origin (rain and fog) or urban air pollution (dust or smog). Initially proposed and developed for assessment of vegetation from the Earth Observing System (EOS) Moderate Resolution Imaging Spectroradiometer (MODIS) sensor, ARVI can be applied for the Landsat OLI/TIRS sensors since it contains necessary bands in Blue, Red and NIR bands.
 %------------------------->
@@ -880,6 +847,48 @@ PVI & Perpendicular Vegetation Index \\
 SAVI & Soil Adjusted Vegetation Index \\ 
 \end{tabular}
 }
+
+\appendixtitles{no} % Leave argument "no" if all appendix headings stay EMPTY (then no dot is printed after "Appendix A"). If the appendix sections contain a heading then change the argument to "yes".
+\appendixstart
+\appendix
+
+\section[\appendixname~\thesection]{GRASS GIS scripts used for computing and plotting the vegetation indices}
+
+\subsection[\appendixname~\thesubsection]{GRASS GIS script for correction of the top-of-atmosphere radiance}
+
+\begin{lstlisting}[language=bash,caption=GRASS GIS script for converting the DN pixel values to reflectance for correction of the top-of-atmosphere radiance,style=mystyle,label={lst01}]
+#!/bin/sh
+r.info -r LC08_L2SP_189056_20131220_20200912_02_T1_SR_B1
+gdalinfo LC08_L2SP_189056_20131220_20200912_02_T1_SR_B7.TIF
+r.in.gdal LC08_L2SP_189056_20131220_20200912_02_T1_SR_B1.TIF out=L8_2013_01
+r.in.gdal LC08_L2SP_189056_20131220_20200912_02_T1_SR_B2.TIF out=L8_2013_02
+r.in.gdal LC08_L2SP_189056_20131220_20200912_02_T1_SR_B3.TIF out=L8_2013_03
+r.in.gdal LC08_L2SP_189056_20131220_20200912_02_T1_SR_B4.TIF out=L8_2013_04
+r.in.gdal LC08_L2SP_189056_20131220_20200912_02_T1_SR_B5.TIF out=L8_2013_05
+# repeated likewise until Band 11
+g.list rast
+g.copy raster=L8_2013_01,lsat8_2013.1
+g.copy raster=L8_2013_02,lsat8_2013.2
+g.copy raster=L8_2013_03,lsat8_2013.3
+g.copy raster=L8_2013_04,lsat8_2013.4
+g.copy raster=L8_2013_05,lsat8_2013.5
+# repeated likewise until Band 11
+i.landsat.toar input=lsat8_2013. output=lsat8_2013_toar. sensor=oli8 \
+    method=dos1 date=2013-12-20 sun_elevation=51.85549756 \
+    product_date=2013-12-20 gain=HHHLHLHHL
+\end{lstlisting}
+
+\subsection[\appendixname~\thesubsection]{GRASS GIS script for computing the ARVI}
+\begin{lstlisting}[language=bash,caption=GRASS GIS script for computing the ARVI,style=mystyle,label={lst02}]
+g.region raster=lsat8_2013_toar.3 -p
+i.vi blue=lsat8_2013_toar.2 red=lsat8_2013_toar.4 nir=lsat8_2013_toar.5 \
+       viname=arvi output=lsat8_2013.arvi --overwrite
+r.colors lsat8_2013.arvi color=bcyr -e
+d.mon wx1
+d.rast lsat8_2013.arvi
+d.legend raster=lsat8_2013.arvi range=-0.7,0.3 title="ARVI" title_fontsize=14 font=Helvetica fontsize=12 -t -s -b border_color=white thin=12 label_step=0.1 -d
+d.out.file output=Nigeria_ARVI_2013 format=jpg --overwrite
+\end{lstlisting}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{adjustwidth}{-\extralength}{0cm}
