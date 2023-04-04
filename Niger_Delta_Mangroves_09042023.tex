@@ -240,7 +240,7 @@ The computation of GARI in the GRASS GIS is done according to the embedded equat
 %------------------------->
 \subsection{Green Vegetation Index (GVI)}
 
-The Tasselled Cap GVI provides more detailed information on the distinct  features in landscapes such as plant canopy, water bodies and bare land or sand area. The method of Tasselled Cap performs a transformation of the original pixels in bands into a new 4D dimension with the following parameters: soil brightness index, green vegetation index (GVI), yellow stuff index, and a non-such index related to atmospheric effects \cite{Huang2002}. Of these, we used the GVI which is based on the estimation of greenness in leaves of mangrove canopies. The computation of Tasselled Cap Green Vegetation Index (GVI) is based on the formula developed by \cite{4157507}:
+The technique of the Tasselled Cap transformation in remote sensing \hl{is} originally developed by \cite{KauthThomas}. The Tasselled Cap GVI provides more detailed information on the distinct features in landscapes such as plant canopy, water bodies and bare land or sand area. The method of Tasselled Cap performs a transformation of the original pixels in bands  into a new 4D dimension with the \hl{separated} parameters: soil brightness index, green vegetation index (GVI), yellow stuff index, and a non-such index related to atmospheric effects \cite{Huang2002}. Of these, we used the GVI which is based on the estimation of greenness in leaves of mangrove canopies \hl{as information on values of the weighted sums of pixels derived from colour composites of the Landsat bands}. The computation of Tasselled Cap Green Vegetation Index (GVI) is based on the formula developed by \cite{4157507}:
 
 \begin{equation}
 \begin{split}
@@ -251,7 +251,6 @@ The Tasselled Cap GVI provides more detailed information on the distinct  featur
 
 We have Listing \ref{lst04} used for the computation of GVI\hl{ shown in Appendix.}
 
-The technique of the Tasselled Cap transformation in remote sensing domain is originally developed by \cite{KauthThomas} and performs linear processing which separates green gradient, yellow development and soil brightness of the satellite images. It is based on the conversion of the data in a set of bands into the colour composite values. In this way it modifies the values from the weighted sums of pixels in the given Landsat bands.
 %------------------------->
 \subsection{Difference Vegetation Index (DVI)}
 
