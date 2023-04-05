@@ -698,12 +698,14 @@ The values of EVI (Figure \ref{fig12}) quantify vegetation greenness in the rang
 }\caption{EVI computed from the Landsat 8-9 OLI/TIRS images of Niger Delta for four years: (\textbf{a}) 2013, (\textbf{b}) 2015 (\textbf{c}) 2021, (\textbf{d}) 2022.}\label{fig12}
 \end{figure}
 
-\hl{The statistical analysis on the size and number of pixels representing various classes over the study area was performed in R using K-means method applied for 10 vegetation classes corresponding to the coastal landscapes in southern Nigeria, Table }\ref{tab2}. \hl{The results of the classification by K-means clustering show that 10 distinct classes including mangrove classes can be derived from the Landsat OLI/TIRS data. These include the following land cover classes: 1) mangrove swamps; 2) water areas (river and shallow areas); 3) water areas (coastal areas of the Bight of Benin); 4) forests; 5) built-up urban areas and settlements; 6) bare soil and exposed land surfaces; 7) woodland; 8) agricultural areas; 9) farmland/grasslands; 10) other vegetation types. The classification is based on the modified existing studies} \cite{rs12213619,nhess1433172014,Eyoh,Udoka}.
+\hl{The statistical analysis on the size and number of pixels representing various classes over the study area was performed in R using K-means method applied for 10 vegetation classes corresponding to the coastal landscapes in southern Nigeria, Table }\ref{tab2}. \hl{The results of the classification by K-means clustering show that 10 distinct classes including mangrove classes can be derived from the Landsat OLI/TIRS data. These include the following land cover classes: 1) mangrove swamps; 2) water areas (river and shallow areas); 3) water areas (coastal areas of the Bight of Benin); 4) forests; 5) built-up urban areas and settlements; 6) bare soil and exposed land surfaces; 7) woodland; 8) agricultural areas; 9) farmland/grasslands; 10) other vegetation types. The classification is based on the modified existing studies} \cite{rs12213619,nhess1433172014,Eyoh,Udoka}. \hl{The table is sorted by the ascending values of the pixels.} 
+
+\hl{The land cover analysis of the Niger Delta was based using automatic classification of the images by K-means. It shows a distribution of pixels by clusters of mangroves and other land cover types using clustering of the four images in Landsat OLI/TIRS band combinations 4-3-2, i.e., natural composites. The land cover categories corresponding to the mangroves showed gradual losses from 535828.3 in 2013 (ID Class 3 for 2013), to 432318.7 in 2018 (ID Class 4 for 2018), 408108.2 in 2021 (ID Class 5 for 2021) and 416219.5 in 2022 (ID Class 4 for 2022), Table} \ref{tab2}.
 
 \begin{table}[H]
-\caption{Results of the land cover class computations of the Landsat-8 OLI/TIRS satellite images.\label{tab2}}
+\caption{Results of the land cover class computations of the Landsat-8 OLI/TIRS satellite images \textsuperscript{1}.\label{tab2}}
 \begin{adjustwidth}{-\extralength}{0cm}
-\newcolumntype{C}{>{\centering\arraybackslash}X}
+\newcolumntype{C}{>{\centering\small\arraybackslash}X}
     \begin{tabularx}{\fulllength}{| CCC | CC | CC | CC |}
     \toprule
         \bf{Class} & \multicolumn{2}{c|}{\bf{2013}} & \multicolumn{2}{c|}{\bf{2015}} & \multicolumn{2}{c|}{\bf{2021}} & \multicolumn{2}{c|}{\bf{2021}} \\ \hline
@@ -721,6 +723,48 @@ The values of EVI (Figure \ref{fig12}) quantify vegetation greenness in the rang
         10 & 2292524.5 & 23 & 1094319.1 & 20 & 1372956.2 & 17 & 1516837.6 & 18 \\ 
         \bottomrule
     \end{tabularx}
+\end{adjustwidth}
+\noindent{\footnotesize{\textsuperscript{1} The statistical summary is computed within cluster sum of squares by cluster using K-means performed in R library 'raster'. The table is sorted by the ascending values of the pixels in land cover types.}}
+\end{table}
+
+\hl{The heat map graph shows the confusion matrix plotted using Python showing the probability cases for pixel distribution according to land cover classes (10 selected ID classes) in the Niger Delta, Nigeria, Figure }\ref{fig13}. \hl{The data were evaluated between 2013 and 2022 based on clustering of the Landsat 8-9 OLI/TIRS images. The Kendall correlation shows the average values; while the Spearman correlation shows the pixels by bands 4 (Red), 3 (Green) and 2 (Blue) used for classification of land cover types.}
+
+\begin{figure}[H]
+\makebox[0.95\linewidth][r]{%
+	\begin{subfigure}[b]{.6\textwidth}
+		\caption{}\vspace{1mm}
+		\centering
+			\includegraphics[width=0.95\textwidth]{Fig_13a.png}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.6\textwidth}
+	\caption{}\vspace{1mm}
+		\centering
+			\includegraphics[width=0.95\textwidth]{Fig_13b.png}
+	\end{subfigure}%
+}
+\caption{Correlation plots showing probability cases for pixel distribution according to land cover classes (10 selected ID classes) in the Niger Delta, Nigeria between 2013 and 2022 based on clustering of the Landsat 8-9 OLI/TIRS images: (\textbf{a}) Kendall correlation for average values; (\textbf{b}) Spearman correlation for pixels by bands 4 (Red), 3 (Green) and 2 (Blue) used for classification of land cover types. Visualization: Python. Source: authors.}\label{fig13}
+\end{figure}
+
+\begin{table}[H]\scriptsize
+\caption{Results of the land cover class classification by pixel content in Band 4 (Red), Band 3 (Green) and Band 2 (Blue) of the Landsat-8 OLI/TIRS satellite images.\label{tab3}}
+\begin{adjustwidth}{-\extralength}{0cm}
+\newcolumntype{C}{>{\centering\footnotesize\arraybackslash}X}
+    \begin{tabularx}{\fulllength}{| C | CCC | CCC | CCC | CCC |}
+    \toprule
+        \bf{Class} & ~ & \bf{2013} & ~ & ~ & \bf{2018} & ~ & ~ & \bf{2021} & ~ & ~ & \bf{2022} & ~ \\ \hline
+         ID & B4 & B3 & B2 & B4 & B3 & B2 & B4 & B3 & B2 & B4 & B3 & B2 \\ \hline
+        1 & 9362.333 & 9803.222 & 8742.333 & 10352.65 & 10539.35 & 8699.400 & 9150.500 & 9643.167 & 8150.667 & 11409.333 & 11031.333 & 9693.000 \\ \hline
+        2 & 9631.111 & 9699.000 & 8448.778 & 10848.50 & 11077.50 & 9607.300 & 11394.000 & 11449.667 & 9541.667 & 9672.556 & 9612.056 & 8631.333 \\ \hline
+        3 & 12549.750 & 12197.500 & 10335.750 & 10879.55 & 10833.90 & 8936.950 & 9900.929 & 10211.571 & 8387.929 & 23552.000 & 22211.000 & 18896.000 \\ \hline
+        4 & 8920.261 & 9311.826 & 8221.783 & 9816.75 & 10058.75 & 8333.625 & 10262.692 & 10408.692 & 8676.462 & 10117.556 & 9809.111 & 8729.111 \\ \hline
+        5 & 10144.625 & 10144.875 & 8946.250 & 9825.25 & 10284.50 & 8776.500 & 9463.333 & 9956.667 & 8546.000 & 8466.667 & 8940.750 & 8148.417 \\ \hline
+        6 & 8151.000 & 9824.000 & 8126.500 & 10372.43 & 10680.93 & 9107.500 & 10811.182 & 10739.182 & 8965.091 & 8179.333 & 8705.333 & 7906.833 \\ \hline
+        7 & 8658.938 & 9129.000 & 8067.750 & 11872.33 & 11513.67 & 9631.333 & 9408.917 & 9741.917 & 8132.583 & 8887.889 & 9152.389 & 8166.667 \\ \hline
+        8 & 8276.889 & 8930.222 & 8045.611 & 10080.38 & 10360.25 & 8400.188 & 15769.000 & 14325.000 & 12446.000 & 9110.308 & 9375.154 & 8483.538 \\ \hline
+        9 & 8939.500 & 9494.900 & 8524.100 & 11897.50 & 11900.00 & 10818.000 & 9763.182 & 10158.000 & 8879.636 & 10554.909 & 10198.455 & 9056.000 \\ \hline
+        10 & 9217.000 & 10015.000 & 5465.000 & 13052.00 & 12427.00 & 10482.333 & 9559.706 & 9997.765 & 8030.059 & 9374.222 & 9420.889 & 8187.556 \\ \hline
+\bottomrule
+\end{tabularx}
 \end{adjustwidth}
 \end{table}
 
