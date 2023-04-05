@@ -698,6 +698,32 @@ The values of EVI (Figure \ref{fig12}) quantify vegetation greenness in the rang
 }\caption{EVI computed from the Landsat 8-9 OLI/TIRS images of Niger Delta for four years: (\textbf{a}) 2013, (\textbf{b}) 2015 (\textbf{c}) 2021, (\textbf{d}) 2022.}\label{fig12}
 \end{figure}
 
+\hl{The statistical analysis on the size and number of pixels representing various classes over the study area was performed in R using K-means method applied for 10 vegetation classes corresponding to the coastal landscapes in southern Nigeria, Table }\ref{tab2}. \hl{The results of the classification by K-means clustering show that 10 distinct classes including mangrove classes can be derived from the Landsat OLI/TIRS data. These include the following land cover classes: 1) mangrove swamps; 2) water areas (river and shallow areas); 3) water areas (coastal areas of the Bight of Benin); 4) forests; 5) built-up urban areas and settlements; 6) bare soil and exposed land surfaces; 7) woodland; 8) agricultural areas; 9) farmland/grasslands; 10) other vegetation types. The classification is based on the modified existing studies} \cite{rs12213619,nhess1433172014,Eyoh,Udoka}.
+
+\begin{table}[H]
+\caption{Results of the land cover class computations of the Landsat-8 OLI/TIRS satellite images.\label{tab2}}
+\begin{adjustwidth}{-\extralength}{0cm}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+    \begin{tabularx}{\fulllength}{| CCC | CC | CC | CC |}
+    \toprule
+        \bf{Class} & \multicolumn{2}{c|}{\bf{2013}} & \multicolumn{2}{c|}{\bf{2015}} & \multicolumn{2}{c|}{\bf{2021}} & \multicolumn{2}{c|}{\bf{2021}} \\ \hline
+        ID & nr. pixels & cluster size & nr. pixels & cluster size & nr. pixels & cluster size & nr. pixels & cluster size \\ \hline
+        \cline{2-9}
+        1 & 0.0 & 1 & 99304.0 & 2 & 0.0 & 1 & 0.0 & 1 \\ \hline
+        2 & 24202.5 & 2 & 793875.9 & 3 & 179803.3 & 3 & 324638.7 & 1 \\ \hline
+        3 & 535828.3 & 4 & 768423.9 & 3 & 249647.7 & 6 & 367419.8 & 3 \\ \hline
+        4 & 686438.4 & 8 & 432318.7 & 4 & 305940.8 & 11 & 416219.5 & 6 \\ \hline
+        5 & 740729.6 & 9 & 426391.2 & 8 & 408108.2 & 11 & 556665.7 & 9 \\ \hline
+        6 & 783803.7 & 9 & 291778.8 & 10 & 603527.3 & 12 & 647066.0 & 9 \\ \hline
+        7 & 906337.9 & 10 & 263588.5 & 14 & 628916.8 & 12 & 750900.1 & 12 \\ \hline
+        8 & 915597.2 & 16 & 259272.9 & 16 & 629041.5 & 13 & 984741.4 & 13 \\ \hline
+        9 & 999878.2 & 18 & 1483831.7 & 20 & 645075.3 & 14 & 1162375.3 & 18 \\ \hline
+        10 & 2292524.5 & 23 & 1094319.1 & 20 & 1372956.2 & 17 & 1516837.6 & 18 \\ 
+        \bottomrule
+    \end{tabularx}
+\end{adjustwidth}
+\end{table}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Discussion}
 
