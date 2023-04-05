@@ -320,13 +320,13 @@ However, this is more actual for the semi-arid and arid regions covered by savan
 
 \subsection{Second Modified Soil Adjusted Vegetation Index (MSAVI2)}
 
-The Second Modified Soil Adjusted Vegetation Index (MSAVI2) is adjusted to provide accurate data in sparse vegetation or plant canopies with deficit of chlorophyll. Moreover, the MSAVI2 helps to identify bare soil between the seedlings during leaf development which is useful for agricultural mapping. 
+The Second Modified Soil Adjusted Vegetation Index (MSAVI2) is adjusted to provide accurate data in sparse vegetation or plant canopies with deficit of chlorophyll. \hl{Originally developed as MSAVI by Qi et al. in 1992 }\cite{QI1994119}\hl{, }MSAVI2 \hl{was slightly modified by Qi et al. in 1994 }\cite{Qi1994ExternalFC} \hl{with aim at better identifying }bare soil between the seedlings during leaf development which is useful for agricultural mapping. 
 
 \begin{equation}
 	MSAVI2 = \frac{1}{2}*\Bigl(2*NIR+1-\sqrt{(2*NIR+1)^2-8*(NIR-red)}\Bigr)
 \end{equation} 
 
-The MSAVI2 is determined using GRASS GIS i.vi module using Listing \ref{lst09}\hl{ presented in Appendix}.
+\hl{According to the analysis of the parameters of MSAVI (NIR and Red bands in complex combinations) and its documentation, it allows precise detection of the seasonal vegetation patterns since includes a soil factor which varies in moisture by different seasons in Nigeria. Moreover, MSAVI2 works well in the areas of the sparse and scattered vegetation, for instance, occupied by urban infrastructure, covered by buildings and roads in the agglomerations and urbanized areas, where it shows good correlation with the NDVI} \cite{FABIJANCZYK2022100721}. \hl{Therefore, the MSAVI2 is useful for detecting urban growth in the rapidly developing towns of southern Nigeria. In GRASS GIS,} MSAVI2 is \hl{computed} using i.vi module \hl{by} Listing \ref{lst09}.
 
 \subsection{Infrared Percentage Vegetation Index (IPVI)}
 
@@ -711,7 +711,7 @@ The values of EVI (Figure \ref{fig12}) quantify vegetation greenness in the rang
     \begin{tabularx}{\fulllength}{| CCC | CC | CC | CC |}
     \toprule
         \bf{Class} & \multicolumn{2}{c|}{\bf{2013}} & \multicolumn{2}{c|}{\bf{2015}} & \multicolumn{2}{c|}{\bf{2021}} & \multicolumn{2}{c|}{\bf{2021}} \\ \hline
-        ID & nr. of pixels & cluster size & nr. of pixels & cluster size & nr. of pixels & cluster size & nr. of pixels & cluster size \\ \hline
+        \emph{ID} & \emph{nr. of pixels} & \emph{cluster size} & \emph{nr. of pixels} & \emph{cluster size} & \emph{nr. of pixels} & \emph{cluster size} & \emph{nr. of pixels} & \emph{cluster size} \\ \hline
         \cline{2-9}
         1 & 0.0 & 1 & 99304.0 & 2 & 0.0 & 1 & 0.0 & 1 \\ \hline
         2 & 24202.5 & 2 & 793875.9 & 3 & 179803.3 & 3 & 324638.7 & 1 \\ \hline
@@ -749,13 +749,13 @@ The values of EVI (Figure \ref{fig12}) quantify vegetation greenness in the rang
 \hl{The data were evaluated between 2013 and 2022 based on clustering of the Landsat 8-9 OLI/TIRS images. The Kendall correlation shows the average values; while the Spearman correlation shows the pixels by bands 4 (Red), 3 (Green) and 2 (Blue) used for classification of land cover types.}
 
 \begin{table}[H]\scriptsize
-\caption{Results of the land cover class classification by pixel content in Band 4 (Red), Band 3 (Green) and Band 2 (Blue) of the Landsat-8 OLI/TIRS satellite images.\label{tab3}}
+\caption{\hl{Results of the land cover class classification by pixel content in Band 4 (Red), Band 3 (Green) and Band 2 (Blue) of the Landsat-8 OLI/TIRS satellite images}.\label{tab3}}
 \begin{adjustwidth}{-\extralength}{0cm}
 \newcolumntype{C}{>{\centering\footnotesize\arraybackslash}X}
     \begin{tabularx}{\fulllength}{| C | CCC | CCC | CCC | CCC |}
     \toprule
         \bf{Class} & ~ & \bf{2013} & ~ & ~ & \bf{2018} & ~ & ~ & \bf{2021} & ~ & ~ & \bf{2022} & ~ \\ \hline
-         ID & B4 & B3 & B2 & B4 & B3 & B2 & B4 & B3 & B2 & B4 & B3 & B2 \\ \hline
+         \emph{ID} & \emph{B4} & \emph{B3} & \emph{B2} & \emph{B4} & \emph{B3} & \emph{B2} & \emph{B4} & \emph{B3} & \emph{B2} & \emph{B4} & \emph{B3} & \emph{B2} \\ \hline
         1 & 9362.333 & 9803.222 & 8742.333 & 10352.65 & 10539.35 & 8699.400 & 9150.500 & 9643.167 & 8150.667 & 11409.333 & 11031.333 & 9693.000 \\ \hline
         2 & 9631.111 & 9699.000 & 8448.778 & 10848.50 & 11077.50 & 9607.300 & 11394.000 & 11449.667 & 9541.667 & 9672.556 & 9612.056 & 8631.333 \\ \hline
         3 & 12549.750 & 12197.500 & 10335.750 & 10879.55 & 10833.90 & 8936.950 & 9900.929 & 10211.571 & 8387.929 & 23552.000 & 22211.000 & 18896.000 \\ \hline
