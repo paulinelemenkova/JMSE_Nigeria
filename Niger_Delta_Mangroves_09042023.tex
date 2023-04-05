@@ -698,18 +698,20 @@ The values of EVI (Figure \ref{fig12}) quantify vegetation greenness in the rang
 }\caption{EVI computed from the Landsat 8-9 OLI/TIRS images of Niger Delta for four years: (\textbf{a}) 2013, (\textbf{b}) 2015 (\textbf{c}) 2021, (\textbf{d}) 2022.}\label{fig12}
 \end{figure}
 
+\subsection{Statistical Analysis}
+
 \hl{The statistical analysis on the size and number of pixels representing various classes over the study area was performed in R using K-means method applied for 10 vegetation classes corresponding to the coastal landscapes in southern Nigeria, Table }\ref{tab2}. \hl{The results of the classification by K-means clustering show that 10 distinct classes including mangrove classes can be derived from the Landsat OLI/TIRS data. These include the following land cover classes: 1) mangrove swamps; 2) water areas (river and shallow areas); 3) water areas (coastal areas of the Bight of Benin); 4) forests; 5) built-up urban areas and settlements; 6) bare soil and exposed land surfaces; 7) woodland; 8) agricultural areas; 9) farmland/grasslands; 10) other vegetation types. The classification is based on the modified existing studies} \cite{rs12213619,nhess1433172014,Eyoh,Udoka}. \hl{The table is sorted by the ascending values of the pixels.} 
 
 \hl{The land cover analysis of the Niger Delta was based using automatic classification of the images by K-means. It shows a distribution of pixels by clusters of mangroves and other land cover types using clustering of the four images in Landsat OLI/TIRS band combinations 4-3-2, i.e., natural composites. The land cover categories corresponding to the mangroves showed gradual losses from 535828.3 in 2013 (ID Class 3 for 2013), to 432318.7 in 2018 (ID Class 4 for 2018), 408108.2 in 2021 (ID Class 5 for 2021) and 416219.5 in 2022 (ID Class 4 for 2022), Table} \ref{tab2}.
 
 \begin{table}[H]
-\caption{Results of the land cover class computations of the Landsat-8 OLI/TIRS satellite images \textsuperscript{1}.\label{tab2}}
+\caption{\hl{Results of the land cover class computations of the Landsat-8 OLI/TIRS satellite images} \textsuperscript{1}.\label{tab2}}
 \begin{adjustwidth}{-\extralength}{0cm}
 \newcolumntype{C}{>{\centering\small\arraybackslash}X}
     \begin{tabularx}{\fulllength}{| CCC | CC | CC | CC |}
     \toprule
         \bf{Class} & \multicolumn{2}{c|}{\bf{2013}} & \multicolumn{2}{c|}{\bf{2015}} & \multicolumn{2}{c|}{\bf{2021}} & \multicolumn{2}{c|}{\bf{2021}} \\ \hline
-        ID & nr. pixels & cluster size & nr. pixels & cluster size & nr. pixels & cluster size & nr. pixels & cluster size \\ \hline
+        ID & nr. of pixels & cluster size & nr. of pixels & cluster size & nr. of pixels & cluster size & nr. of pixels & cluster size \\ \hline
         \cline{2-9}
         1 & 0.0 & 1 & 99304.0 & 2 & 0.0 & 1 & 0.0 & 1 \\ \hline
         2 & 24202.5 & 2 & 793875.9 & 3 & 179803.3 & 3 & 324638.7 & 1 \\ \hline
@@ -724,11 +726,10 @@ The values of EVI (Figure \ref{fig12}) quantify vegetation greenness in the rang
         \bottomrule
     \end{tabularx}
 \end{adjustwidth}
-\noindent{\footnotesize{\textsuperscript{1} The statistical summary is computed within cluster sum of squares by cluster using K-means performed in R library 'raster'. The table is sorted by the ascending values of the pixels in land cover types.}}
+\noindent{\footnotesize{\textsuperscript{1} \hl{The statistical summary is computed within cluster sum of squares by cluster using K-means performed in R library 'raster'. The table is sorted by the ascending values of the pixels in land cover types}.}}
 \end{table}
 
-\hl{The heat map graph shows the confusion matrix plotted using Python showing the probability cases for pixel distribution according to land cover classes (10 selected ID classes) in the Niger Delta, Nigeria, Figure }\ref{fig13}. \hl{The data were evaluated between 2013 and 2022 based on clustering of the Landsat 8-9 OLI/TIRS images. The Kendall correlation shows the average values; while the Spearman correlation shows the pixels by bands 4 (Red), 3 (Green) and 2 (Blue) used for classification of land cover types.}
-
+\hl{The heat map graph shows the confusion matrix plotted using Python showing the probability cases for pixel distribution according to land cover classes (10 selected ID classes) in the Niger Delta, Nigeria, Figure }\ref{fig13}. 
 \begin{figure}[H]
 \makebox[0.95\linewidth][r]{%
 	\begin{subfigure}[b]{.6\textwidth}
@@ -742,8 +743,10 @@ The values of EVI (Figure \ref{fig12}) quantify vegetation greenness in the rang
 			\includegraphics[width=0.95\textwidth]{Fig_13b.png}
 	\end{subfigure}%
 }
-\caption{Correlation plots showing probability cases for pixel distribution according to land cover classes (10 selected ID classes) in the Niger Delta, Nigeria between 2013 and 2022 based on clustering of the Landsat 8-9 OLI/TIRS images: (\textbf{a}) Kendall correlation for average values; (\textbf{b}) Spearman correlation for pixels by bands 4 (Red), 3 (Green) and 2 (Blue) used for classification of land cover types. Visualization: Python. Source: authors.}\label{fig13}
+\caption{\hl{Correlation plots showing probability cases for pixel distribution according to land cover classes (10 selected ID classes) in the Niger Delta, Nigeria between 2013 and 2022 based on clustering of the Landsat 8-9 OLI/TIRS images: (\textbf{a}) Kendall correlation for average values; (\textbf{b}) Spearman correlation for pixels by bands 4 (Red), 3 (Green) and 2 (Blue) used for classification of land cover types. Visualization: Python. Source: authors}.}\label{fig13}
 \end{figure}
+
+\hl{The data were evaluated between 2013 and 2022 based on clustering of the Landsat 8-9 OLI/TIRS images. The Kendall correlation shows the average values; while the Spearman correlation shows the pixels by bands 4 (Red), 3 (Green) and 2 (Blue) used for classification of land cover types.}
 
 \begin{table}[H]\scriptsize
 \caption{Results of the land cover class classification by pixel content in Band 4 (Red), Band 3 (Green) and Band 2 (Blue) of the Landsat-8 OLI/TIRS satellite images.\label{tab3}}
