@@ -34,6 +34,7 @@
 \usepackage{makecell}
 \usepackage{array}
 \usepackage{siunitx}
+\usepackage{amsmath}
 
 \usepackage{listings}
 \usepackage{xcolor}
@@ -221,9 +222,9 @@ The principal approach here is the \hl{conversion} of the digital numbers (DN) o
 %------------------------->
 \subsection{Atmospherically Resistant Vegetation Index (ARVI)}
 
-The Atmospherically Resistant Vegetation Index (ARVI) is based on using \hl{the spectral }bands with wavelengths \hl{ranging }between 0.650~{\textmu}m and 0.865~{\textmu}m\hl{. In the Landsat 8-9 OLI sensor, this }corresponds to the Bands Red (0.64-0.67~{\textmu}m) and NIR (0.85-0.88 ~{\textmu}m)\hl{. }Additionally, the Blue band with\hl{ }wavelength of 0.45-0.51~{\textmu}m in the Landsat OLI/TIRS is distracted from the Red \hl{band }according to the\hl{ }formula\hl{ }developed by \cite{134076,HUETE1997440}:
+The Atmospherically Resistant Vegetation Index (ARVI) is based on using \hl{the spectral }bands with wavelengths \hl{ranging }between 0.650~{\textmu}m and 0.865~{\textmu}m\hl{. In the Landsat 8-9 OLI sensor, this }corresponds to the Bands Red (0.64-0.67~{\textmu}m) and NIR (0.85-0.88 ~{\textmu}m)\hl{. }Additionally, the Blue band with\hl{ }wavelength of 0.45-0.51~{\textmu}m in the Landsat OLI/TIRS is distracted from the Red \hl{band }according to the\hl{ Equation }\ref{eq1}, \cite{134076,HUETE1997440}:
 
-\begin{equation}
+\begin{equation}\label{eq1}
 	ARVI = \frac{NIR - (2.0*Red - Blue)}{NIR + (2.0*Red - Blue)}
 \end{equation}
 
@@ -233,9 +234,9 @@ The advantages of ARVI is that it reduces the role of \hl{the }atmospheric scatt
 %------------------------->
 \subsection{Green Atmospherically Resistant Vegetation Index (GARI)}
 
-The Green Atmospherically Resistant Index (GARI) is more perceptive to a wide range of chlorophyll content in leaves of mangroves\hl{. This }correlates with the difference between the reflectance of Green, Red and NIR bands, \hl{since} the Green band is used in the formula \hl{of GARI, }in addition to Red and NIR \hl{spectral bands. Adding the} Blue \hl{spectral }band makes it less dependent on possible atmospheric effects such as aerosol conditions. The \hl{theoretical computation} of GARI is based on the formula developed \hl{initially }by \cite{GITELSON1996289}:
+The Green Atmospherically Resistant Index (GARI) is more perceptive to a wide range of chlorophyll content in leaves of mangroves\hl{. This }correlates with the difference between the reflectance of Green, Red and NIR bands, \hl{since} the Green band is used in the formula \hl{of GARI, }in addition to Red and NIR \hl{spectral bands. Adding the} Blue \hl{spectral }band makes it less dependent on possible atmospheric effects such as aerosol conditions. The \hl{theoretical computation} of GARI is based on the \hl{Equation} \ref{eq2} developed \hl{initially }by \cite{GITELSON1996289}:
 
-\begin{equation}
+\begin{equation}\label{eq2}
 	GARI = \frac{NIR - (Green - (Blue - Red))}{NIR + (Green - (Blue - Red))}
 \end{equation} 
 
@@ -244,45 +245,46 @@ The computation of GARI in the GRASS GIS is done according to the embedded \hl{f
 %------------------------->
 \subsection{Green Vegetation Index (GVI)}
 
-The technique of the Tasselled Cap transformation in remote sensing \hl{is} originally developed by \cite{KauthThomas}. The Tasselled Cap GVI provides more detailed information on the distinct features in landscapes such as plant canopy, water bodies and bare land or sand area. The method of Tasselled Cap performs a transformation of the original pixels in bands  into a new 4D dimension with the \hl{separated} parameters: soil brightness index, green vegetation index (GVI), yellow stuff index, and a non-such index related to atmospheric effects \cite{Huang2002}. Of these, we used the GVI which is based on the estimation of greenness in leaves of mangrove canopies \hl{as information on values of the weighted sums of pixels derived from colour composites of the Landsat bands}. The computation of Tasselled Cap Green Vegetation Index (GVI) is based on the formula developed by \cite{4157507}:
+The technique of the Tasselled Cap transformation in remote sensing \hl{is} originally developed by \cite{KauthThomas}. The Tasselled Cap GVI provides more detailed information on the distinct features \hl{of the }landscapes such as plant canopy, water bodies and bare land or \hl{sandy areas}. The method of \hl{the }Tasselled Cap performs a transformation of the original pixels in bands into a new 4D dimension \hl{where the following } parameters \hl{are separated}: soil brightness index, green vegetation index (GVI), yellow stuff index, and a \hl{those} related to atmospheric effects \cite{Huang2002}. Of these, we used the GVI which is based on the estimation of greenness in leaves of mangrove canopies \hl{as information on values of the weighted sums of pixels derived from the colour composites of the Landsat bands}. The computation of \hl{the }Tasselled Cap Green Vegetation Index (GVI) is based on the \hl{Equation }\ref{eq3} developed by \cite{4157507}:
 
-\begin{equation}
+\begin{equation}\label{eq3}
 \begin{split}
 	GVI = -0.2848 * Blue - 0.2435 * Green - 0.5436 * Red + \\
 	0.7243 * NIR + 0.0840 * SWIR1- 0.1800 * SWIR2
 \end{split}
 \end{equation}
 
-We have Listing \ref{lst04} used for the computation of GVI\hl{ shown in Appendix.}
+We \hl{used} Listing \ref{lst04} for the computation of \hl{of the }GVI\hl{ as showed in the Appendix.}
 
 %------------------------->
 \subsection{Difference Vegetation Index (DVI)}
 
-The advantage of the Difference Vegetation Index (DVI) \hl{consists in the discrimination of} soil \hl{from} the vegetation biomass. However, the disadvantage is that it does not considers the difference between the spectral reflectance and radiance of soil surface caused by atmospheric effects \cite{TUCKER1979127}. The use of DVI is based on the ratio between the NIR and Red channels \cite{Naji2018}:
+The advantage of the Difference Vegetation Index (DVI) \hl{consists in the discrimination of} soil \hl{from} the vegetation biomass. However, the disadvantage is that it does not considers the difference between the spectral reflectance and radiance of soil surface caused by \hl{the }atmospheric effects \cite{TUCKER1979127}. The use of \hl{the }DVI is based on the ratio between the NIR and Red \hl{spectral bands} \cite{Naji2018} \hl{as showed in the Equation} \ref{eq4}:
 
-\begin{equation}
+\begin{equation}\label{eq4}
 	DVI = (NIR - Red)
 \end{equation}
 
-This is the original formula used later in a modified version for computing the NDVI which is based on the DVI in the adjusted way and applied in many works \cite{TUCKER1979237,RONDEAUX199695,DATT1998111}:
-\begin{equation}
+This is the original formula used later in a modified version for computing the NDVI which is based on the DVI in the adjusted way and applied in many works \cite{TUCKER1979237,RONDEAUX199695,DATT1998111} \hl{as showed in Equation} \ref{eq5}:
+
+\begin{equation}\label{eq5}
 	NDVI = \frac{(NIR - Red)}{(NIR + Red)}
 \end{equation}
 
-The above formulae are embedded in the function 'dvi' used when computing the DVI index. This is done by Listing \ref{lst05} used for the calculation of DVI as \hl{demonstrated in the Appendix.}
+The above formulae are embedded \hl{in the GRASS GIS }in the function 'dvi' \hl{of the module \emph{i.vi} }used \hl{for} computing the DVI\hl{ as illustrated in} Listing \ref{lst05}\hl{.}
 
 %------------------------->
 \subsection{Perpendicular Vegetation Index (PVI)}
 
-The use of PVI is based on the formula originally developed by \cite{Richardson} to monitor the productivity of range, forest, and croplands. Similar to a DVI, it differs in that it measures the perpendicular distance of the pixels from the soil line. Besides, it is more sensitive to atmospheric variations. The PVI is based on the assumption that soil reflectance supplies the background signal of vegetated surfaces which is why the soil line is used in the computation. 
+The use of \hl{the }PVI is based on the formula originally developed by \cite{Richardson}\hl{. }Sensitive to \hl{the }atmospheric variations, \hl{the PVI is intended }to monitor the productivity of range, forest\hl{ }and croplands. Similar to\hl{ }DVI, it\hl{ }measures the perpendicular distance of the pixels from the soil line\hl{, since it is }based on the assumption that soil reflectance supplies the background signal of \hl{the }vegetated surfaces. \hl{The formula used for calculation of the PVI is presented in Equation} \ref{eq6}:
 
-\begin{equation}
+\begin{equation}\label{eq6}
 	PVI=\frac{1}{\sqrt{a^2+1}} * (NIR - aR - b),
 \end{equation} 
 
-where \emph{a} and \emph{b} are\hl{ }constants \hl{indicating} slope and gradient of the soil line. However, the embedded formula of GRASS GIS is slightly modified, because the calculation of the PVI here is made using the concept of "isovegetation". The isovegetation line shows the distribution of area covered by equal types of vegetation. Therefore, the pixels in this case are parallel to the soil line which is assigned to a=1. Hence, the constants for soil are removed and the computation of the PVI is adjusted. In this case, it includes the sine and cosine of the NIR and Red channels using the following formula \cite{PERRY1984169}:
+where \emph{a} and \emph{b} are\hl{ }constants \hl{indicating} slope and gradient of the soil line. However, the embedded formula of GRASS GIS is slightly modified, because the calculation of the PVI here is made using the concept of "isovegetation". The isovegetation line shows the distribution of area covered by equal types of vegetation. Therefore, the pixels in this case are parallel to the soil line which is assigned to a=1. Hence, the constants for soil are removed and the computation of the PVI is adjusted. In this case, it includes the sine and cosine of the NIR and Red channels using the following formula \hl{showed in the Equation} \ref{eq7}, \cite{PERRY1984169}:
 
-\begin{equation}
+\begin{equation}\label{eq7}
 	PVI = sin(a)NIR-cos(a)Red
 \end{equation} 
 
@@ -290,16 +292,12 @@ Using the syntax of GRASS GIS, we define the PVI as follows in Listing \ref{lst0
 
 \subsection{Global Environmental Monitoring Index (GEMI)}
 
-The Global Environmental Monitoring Index (GEMI) \hl{was originally developed by Pinty and Verstraete in 1992} \cite{PintyVerstraete}. \hl{It }has a nonlinear nature and a more complex formula, compared to the previous indices. It is designed for global environmental monitoring from remote sensing data, which explains its refine adjustment that considers all types of vegetations. 
+The Global Environmental Monitoring Index (GEMI) \hl{was originally developed by Pinty and Verstraete in 1992} \cite{PintyVerstraete}. \hl{The formula of GEMI }has a nonlinear nature and \hl{is} more complex\hl{, }compared to the previous indices, \hl{Equation }\ref{eq8}. It is designed for global environmental monitoring \hl{using the }remote sensing data, which explains its \hl{improved performance that better }considers all types of vegetations. 
 
-\begin{align*}
-GEMI = \Bigl( \frac{2*((NIR * NIR)-(Red * Red)) +
-       1.5*NIR+0.5*Red}{NIR + Red + 0.5} * \\
-        (1 - 0.25 * 
-       \frac{2*[(NIR * NIR)-(Red * Red) +
-       1.5*NIR+0.5*Red]}{NIR + Red + 0.5} \Bigr ) -
-       \frac{Red - 0.125}{1 - Red}
-\end{align*}
+\begin{align}
+GEMI = \Bigl( \frac{2*((NIR * NIR)-(Red * Red)) + 1.5*NIR+0.5*Red}{NIR + Red + 0.5} * \nonumber\\
+        (1 - 0.25 * \frac{2*[(NIR * NIR)-(Red * Red) + 1.5*NIR+0.5*Red]}{NIR + Red + 0.5} \Bigr ) - \frac{Red - 0.125}{1 - Red} \label{eq8}
+\end{align}
 
 The algorithm for computing and plotting the GEMI is presented in Listing \ref{lst07}\hl{ shown in Appendix.}
 
@@ -309,13 +307,13 @@ Although GEMI is in general comparable to NDVI, it shows less sensitivity to atm
 
 The values of the Normalized Difference Water Index (NDWI) are strongly dependent on the water content in the landscapes. Hence, the NDWI serves as an accurate indicator of the water areas and water bodies (rivers, lakes, estuaries, deltas). The NDWI is derived from the NIR and Green bands using the original formula developed by \cite{McFeeters} as a ratio of Green and NIR channels: 
 
-\begin{equation}
+\begin{equation}\label{eq9}
 	NDWI = \frac{green - NIR}{green + NIR}
 \end{equation} 
 
 Another formula of the NDWI is proposed by \cite{GAO1996257}, which is a different index yet having the same name, since both indices are developed simultaneously in 1996. The NDWI by \cite{GAO1996257} is focused on identification of water content in the plant leaves: 
 
-\begin{equation}
+\begin{equation}\label{eq10}
 	NDWI = \frac{NIR - SWIR}{NIR + SWIR}
 \end{equation} 
 
@@ -325,7 +323,7 @@ However, this is more actual for the semi-arid and arid regions covered by savan
 
 The Second Modified Soil Adjusted Vegetation Index (MSAVI2) is adjusted to provide accurate data in sparse vegetation or plant canopies with deficit of chlorophyll. \hl{Originally developed as MSAVI by Qi et al. in 1992 }\cite{QI1994119}\hl{, }MSAVI2 \hl{was slightly modified by Qi et al. in 1994 }\cite{Qi1994ExternalFC} \hl{with aim at better identifying }bare soil between the seedlings during leaf development which is useful for agricultural mapping. 
 
-\begin{equation}
+\begin{equation}\label{eq11}
 	MSAVI2 = \frac{1}{2}*\Bigl(2*NIR+1-\sqrt{(2*NIR+1)^2-8*(NIR-red)}\Bigr)
 \end{equation} 
 
@@ -335,7 +333,7 @@ The Second Modified Soil Adjusted Vegetation Index (MSAVI2) is adjusted to provi
 
 The specifics of Infrared Percentage Vegetation Index (IPVI) is that it is a ratio-based computationally fast approach with values ranging from 0 to 1. As one can see from the formula, the IPVI is based on the ration of Red/NIR. in this was it is similar and linearly equivalent to the NDVI, yet more straightforward \cite{CRIPPEN199071}:
 
-\begin{equation}
+\begin{equation}\label{eq12}
 	IPVI = \frac{NIR}{(NIR+Red)}
 \end{equation} 
 
@@ -345,11 +343,11 @@ To compute and plot the IPVI we use the GRASS GIS script presented in Listing \r
 
 The Enhanced Vegetation Index (EVI) uses NIR, Red and Blue bands and is designed to quantify vegetation greenness. Its extended formula includes the atmospheric conditions and considers the effects from the canopy background. The EVI is well adjusted to identifies areas with dense vegetation which is suitable for mangrove mapping \cite{HUETE2002195}. Its values are ranging from -1 to +1, similar to the NDVI, with the diapason indicating healthy vegetation lying between 0.2 and 0.8. 
 
-\begin{equation}
+\begin{equation}\label{eq13}
 EVI = 2.5 * \frac{NIR - Red}{NIR + 6.0 * Red - 7.5 * Blue + 1.0}
 \end{equation} 
 
-The EVI was computed and visialised by the GRASS GIS using Listing \ref{lst11}\hl{ in Appendix}.
+The EVI was computed and visialized by the GRASS GIS using Listing \ref{lst11}\hl{ in Appendix}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \pagebreak
