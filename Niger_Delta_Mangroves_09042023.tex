@@ -337,17 +337,17 @@ The specifics of \hl{the }Infrared Percentage Vegetation Index (IPVI) \hl{consis
 	IPVI = \frac{NIR}{(NIR+Red)}
 \end{equation} 
 
-To compute and plot the IPVI we use the GRASS GIS script presented in Listing \ref{lst10}\hl{ as shown in Appendix}.
+To compute and plot the IPVI\hl{, }we \hl{used} the GRASS GIS script presented in Listing \ref{lst10}\hl{ in the Appendix}.
 
 \subsection{Enhanced Vegetation Index (EVI)}
 
-The Enhanced Vegetation Index (EVI) uses NIR, Red and Blue bands and is designed to quantify vegetation greenness. Its extended formula includes the atmospheric conditions and considers the effects from the canopy background. The EVI is well adjusted to identifies areas with dense vegetation which is suitable for mangrove mapping \cite{HUETE2002195}. Its values are ranging from -1 to +1, similar to the NDVI, with the diapason indicating healthy vegetation lying between 0.2 and 0.8. \hl{The computational formula of EVI is presented in the Equation }\ref{eq13}:
+The Enhanced Vegetation Index (EVI) \hl{is} designed to quantify vegetation greenness \hl{by the combination of} NIR, Red and Blue \hl{spectral }bands. \hl{The} extended formula \hl{of EVI }includes the \hl{corrections for the }atmospheric conditions and considers the effects from the canopy background. \hl{Due to such properties,} EVI is well adjusted to \hl{identify the }areas with dense vegetation which is suitable for mangrove mapping \cite{HUETE2002195}.\hl{ }Similar to the NDVI, \hl{the values of EVI }are ranging from -1 to +1, with the \hl{range} indicating healthy vegetation \hl{located} between 0.2 and 0.8. \hl{The formula of EVI is presented in the Equation }\ref{eq13}:
 
 \begin{equation}\label{eq13}
 EVI = 2.5 * \frac{NIR - Red}{NIR + 6.0 * Red - 7.5 * Blue + 1.0}
 \end{equation} 
 
-The EVI was computed and visialized by the GRASS GIS using Listing \ref{lst11}\hl{ in Appendix}.
+\hl{In the GRASS GIS, }EVI was\hl{ technically implemented }using Listing \ref{lst11}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \pagebreak
