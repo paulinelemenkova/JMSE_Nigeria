@@ -305,13 +305,13 @@ Although GEMI is in general comparable to NDVI, it shows less sensitivity to atm
 
 \subsection{Normalized Difference Water Index (NDWI)}
 
-The values of the Normalized Difference Water Index (NDWI) are strongly dependent on the water content in the landscapes. Hence, the NDWI serves as an accurate indicator of the water areas and water bodies (rivers, lakes, estuaries, deltas). The NDWI is derived from the NIR and Green bands using the original formula developed by \cite{McFeeters} as a ratio of Green and NIR channels: 
+The values of the Normalized Difference Water Index (NDWI) are strongly dependent on the water content in the landscapes. Hence, the NDWI serves as an accurate indicator of the water areas and water bodies (rivers, lakes, estuaries, deltas). The NDWI is derived from the NIR and Green bands using the original formula developed by \cite{McFeeters} as a ratio of Green and NIR \hl{spectral bands, as seen in the Equation }{eq9}: 
 
 \begin{equation}\label{eq9}
 	NDWI = \frac{green - NIR}{green + NIR}
 \end{equation} 
 
-Another formula of the NDWI is proposed by \cite{GAO1996257}, which is a different index yet having the same name, since both indices are developed simultaneously in 1996. The NDWI by \cite{GAO1996257} is focused on identification of water content in the plant leaves: 
+Another formula of the NDWI is proposed by \cite{GAO1996257}, which is a different index yet having the same name, since both indices are developed simultaneously in 1996. The NDWI by \cite{GAO1996257} is focused on identification of water content in the plant leaves \hl{using the formula presented in Equation }{eq10}: 
 
 \begin{equation}\label{eq10}
 	NDWI = \frac{NIR - SWIR}{NIR + SWIR}
@@ -321,7 +321,7 @@ However, this is more actual for the semi-arid and arid regions covered by savan
 
 \subsection{Second Modified Soil Adjusted Vegetation Index (MSAVI2)}
 
-The Second Modified Soil Adjusted Vegetation Index (MSAVI2) is adjusted to provide accurate data in sparse vegetation or plant canopies with deficit of chlorophyll. \hl{Originally developed as MSAVI by Qi et al. in 1992 }\cite{QI1994119}\hl{, }MSAVI2 \hl{was slightly modified by Qi et al. in 1994 }\cite{Qi1994ExternalFC} \hl{with aim at better identifying }bare soil between the seedlings during leaf development which is useful for agricultural mapping. 
+The Second Modified Soil Adjusted Vegetation Index (MSAVI2) is adjusted to provide accurate data in sparse vegetation or plant canopies with deficit of chlorophyll. \hl{Originally developed as MSAVI by Qi et al. in 1992 }\cite{QI1994119}\hl{, }MSAVI2 \hl{was slightly modified by Qi et al. in 1994 }\cite{Qi1994ExternalFC} \hl{with a novel developed formula presented in Equation }\ref{eq11} \hl{which aims at better identifying the }bare soil between the seedlings during leaf development which is useful for agricultural mapping. 
 
 \begin{equation}\label{eq11}
 	MSAVI2 = \frac{1}{2}*\Bigl(2*NIR+1-\sqrt{(2*NIR+1)^2-8*(NIR-red)}\Bigr)
@@ -331,7 +331,7 @@ The Second Modified Soil Adjusted Vegetation Index (MSAVI2) is adjusted to provi
 
 \subsection{Infrared Percentage Vegetation Index (IPVI)}
 
-The specifics of Infrared Percentage Vegetation Index (IPVI) is that it is a ratio-based computationally fast approach with values ranging from 0 to 1. As one can see from the formula, the IPVI is based on the ration of Red/NIR. in this was it is similar and linearly equivalent to the NDVI, yet more straightforward \cite{CRIPPEN199071}:
+The specifics of \hl{the }Infrared Percentage Vegetation Index (IPVI) \hl{consists in the} ratio-based computationally fast approach with values ranging from 0 to 1. As one can see from the formula \hl{in the Equation }\ref{eq12}, the IPVI is based on the \hl{ratio between the Red and NIR spectral bands. With this regard, }it is similar and linearly equivalent to the NDVI, yet \hl{is implemented in a }more straightforward \hl{way, }\cite{CRIPPEN199071}:
 
 \begin{equation}\label{eq12}
 	IPVI = \frac{NIR}{(NIR+Red)}
@@ -341,7 +341,7 @@ To compute and plot the IPVI we use the GRASS GIS script presented in Listing \r
 
 \subsection{Enhanced Vegetation Index (EVI)}
 
-The Enhanced Vegetation Index (EVI) uses NIR, Red and Blue bands and is designed to quantify vegetation greenness. Its extended formula includes the atmospheric conditions and considers the effects from the canopy background. The EVI is well adjusted to identifies areas with dense vegetation which is suitable for mangrove mapping \cite{HUETE2002195}. Its values are ranging from -1 to +1, similar to the NDVI, with the diapason indicating healthy vegetation lying between 0.2 and 0.8. 
+The Enhanced Vegetation Index (EVI) uses NIR, Red and Blue bands and is designed to quantify vegetation greenness. Its extended formula includes the atmospheric conditions and considers the effects from the canopy background. The EVI is well adjusted to identifies areas with dense vegetation which is suitable for mangrove mapping \cite{HUETE2002195}. Its values are ranging from -1 to +1, similar to the NDVI, with the diapason indicating healthy vegetation lying between 0.2 and 0.8. \hl{The computational formula of EVI is presented in the Equation }\ref{eq13}:
 
 \begin{equation}\label{eq13}
 EVI = 2.5 * \frac{NIR - Red}{NIR + 6.0 * Red - 7.5 * Blue + 1.0}
