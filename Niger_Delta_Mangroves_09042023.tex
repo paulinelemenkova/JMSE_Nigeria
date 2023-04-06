@@ -103,11 +103,11 @@ $^{1}$ \quad Laboratory of Image Synthesis and Analysis (LISA), École polytechn
 
 % Abstract (Do not insert blank lines, i.e. \\) 
 \abstract{
-This paper addresses the issue of satellite image processing aimed at mapping the vegetation indices in mangrove forests of Niger Delta, southern Nigeria. In the last decade, the programming approaches were developed and integrated in geospatial studies. This paper proposes a GRASS GIS framework to calculate and visualise ten vegetation indices (VI) using scripting techniques of image processing. The methods include using the \emph{i.vi}, \emph{i.landsat.toar} and other modules of GRASS GIS. The estuary of the Niger Delta in the Gulf of Guinea is an essential hotspot of biodiversity in western coast of Africa. At the same time, recent issues of changing climate and the effects from the increasing population contribute to the vulnerability of coastal landscapes and present threats to ecosystem communities in southern Nigeria. In this paper, we prove that environmental changes in the coastal landscapes can be numerically modelled and evaluated using a time series analysis of the remote sensing data. We examined four Landsat 8-9 OLI/TIRS images covering the western segment of the Niger Delta in the Bight of Benin for years 2013, 2015, 2021 and 2022. The analysis of data showed variations in the vegetation health of the swamp forests of the Niger Delta over a decade. Variations in spectral reflectance also pointed at changes in urban spaces of the major cities (Onitsha, Sapele, Warri and Benin CIty) and smaller villages in the Delta State caused by recent urbanisation processes. Based on the GRASS GIS \emph{i.vi} module, ten VI are computed and mapped for the western segment of the Niger Delta estuary: Atmospherically Resistant Vegetation Index (ARVI), Green Atmospherically Resistant Vegetation Index (GARI), Green Vegetation Index (GVI), Difference Vegetation Index (DVI), Perpendicular Vegetation Index (PVI), Global Environmental Monitoring Index (GEMI), Normalized Difference Water Index (NDWI), Second Modified Soil Adjusted Vegetation Index (MSAVI2), Infrared Percentage Vegetation Index (IPVI) and Enhanced Vegetation Index (EVI). Experimental results show changes in the vegetation health, plant  greenness and coverage based on the image analysis performed using GRASS GIS. Finally, the technical functionality of the GRASS GIS demonstrated the best performance in terms of image processing and analysis.
+This paper addresses the issue of satellite image processing aimed at mapping the vegetation indices in mangrove forests of Niger Delta, southern Nigeria. In the last decade, the programming approaches were developed and integrated in geospatial studies. This paper proposes a GRASS GIS framework to calculate and visualise ten vegetation indices (VI) using scripting techniques of image processing. The methods include using the \emph{i.vi}, \emph{i.landsat.toar} and other modules of GRASS GIS. The estuary of the Niger Delta in the Gulf of Guinea is an essential hotspot of biodiversity in western coast of Africa. At the same time, recent issues of changing climate and the effects from the increasing population contribute to the vulnerability of coastal landscapes and present threats to ecosystem communities in southern Nigeria. In this paper, we prove that environmental changes in the coastal landscapes can be numerically modelled and evaluated using a time series analysis of the remote sensing data. We examined four Landsat 8-9 OLI/TIRS images covering the western segment of the Niger Delta in the Bight of Benin for years 2013, 2015, 2021 and 2022. The analysis of data showed variations in the vegetation health of the swamp forests of the Niger Delta over a decade. Variations in spectral reflectance also pointed at changes in urban spaces of the major cities (Onitsha, Sapele, Warri and Benin City) and smaller villages in the Delta State caused by recent urbanisation processes. Based on the GRASS GIS \emph{i.vi} module, ten VI are computed and mapped for the western segment of the Niger Delta estuary: Atmospherically Resistant Vegetation Index (ARVI), Green Atmospherically Resistant Vegetation Index (GARI), Green Vegetation Index (GVI), Difference Vegetation Index (DVI), Perpendicular Vegetation Index (PVI), Global Environmental Monitoring Index (GEMI), Normalized Difference Water Index (NDWI), Second Modified Soil Adjusted Vegetation Index (MSAVI2), Infrared Percentage Vegetation Index (IPVI) and Enhanced Vegetation Index (EVI). Experimental results show changes in the vegetation health, plant  greenness and coverage based on the image analysis performed using GRASS GIS. Finally, the technical functionality of the GRASS GIS demonstrated the best performance in terms of image processing and analysis.
 }
 
 % Keywords
-\keyword{Image processing; Nigeria; West Africa; remote sensing; cartography; Niger River; Niger Delta; R language; programming; climate change} 
+\keyword{Image processing; West Africa; remote sensing; Niger River Delta; R language.} 
 
 \PACS{91.10.Da; 91.10.Jf; 91.10.Sp; 91.10.Xa; 96.25.Vt; 91.10.Fc; 95.40.+s; 95.75.Qr; 95.75.Rs; 42.68.Wt}
 \MSC{86A30; 86-08; 86A99; 86A04}
@@ -151,41 +151,47 @@ Losses in mangroves in the coastal landscapes at a global scale are reported to 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Materials and Methods}
 
-The methods include computing ten VI calculated and visualised using GRASS GIS scripts. We evaluated the following ten indices: Atmospherically Resistant Vegetation Index (ARVI), Green Atmospherically Resistant Vegetation Index (GARI), Green Vegetation Index (GVI), Difference Vegetation Index (DVI), Perpendicular Vegetation Index (PVI), Global Environmental Monitoring Index (GEMI), Normalized Difference Water Index (NDWI), Second Modified Soil Adjusted Vegetation Index (MSAVI2), Infrared Percentage Vegetation Index (IPVI) and Enhanced Vegetation Index (EVI). 
+\hl{The distribution of the mangroves within the coastal landscapes of Nigeria was evaluated by using ten different vegetation indices, namely}: Atmospherically Resistant Vegetation Index (ARVI), Green Atmospherically Resistant Vegetation Index (GARI), Green Vegetation Index (GVI), Difference Vegetation Index (DVI), Perpendicular Vegetation Index (PVI), Global Environmental Monitoring Index (GEMI), Normalized Difference Water Index (NDWI), Second Modified Soil Adjusted Vegetation Index (MSAVI2), Infrared Percentage Vegetation Index (IPVI) and Enhanced Vegetation Index (EVI). \hl{Technically, the }methods \hl{of} computing \hl{the }ten VI \hl{were implemented} using \hl{the }GRASS GIS scripts. 
 %----------- subsection ----------->
 
 \subsection{Data}
-Rapid growth of satellite data derived from the Earth observation sensors, such as the Landsat 8-9 OLI/TIRS, significantly enhances the cartographic possibilities of the environmental monitoring of the landscape features. This is due to the multi-spectral nature of the Landsat scenes and their global temporal and spatial coverage. Specifically for mangrove ecosystems of Nigeria, the remote sensing data provide a precious source of spatial information since it enables accurate mapping by space borne data in the areas otherwise inaccessible, such as mangrove swamps. This makes digital processing of the satellite images by advanced technologies an effective and profitable means of data analysis  and information retrieval. In this study, we used medium resolution Landsat 8-9 OLI/TIRS satellite images of the scenes covering western segment of the Niger Delta for the following sequence of years: 2013, 2015, 2021 and 2022, respectively, Figure \ref{fig02}. 
+Rapid growth of \hl{the }satellite data derived from the Earth observation sensors\hl{ }enhances the cartographic possibilities of the environmental monitoring of the \hl{coastal landscapes. The Landsat 8-9 OLI/TIRS images have become a precious data source for a wide range of geospatial applications, e.g., monitoring the coastal ecosystems that are difficult to access, such as mangrove habitats in southern Nigeria. The advantages of the Landsat scenes consist in multi-spectral characteristics }and\hl{ }global temporal and spatial coverage\hl{ which enable to derive information on the Earth's landscapes. The Landsat 8-9 OLI/TIRS images have 11 spectral bands including visible, thermal and panchromatic ones, which can be used for the analysis of the reflectance spectra for a particular land cover types and their spatial and spectral characteristics. }
 
-The Landsat 8-9 OLI/TIRS data were used to monitor the degree of degradation of mangroves based on the computed and visualised ten VI covering the western segment of the Niger River Delta. The data capture was performed using the EarthExplorer repository of the USGS (\href{https://earthexplorer.usgs.gov/}{https://earthexplorer.usgs.gov/}), with main characteristics of the metadata provided in Table \ref{tab1}. Mapping mangroves of Nigeria using satellite images and GIS techniques has been attempted and reported earlier \cite{Ozigis,GUNDLACH2022100831,Sobande,ijerph2006030011} with proven effectiveness of the satellite data for mangrove mapping. We continue these and similar studies by applying the programming methods of the GRASS GIS scripts instead of the traditional approaches of GIS for computing the VI of the southern Nigerian landscapes.
+Specifically for \hl{inaccessible }areas of mangrove ecosystems \hl{in southern Nigeria}, the \hl{Landsat} data provide a precious source of spatial information \hl{which} enables accurate mapping \hl{and analysis of the vegetation patterns. Processing }the satellite images by \hl{the }advanced \hl{scripting }technologies \hl{is }an effective and profitable means of data analysis and information retrieval. \hl{Due to such reasons}, we used \hl{the} Landsat 8-9 OLI/TIRS satellite images to monitor the\hl{ decline in mangrove habitats} based on the computed and visualised ten VI \hl{which cover} the western segment of the Niger River Delta. \hl{The images were collected} for the following \hl{years}: 2013, 2015, 2021 and 2022\hl{, }Figure \ref{fig02}. 
+
+The data capture was performed using the EarthExplorer repository of the USGS (\href{https://earthexplorer.usgs.gov/}{https://earthexplorer.usgs.gov/}), with main\hl{ }metadata \hl{summarised} in Table \ref{tab1}. 
 
 \begin{figure}[H]
 \makebox[0.99\linewidth][r]{%
-	\begin{subfigure}[b]{.55\textwidth}
+	\begin{subfigure}[b]{.5\textwidth}
 		\centering
-			\hspace{40pt}\includegraphics[width=7.0cm]{Fig_02a.jpg}
+			\hspace{40pt}\includegraphics[width=6.5cm]{Fig_02a.jpg}
 		\caption{2013}
 	\end{subfigure}%
-	\begin{subfigure}[b]{.55\textwidth}
+	\begin{subfigure}[b]{.5\textwidth}
 		\centering
-			\hspace{40pt}\includegraphics[width=7.0cm]{Fig_02b.jpg}
+			\hspace{40pt}\includegraphics[width=6.5cm]{Fig_02b.jpg}
 		\caption{2015}
 	\end{subfigure}%
 }\\
 \vfill \vspace{1mm}
 \makebox[0.99\linewidth][r]{%
-	\begin{subfigure}[b]{.55\textwidth}
+	\begin{subfigure}[b]{.5\textwidth}
 		\centering
-			\hspace{40pt}\includegraphics[width=7.0cm]{Fig_02c.jpg}
+			\hspace{40pt}\includegraphics[width=6.5cm]{Fig_02c.jpg}
 		\caption{2021}
 	\end{subfigure}
-	\begin{subfigure}[b]{.55\textwidth}
+	\begin{subfigure}[b]{.5\textwidth}
 		\centering
-			\hspace{40pt}\includegraphics[width=7.0cm]{Fig_02d.jpg}
+			\hspace{40pt}\includegraphics[width=6.5cm]{Fig_02d.jpg}
 		\caption{2022}
 	\end{subfigure}%
-}\caption{Landsat 8-9 OLI/TIRS images of Niger Delta in natural colour RGB values for four years: (\textbf{a}) 2013/12/20, (\textbf{b}) 2015/12/26, (\textbf{c}) 2021/12/18, (\textbf{d}) 2022/12/29}\label{fig02}
+}\caption{Landsat 8-9 OLI/TIRS images of Niger Delta in\hl{ }RGB \hl{colors} for four years: (\textbf{a}) 2013/12/20, (\textbf{b}) 2015/12/26, (\textbf{c}) 2021/12/18, (\textbf{d}) 2022/12/29}\label{fig02}
 \end{figure}
+
+The images were imported into the GRASS GIS software and processed for data analysis and visualization using\hl{ }modules \hl{for} satellite images and raster data processing.\hl{ }Mapping mangroves of Nigeria using satellite images and GIS techniques has been attempted and reported earlier \cite{Ozigis,GUNDLACH2022100831,Sobande,ijerph2006030011} with proven effectiveness of the satellite data for \hl{monitoring mangroves}. We continue these and similar studies by applying the programming methods of the GRASS GIS scripts instead of the traditional approaches of GIS for computing the VI of the\hl{ }landscapes \hl{in southern Nigeria}. 
+
+While the Landsat 8-9 OLI/TIRS images formed the dataset for computing and visualising the VI, the GEBCO/SRTM raster data were used for visualising the base map for this study \hl{using the techniques of the Generic Mapping Tools (GMT) scripts} \cite{Lemenkova202228,Lemenkova202301}. To determine the variation in \hl{a} spatial extent of the mangroves in\hl{ }western segment of the Niger Delta, ten VI representing the distribution of healthy vegetation were computed to discriminate \hl{the }swamp forests from the other land cover types \hl{such as }water, urban areas \hl{and} agricultural lands. \hl{The} image processing \hl{was implemented} using the GRASS GIS, version 8.2.1, \href{https://grass.osgeo.org/}{https://grass.osgeo.org/}. The GRASS GIS scripts were used in the \emph{'i.vi'} module which was applied for \hl{computing the VI} along with auxiliary modules. 
 
 \begin{table}[H]
 \small
@@ -203,40 +209,37 @@ The Landsat 8-9 OLI/TIRS data were used to monitor the degree of degradation of 
 			\bottomrule
 		\end{tabularx}
 	\end{adjustwidth}
-	\noindent{\footnotesize{\textsuperscript{1} The Sensor ID is common for all the scenes: Landsat 8-9 OLI/TIRS (Operational Land Imager and Thermal Infrared Sensor), Collection 2 Level-2. Path/row parameters common for all the images: 189/56. Coverage: Niger Delta, southern Nigeria, Bight of Benin. Image source: USGS}}
+	\noindent{\footnotesize{\textsuperscript{1} The Sensor ID is common for all the scenes: Landsat 8-9 OLI/TIRS (Operational Land Imager and Thermal Infrared Sensor), Collection 2 Level-2. Path/row parameters \hl{are }common for all the images: 189/56. Coverage: Niger Delta, southern Nigeria, \hl{the }Bight of Benin. Image source: \hl{United States Geological Survey} (USGS).}}
 \end{table}
-
-The images were imported into the GRASS GIS  software and processed for data analysis and visualization using embedded modules of satellite images and raster data processing. While the Landsat 8-9 OLI/TIRS images formed the dataset for computing and visualising the VI, the GEBCO/SRTM raster data were used for visualising the base map for this study \hl{using technique of the Generic Mapping Tools (GMT) scripts} \cite{Lemenkova202228,Lemenkova202301}. To determine the variation in the spatial extent of the mangroves in the western segment of the Niger Delta, ten VI representing the distribution of healthy vegetation were computed to discriminate swamp forests from the other land cover types (water, urban areas, agricultural lands). To this end, the image processing has been performed using the GRASS GIS, version 8.2.1, \href{https://grass.osgeo.org/}{https://grass.osgeo.org/}. The GRASS GIS scripts were used in the 'i.vi' module which was applied for image classification along with auxiliary modules. 
-
 %----------- subsection ----------->
 \subsection{Data preprocessing}
 
-GRASS GIS code used for data preprocessing is presented in Listing \ref{lst01}. It shows the steps of importing Landsat channels by the Geospatial Data Abstraction Library (GDAL) and auxiliary modules. The GDAL library was applied to import raster images of subset with 11 Landsat bands into the GRASS GIS mapset using \emph{r.in.gdal} module. After import, the data were checked and listed using the \emph{g.list} module which lists the available files in the working folder. Then, the metadata of the selected random bands were checked by the \emph{gdalinfo}. The raster metadata were displayed using the \emph{r.info} module for further display of the raster maps. The principal approach here is the converting of the digital numbers (DN) of pixel values to reflectance values which were used for computing the VI. Listing \ref{lst01}.  
+\hl{The }GRASS GIS code used for data preprocessing is presented in Listing \ref{lst01}. It \hl{includes} the steps of importing Landsat channels by the Geospatial Data Abstraction Library (GDAL) and \hl{selected }auxiliary modules. The GDAL library was applied to import raster images of \hl{the }subset with 11 Landsat bands into the GRASS GIS mapset using \hl{the} \emph{r.in.gdal} module. After \hl{importing}, the data were checked and listed using the \emph{g.list} module which lists the available files in \hl{a} working folder. Then, the metadata of the selected random bands were \hl{inspected using} the \emph{gdalinfo} \hl{module}. The raster metadata were displayed using the \emph{r.info} module for further display of the raster maps. 
 
-Afterwards, the data were copied as 11 Landsat bands to match the input structure of the \emph{i.landsat.toar} through the \emph{g.copy} module. In order to get rid of the haze effect on the original scenes by correction for the top-of-atmosphere radiance of the bands using the \emph{i.landsat.toar} module. The converting of the DN pixel values to reflectance values was done using DOS1 method. After the completing of the data preprocessing, the ten VI were computed using the processed bands by the \emph{i.vi} module, described in relevant subsections below. 
+The principal approach here is the \hl{conversion} of the digital numbers (DN) of \hl{the }pixel values \hl{into the} reflectance values which were used for computing the VI\hl{, as showed in }Listing \ref{lst01}. Afterwards, the\hl{ }11 Landsat bands \hl{were reformatted and copied }to match the input structure of the \emph{i.landsat.toar} through the \emph{g.copy} module. \hl{The \emph{i.landsat.toar} module was used to remove} the haze effect \hl{from} the original scenes by correction \hl{of }the top-of-atmosphere radiance \hl{in} the \hl{Landsat }bands. The \hl{conversion} of the DN pixel values \hl{into the} reflectance values was \hl{implemented by} using \hl{the }DOS1 method. \hl{Upon} the completing of the data preprocessing, the ten VI were computed using the processed bands by the \emph{i.vi} module, \hl{as }described \hl{below }in relevant subsections. 
 
 %------------------------->
 \subsection{Atmospherically Resistant Vegetation Index (ARVI)}
 
-The Atmospherically Resistant Vegetation Index (ARVI) is based on using bands with wavelengths between 0.650~{\textmu}m and 0.865~{\textmu}m, which corresponds to the Bands Red (0.64-0.67~{\textmu}m) and NIR (0.85-0.88 ~{\textmu}m) in the Landsat 8-9 OLI sensor. Additionally, the Blue band with (wavelength of 0.45-0.51~{\textmu}m in the Landsat OLI) is distracted from the Red according to the computation formula of ARVI, developed by \cite{134076,HUETE1997440}:
+The Atmospherically Resistant Vegetation Index (ARVI) is based on using \hl{the spectral }bands with wavelengths \hl{ranging }between 0.650~{\textmu}m and 0.865~{\textmu}m\hl{. In the Landsat 8-9 OLI sensor, this }corresponds to the Bands Red (0.64-0.67~{\textmu}m) and NIR (0.85-0.88 ~{\textmu}m)\hl{. }Additionally, the Blue band with\hl{ }wavelength of 0.45-0.51~{\textmu}m in the Landsat OLI/TIRS is distracted from the Red \hl{band }according to the\hl{ }formula\hl{ }developed by \cite{134076,HUETE1997440}:
 
 \begin{equation}
 	ARVI = \frac{NIR - (2.0*Red - Blue)}{NIR + (2.0*Red - Blue)}
 \end{equation}
 
-In the GRASS GIS, the ARVI was computed using the Listing \ref{lst02}\hl{ presented in Appendix.} 
+In the GRASS GIS, the ARVI was computed using\hl{ }Listing \ref{lst02}\hl{ presented in the Appendix.} 
 
-The advantages of ARVI is that it reduces the role of atmospheric scattering that affects the images. Such effects are caused by the aerosols of both natural origin (rain and fog) or urban air pollution (dust or smog). Initially proposed and developed for assessment of vegetation from the Earth Observing System (EOS) Moderate Resolution Imaging Spectroradiometer (MODIS) sensor, ARVI can be applied for the Landsat OLI/TIRS sensors since it contains necessary bands in Blue, Red and NIR bands.
+The advantages of ARVI is that it reduces the role of \hl{the }atmospheric scattering that affects the images. Such effects are caused by the aerosols of both natural origin (\hl{e.g., }rain and fog) or urban air pollution (\hl{e.g., }dust or smog). Initially proposed and developed for \hl{the }assessment of vegetation from the Earth Observing System (EOS) Moderate Resolution Imaging Spectroradiometer (MODIS) sensor, ARVI can \hl{also }be applied for the Landsat OLI/TIRS sensors since it contains necessary \hl{spectral }bands\hl{: }Blue, Red and NIR\hl{.}
 %------------------------->
 \subsection{Green Atmospherically Resistant Vegetation Index (GARI)}
 
-The Green Atmospherically Resistant Index (GARI) is more perceptive to a wide range of chlorophyll content in leaves of mangroves which correlates with the difference between the reflectance of Green, Red and NIR bands, because the Green band is used in the formula in addition to Red and NIR. The addition of Blue band makes it less dependent on possible atmospheric effects such as aerosol conditions. The computation of GARI is based on the formula developed by \cite{GITELSON1996289}:
+The Green Atmospherically Resistant Index (GARI) is more perceptive to a wide range of chlorophyll content in leaves of mangroves\hl{. This }correlates with the difference between the reflectance of Green, Red and NIR bands, \hl{since} the Green band is used in the formula \hl{of GARI, }in addition to Red and NIR \hl{spectral bands. Adding the} Blue \hl{spectral }band makes it less dependent on possible atmospheric effects such as aerosol conditions. The \hl{theoretical computation} of GARI is based on the formula developed \hl{initially }by \cite{GITELSON1996289}:
 
 \begin{equation}
 	GARI = \frac{NIR - (Green - (Blue - Red))}{NIR + (Green - (Blue - Red))}
 \end{equation} 
 
-The computation of GARI in the GRASS GIS is done according to the embedded equation and is performed by Listing \ref{lst03}\hl{ in Appendix.} 
+The computation of GARI in the GRASS GIS is done according to the embedded \hl{formula} and\hl{ }performed by Listing \ref{lst03}\hl{, as showed in the Appendix.} 
 
 %------------------------->
 \subsection{Green Vegetation Index (GVI)}
@@ -255,7 +258,7 @@ We have Listing \ref{lst04} used for the computation of GVI\hl{ shown in Appendi
 %------------------------->
 \subsection{Difference Vegetation Index (DVI)}
 
-The advantage of the Difference Vegetation Index (DVI) is that is well separates soil and the vegetation biomass. However, the disadvantage is that it does not considers the difference between the spectral reflectance and radiance of soil surface caused by atmospheric effects \cite{TUCKER1979127}. The use of DVI is based on the ratio between the NIR and Red channels \cite{Naji2018}:
+The advantage of the Difference Vegetation Index (DVI) \hl{consists in the discrimination of} soil \hl{from} the vegetation biomass. However, the disadvantage is that it does not considers the difference between the spectral reflectance and radiance of soil surface caused by atmospheric effects \cite{TUCKER1979127}. The use of DVI is based on the ratio between the NIR and Red channels \cite{Naji2018}:
 
 \begin{equation}
 	DVI = (NIR - Red)
@@ -274,10 +277,10 @@ The above formulae are embedded in the function 'dvi' used when computing the DV
 The use of PVI is based on the formula originally developed by \cite{Richardson} to monitor the productivity of range, forest, and croplands. Similar to a DVI, it differs in that it measures the perpendicular distance of the pixels from the soil line. Besides, it is more sensitive to atmospheric variations. The PVI is based on the assumption that soil reflectance supplies the background signal of vegetated surfaces which is why the soil line is used in the computation. 
 
 \begin{equation}
-	PVI=\frac{1}{\sqrt{a^2+1}} * (NIR - aR - b)
+	PVI=\frac{1}{\sqrt{a^2+1}} * (NIR - aR - b),
 \end{equation} 
 
-where \emph{a} and \emph{b} are the constants that stand for slope and gradient of the soil line. However, the embedded formula of GRASS GIS is slightly modified, because the calculation of the PVI here is made using the concept of "isovegetation". The isovegetation line shows the distribution of area covered by equal types of vegetation. Therefore, the pixels in this case are parallel to the soil line which is assigned to a=1. Hence, the constants for soil are removed and the computation of the PVI is adjusted. In this case, it includes the sine and cosine of the NIR and Red channels using the following formula \cite{PERRY1984169}:
+where \emph{a} and \emph{b} are\hl{ }constants \hl{indicating} slope and gradient of the soil line. However, the embedded formula of GRASS GIS is slightly modified, because the calculation of the PVI here is made using the concept of "isovegetation". The isovegetation line shows the distribution of area covered by equal types of vegetation. Therefore, the pixels in this case are parallel to the soil line which is assigned to a=1. Hence, the constants for soil are removed and the computation of the PVI is adjusted. In this case, it includes the sine and cosine of the NIR and Red channels using the following formula \cite{PERRY1984169}:
 
 \begin{equation}
 	PVI = sin(a)NIR-cos(a)Red
@@ -706,12 +709,12 @@ The values of EVI (Figure \ref{fig12}) quantify vegetation greenness in the rang
 \makebox[0.90\linewidth][r]{%
 	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-			\includegraphics[width=7.5cm]{Fig_13a}
+			\includegraphics[width=7.0cm]{Fig_13a}
 		\caption{2013}
 	\end{subfigure}%
 	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-			\includegraphics[width=7.5cm]{Fig_13b}
+			\includegraphics[width=7.0cm]{Fig_13b}
 		\caption{2015}
 	\end{subfigure}%
 }\\
@@ -719,12 +722,12 @@ The values of EVI (Figure \ref{fig12}) quantify vegetation greenness in the rang
 \makebox[0.90\linewidth][r]{%
 	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-			\includegraphics[width=7.5cm]{Fig_13c}
+			\includegraphics[width=7.0cm]{Fig_13c}
 		\caption{2021}
 	\end{subfigure}
 	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-			\includegraphics[width=7.5cm]{Fig_13d}
+			\includegraphics[width=7.0cm]{Fig_13d}
 		\caption{2022}
 	\end{subfigure}%
 }\caption{Band combination 4-3-2 for the Landsat 8-9 OLI/TIRS images of Niger Delta for four years: (\textbf{a}) 2013, (\textbf{b}) 2015 (\textbf{c}) 2021, (\textbf{d}) 2022.}\label{fig13}
