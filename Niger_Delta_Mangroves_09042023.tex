@@ -17,7 +17,7 @@
 \copyrightyear{2023}
 %\externaleditor{Academic Editor: Firstname Lastname}
 \datereceived{14 March 2023} 
-\daterevised{} 
+\daterevised{9 April 2023} 
 \dateaccepted{} 
 \datepublished{} 
 \hreflink{https://doi.org/} % If needed use \linebreak
@@ -104,7 +104,7 @@ $^{1}$ \quad Laboratory of Image Synthesis and Analysis (LISA), École polytechn
 
 % Abstract (Do not insert blank lines, i.e. \\) 
 \abstract{
-This paper addresses the issue of satellite image processing aimed at mapping the vegetation indices in mangrove forests of Niger Delta, southern Nigeria. In the last decade, the programming approaches were developed and integrated in geospatial studies. This paper proposes a GRASS GIS framework to calculate and visualise ten vegetation indices (VI) using scripting techniques of image processing. The methods include using the \emph{i.vi}, \emph{i.landsat.toar} and other modules of GRASS GIS. The estuary of the Niger Delta in the Gulf of Guinea is an essential hotspot of biodiversity in western coast of Africa. At the same time, recent issues of changing climate and the effects from the increasing population contribute to the vulnerability of coastal landscapes and present threats to ecosystem communities in southern Nigeria. In this paper, we prove that environmental changes in the coastal landscapes can be numerically modelled and evaluated using a time series analysis of the remote sensing data. We examined four Landsat 8-9 OLI/TIRS images covering the western segment of the Niger Delta in the Bight of Benin for years 2013, 2015, 2021 and 2022. The analysis of data showed variations in the vegetation health of the swamp forests of the Niger Delta over a decade. Variations in spectral reflectance also pointed at changes in urban spaces of the major cities (Onitsha, Sapele, Warri and Benin City) and smaller villages in the Delta State caused by recent urbanisation processes. Based on the GRASS GIS \emph{i.vi} module, ten VI are computed and mapped for the western segment of the Niger Delta estuary: Atmospherically Resistant Vegetation Index (ARVI), Green Atmospherically Resistant Vegetation Index (GARI), Green Vegetation Index (GVI), Difference Vegetation Index (DVI), Perpendicular Vegetation Index (PVI), Global Environmental Monitoring Index (GEMI), Normalized Difference Water Index (NDWI), Second Modified Soil Adjusted Vegetation Index (MSAVI2), Infrared Percentage Vegetation Index (IPVI) and Enhanced Vegetation Index (EVI). Experimental results show changes in the vegetation health, plant  greenness and coverage based on the image analysis performed using GRASS GIS. Finally, the technical functionality of the GRASS GIS demonstrated the best performance in terms of image processing and analysis.
+This paper addresses the issue of \textcolor{blue}{the }satellite image processing \textcolor{blue}{using GRASS GIS }in \textcolor{blue}{the }mangrove forests of \textcolor{blue}{the }Niger \textcolor{blue}{River }Delta, southern Nigeria. The estuary of the Niger Delta in the Gulf of Guinea is an essential hotspot of biodiversity in western coast of Africa. At the same time, \textcolor{blue}{ climate }issues and  \textcolor{blue}{anthropogenic factors pose affect vulnerable coastal ecosystems and result in rapid decline of mangrove habitats. This motivates monitoring of the vegetation patterns by the advanced cartographic methods and data analysis. As a response to this need, this study aims at calculating and mapping several }vegetation indices (VI) using scripts \textcolor{blue}{ as advanced} programming \textcolor{blue}{methods} integrated in geospatial studies. The data include four Landsat 8-9 OLI/TIRS images covering the western segment of the Niger Delta in the Bight of Benin for 2013, 2015, 2021 and 2022. \textcolor{blue}{The techniques} include the \emph{i.vi}, \emph{i.landsat.toar} and other modules of \textcolor{blue}{the }GRASS GIS. Based on the GRASS GIS \emph{i.vi} module, ten VI are computed and mapped for the western segment of the Niger Delta estuary: Atmospherically Resistant Vegetation Index (ARVI), Green Atmospherically Resistant Vegetation Index (GARI), Green Vegetation Index (GVI), Difference Vegetation Index (DVI), Perpendicular Vegetation Index (PVI), Global Environmental Monitoring Index (GEMI), Normalized Difference Water Index (NDWI), Second Modified Soil Adjusted Vegetation Index (MSAVI2), Infrared Percentage Vegetation Index (IPVI) and Enhanced Vegetation Index (EVI). The \textcolor{blue}{results} showed variations in the vegetation \textcolor{blue}{patterns in mangrove habitats situated in} the Niger Delta over \textcolor{blue}{the last} decade \textcolor{blue}{as well as the increase in } urban \textcolor{blue}{areas} (Onitsha, Sapele, Warri and Benin City) and \textcolor{blue}{settlements} in the Delta State \textcolor{blue}{due to} urbanisation. \textcolor{blue}{The advanced techniques of the GRASS GIS of satellite image processing and analysis enabled to identify and visualise} changes in vegetation \textcolor{blue}{patterns}. \textcolor{blue}{Technical excellence} of the GRASS GIS \textcolor{blue}{in image processing and analysis is} demonstrated \textcolor{blue}{in the scripts used in this study}. 
 }
 
 % Keywords
@@ -189,6 +189,8 @@ The data capture was performed using the EarthExplorer repository of the USGS (\
 	\end{subfigure}%
 }\caption{Landsat 8-9 OLI/TIRS images of Niger Delta in\hl{ }RGB \hl{colors} for four years: (\textbf{a}) 2013/12/20, (\textbf{b}) 2015/12/26, (\textbf{c}) 2021/12/18, (\textbf{d}) 2022/12/29}\label{fig02}
 \end{figure}
+
+\hl{Among all the existing Landsat products, the Landsat OLI/TIRS sensor has improved technical and spectral characteristics: narrower spectral bands including Red and NIR channels which are crucial for calculation of the VI. Moreover, it has better calibration, higher radiometric resolution and corrections signal for noise. A thorough comparative analysis of the Landsat OLI/TIRS against earlier sensors is presented in }\cite{ROY201657}. \hl{Since spectral characteristics of the older Landsat products (TM and MSS) have coarser parameters, we only used the images obtained from the Landsat OLI/TIRS. At the same time, the first Landsat 8 OLI/TIRS sensor was launched on 2013, which explains the choice of the first image selected in this study. Another important parameter for data selection was low cloudiness of the images and comparable span for a short time series. }
 
 The images were imported into the GRASS GIS software and processed for data analysis and visualization using\hl{ }modules \hl{for} satellite images and raster data processing.\hl{ }Mapping mangroves of Nigeria using satellite images and GIS techniques has been attempted and reported earlier \cite{Ozigis,GUNDLACH2022100831,Sobande,ijerph2006030011} with proven effectiveness of the satellite data for \hl{monitoring mangroves}. We continue these and similar studies by applying the programming methods of the GRASS GIS scripts instead of the traditional approaches of GIS for computing the VI of the\hl{ }landscapes \hl{in southern Nigeria}. 
 
@@ -282,7 +284,7 @@ The use of \hl{the }PVI is based on the formula originally developed by \cite{Ri
 	PVI=\frac{1}{\sqrt{a^2+1}} * (NIR - aR - b),
 \end{equation} 
 
-where \emph{a} and \emph{b} are\hl{ }constants \hl{indicating} slope and gradient of the soil line. However, the embedded formula of GRASS GIS is slightly modified, because the calculation of the PVI here is made using the concept of "isovegetation". The isovegetation line shows the distribution of area covered by equal types of vegetation. Therefore, the pixels in this case are parallel to the soil line which is assigned to a=1. Hence, the constants for soil are removed and the computation of the PVI is adjusted. In this case, it includes the sine and cosine of the NIR and Red channels using the following formula \hl{showed in the Equation} \ref{eq7}, \cite{PERRY1984169}:
+where \emph{a} and \emph{b} are\hl{ }constants \hl{indicating} slope and gradient of the soil line \hl{and \emph{R} is a Red band (for the Landsat OLI/TIRS sensor, it is a spectral Band 4)}. However, the embedded formula of GRASS GIS is slightly modified, because the calculation of the PVI here is made using the concept of "isovegetation". The isovegetation line shows the distribution of area covered by equal types of vegetation. Therefore, the pixels in this case are parallel to the soil line which is assigned to a=1. Hence, the constants for soil are removed and the computation of the PVI is adjusted. In this case, it includes the sine and cosine of the NIR and Red channels using the following formula \hl{showed in the Equation} \ref{eq7}, \cite{PERRY1984169}:
 
 \begin{equation}\label{eq7}
 	PVI = sin(a)NIR-cos(a)Red
@@ -359,7 +361,7 @@ The results of the\hl{} image processing show that the proposed GRASS GIS framew
 The DVI (Figure \ref{fig03}) is a slope-based type of VI which is more straightforward to compute compared to the NDVI, \hl{which is beneficial for mangroves since they are located at the interface between land and sea}. The DVI is sensitive to the total content of vegetation and density of canopy\hl{. }Moreover, it well distinguishes \hl{the areas }between the\hl{ bare }soil and vegetation \hl{canopies }in general and identifies urban areas \hl{in the small settlements}.
 
 \begin{figure}[H]
-\makebox[0.90\linewidth][r]{%
+\makebox[1.00\linewidth][r]{%
 	\begin{subfigure}[b]{.55\textwidth}
 		\centering
 			\includegraphics[width=7.5cm]{Fig_03a}
@@ -372,7 +374,7 @@ The DVI (Figure \ref{fig03}) is a slope-based type of VI which is more straightf
 	\end{subfigure}%
 }\\
 \vfill \vspace{1mm}
-\makebox[0.90\linewidth][r]{%
+\makebox[1.00\linewidth][r]{%
 	\begin{subfigure}[b]{.55\textwidth}
 		\centering
 			\includegraphics[width=7.5cm]{Fig_03c}
@@ -391,7 +393,7 @@ The majority of \hl{the }values \hl{obtained }for 2013 are located within the ra
 %----------- subsection ----------->
 \subsection{Atmospherically Resistant Vegetation Index (ARVI)}
 
-The ARVI (Figure \ref{fig04}) is designed for the regions of high atmospheric aerosol content \hl{as a robust modification of the NDVI. }Therefore\hl{, it} corrects the image scenes for the effects from the atmospheric scattering and \hl{air contamination related to dust and smog in the industrial areas where high concentration of atmospheric aerosols is presented due to the oil exploration}. The\hl{ }sideway histograms\hl{ showing distribution of pixels on }the images\hl{ }shows various values ranging for the years 2013, 2015, 2021 and 2022. \hl{Thus, the} histogram for\hl{ }2013 shows a classic bell-shaped data distribution with values ranging from -0.20 to +0.20 distributed equally on the histogram with a prominent mound in the centre and identical tapering to the left and right flings of the histogram. 
+The ARVI (Figure \ref{fig04}) is designed for the regions of high atmospheric aerosol content \hl{as a robust modification of the NDVI. }
 
 \begin{figure}[H]
 \makebox[1.00\linewidth][r]{%
@@ -421,12 +423,18 @@ The ARVI (Figure \ref{fig04}) is designed for the regions of high atmospheric ae
 }\caption{ARVI computed from the Landsat 8-9 OLI/TIRS images of Niger Delta for four years: (\textbf{a}) 2013, (\textbf{b}) 2015 (\textbf{c}) 2021, (\textbf{d}) 2022.}\label{fig04}
 \end{figure}
 
+Therefore\hl{, it} corrects the image scenes for the effects from the atmospheric scattering and \hl{air contamination related to dust and smog in the industrial areas where high concentration of atmospheric aerosols is presented due to the oil exploration}. The\hl{ }sideway histograms\hl{ showing distribution of pixels on }the images\hl{ }shows various values ranging for the years 2013, 2015, 2021 and 2022. \hl{Thus, the} histogram for\hl{ }2013 shows a classic bell-shaped data distribution with values ranging from -0.20 to +0.20 distributed equally on the histogram with a prominent mound in the centre and identical tapering to the left and right flings of the histogram. 
+
 The data for 2015 are distributed from -0.10 to +0.60,\hl{ }showing a more oblique data distribution with more data \hl{distributed }within \hl{the }positive interval \hl{which indicates the increased areas covered by green healthy vegetation}. The data for 2021 show variation with the diapason from -0.20 to 0.80 and the data for 2022 -- from 0.00 to 0.85 with residuals in the negative values that indicate water areas. \hl{This indicate the increase in the areas covered by the tropical forests in the northern part of the area, while decreased area of mangroves. }As mentioned above, the advantages of using \hl{ARVI} for Nigeria is that it reduces the impacts of \hl{the }aerosols such as such as rain, fog, dust, smoke, or air pollution \hl{by using the blue band in making atmospheric corrections on the red band}. This is \hl{beneficial} for Nigeria \hl{in the areas of industrial activities such as oil exploration where higher contamination of air is reported. Another important factor is a }high humidity \hl{which is }around 80\% all year throughout for southern Nigeria, \hl{which makes ARVI beneficial specifically in these regions since it makes corrections for atmospheric scattering caused by high humidity and moisture.}
 
 %----------- subsection ----------->
 \subsection{Green Atmospherically Resistant Vegetation Index (GARI)}
 
-The results of the computed Green Atmospherically Resistant Vegetation Index (GARI) (Figure \ref{fig05}) rely on the estimated chlorophyll content in plants\hl{ }linked to photosynthetic activity. Therefore, this index demonstrates the higher positive values in the areas with healthy and dense vegetation canopies which is related to an increase in photosynthetic activity of leaves, while negative values indicate water areas \hl{as seen as} a sharp peak in the histogram shape. 
+The results of the computed Green Atmospherically Resistant Vegetation Index (GARI) (Figure \ref{fig05}) rely on the estimated chlorophyll content in plants\hl{ }linked to photosynthetic activity. Therefore, this index demonstrates the higher positive values in the areas with healthy and dense vegetation canopies which is related to an increase in photosynthetic activity of leaves, while negative values indicate water areas \hl{as seen as} a sharp peak in the histogram shape. \hl{For all the four images, the results of Landsat OLI/TIRS images processing with GARI algorithm produce pixel values ranging from -0.50 to +1.0. Based on the GARI results, the peak values in data variations were analysed to facilitate the visual interpretation of the obtained maps, namely the range of values. Specifically }for 2013, the majority of positive values range from 0.15 to 0.45, for 2015 -- from 0.30 to 0.90 with a more gentle gradual shape of histogram; for 2021 -- the histogram has a rather narrow \hl{shape} with values varying from 0.35 to 0.75, and for 2022 -- from 0.20 to 0.80\hl{, }Figure \ref{fig05}\hl{. }Such variations illustrate changes in vegetation coverage and greenness of canopies in mangroves and other vegetation types in the Niger \hl{River} Delta. 
+
+\hl{In 2013, the mangrove forests were dominated by the high GARI values, i.e., between 0.15 to 0.20. while in the 2015, the low-medium values corresponding to the  mangroves are replaced by the higher values (0.80 to 1.00) that indicate the other vegetation types (coloured by red in Figure} \ref{fig05}). \hl{Further, values of histograms increased which indicate the replacement of the mangroves by other vegetation types (e.g., agricultural crop areas) with bright green canopies that correspond to higher values of GARI. The mangrove habitats with moderate values of GARI is presented by the relatively scattered areas in the southern edge of the study area in the Niger River Delta.}
+
+\hl{Such performance of GARI is explained by its high sensitivity to the }nuances of chlorophyll content in plants\hl{ since the computation of GARI} is based on the use of Green, Blue and\hl{ }NIR \hl{spectral }bands. \hl{Similar to ARVI and in contrast to NDVI, }it is less sensitive to \hl{the }atmospheric effects such as aerosol \hl{due to the} rigorous optimization of \hl{its} algorithm\hl{. }Moreover, GARI is sensitive to the vegetation fraction in the canopy as can be seen in the interspersed pattern of diverse colours which represent different values of the index. As a development of present study, GARI can be further applied for estimation of other biophysical properties of mangrove canopy such as Leaf Area Index \hl{(LAI)}, ratio of absorbed photosynthetically active radiation and net primary production for \hl{the }environmental monitoring of the Niger \hl{River }Delta.
 
 \begin{figure}[H]
 \makebox[1.00\linewidth][r]{%
@@ -455,12 +463,6 @@ The results of the computed Green Atmospherically Resistant Vegetation Index (GA
 	\end{subfigure}%
 }\caption{GARI computed from the Landsat 8-9 OLI/TIRS images of Niger Delta for four years: (\textbf{a}) 2013, (\textbf{b}) 2015 (\textbf{c}) 2021, (\textbf{d}) 2022.}\label{fig05}
 \end{figure}
-
-\hl{For all the four images, the results of Landsat OLI/TIRS images processing with GARI algorithm produce pixel values ranging from -0.50 to +1.0. Based on the GARI results, the peak values in data variations were analysed to facilitate the visual interpretation of the obtained maps, namely the range of values. Specifically }for 2013, the majority of positive values range from 0.15 to 0.45, for 2015 -- from 0.30 to 0.90 with a more gentle gradual shape of histogram; for 2021 -- the histogram has a rather narrow \hl{shape} with values varying from 0.35 to 0.75, and for 2022 -- from 0.20 to 0.80\hl{, }Figure \ref{fig05}\hl{. }Such variations illustrate changes in vegetation coverage and greenness of canopies in mangroves and other vegetation types in the Niger \hl{River} Delta. 
-
-\hl{In 2013, the mangrove forests were dominated by the high GARI values, i.e., between 0.15 to 0.20. while in the 2015, the low-medium values corresponding to the  mangroves are replaced by the higher values (0.80 to 1.00) that indicate the other vegetation types (coloured by red in Figure} \ref{fig05}). \hl{Further, values of histograms increased which indicate the replacement of the mangroves by other vegetation types (e.g., agricultural crop areas) with bright green canopies that correspond to higher values of GARI. The mangrove habitats with moderate values of GARI is presented by the relatively scattered areas in the southern edge of the study area in the Niger River Delta.}
-
-\hl{Such performance of GARI is explained by its high sensitivity to the }nuances of chlorophyll content in plants\hl{ since the computation of GARI} is based on the use of Green, Blue and\hl{ }NIR \hl{spectral }bands. \hl{Similar to ARVI and in contrast to NDVI, }it is less sensitive to \hl{the }atmospheric effects such as aerosol \hl{due to the} rigorous optimization of \hl{its} algorithm\hl{. }Moreover, GARI is sensitive to the vegetation fraction in the canopy as can be seen in the interspersed pattern of diverse colours which represent different values of the index. As a development of present study, GARI can be further applied for estimation of other biophysical properties of mangrove canopy such as Leaf Area Index \hl{(LAI)}, ratio of absorbed photosynthetically active radiation and net primary production for \hl{the }environmental monitoring of the Niger \hl{River }Delta.
 
 %----------- subsection ----------->
 \subsection{Green Vegetation Index (GVI)}
@@ -731,7 +733,7 @@ The values of EVI (Figure \ref{fig12}) quantify vegetation greenness in \hl{a ge
 \noindent{\footnotesize{\textsuperscript{1} \hl{The statistical summary is computed within cluster sum of squares by cluster using K-means performed in R library 'raster'. The table is sorted by ascending values of the pixels in land cover types}.}}
 \end{table}
 
-\hl{The heat map graph shows the confusion matrix plotted using Python showing the probability cases for pixel distribution according to land cover classes (10 selected ID classes) in the Niger Delta, Nigeria, Figure }\ref{fig13}. \hl{The data were evaluated between 2013 and 2022 based on clustering of the Landsat 8-9 OLI/TIRS images. The Kendall correlation shows the average values; while the Spearman correlation shows the pixels by bands 4 (Red), 3 (Green) and 2 (Blue) used for classification of land cover types. The correlation plots showing probability cases for pixel distribution according to land cover classes (10 selected ID classes) in the Niger Delta is shown in  Figure }\ref{fig13}. \hl{It shows the data between 2013 and 2022 based on the results of the clustering of the Landsat 8-9 OLI/TIRS images}. 
+\hl{The heat map graph shows the confusion matrix plotted using Python showing the probability cases for pixel distribution according to land cover classes (10 selected ID classes) in the Niger Delta, Nigeria, Figure }\ref{fig13}. 
 
 \begin{figure}[H]
 \makebox[0.95\linewidth][r]{%
@@ -748,6 +750,8 @@ The values of EVI (Figure \ref{fig12}) quantify vegetation greenness in \hl{a ge
 }
 \caption{\hl{Correlation matrices of land cover classes (10 ID classes) in the Niger River Delta between 2013 and 2022 based on the Landsat 8-9 OLI/TIRS images: (\textbf{a}) Kendall correlation for average values; (\textbf{b}) Spearman correlation for pixels by bands 4 (Red), 3 (Green) and 2 (Blue) used for classification of land cover types. Visualization: Python. Source: authors}.}\label{fig13}
 \end{figure}
+
+\hl{The data were evaluated between 2013 and 2022 based on clustering of the Landsat 8-9 OLI/TIRS images. The Kendall correlation shows the average values; while the Spearman correlation shows the pixels by bands 4 (Red), 3 (Green) and 2 (Blue) used for classification of land cover types. The correlation plots showing probability cases for pixel distribution according to land cover classes (10 selected ID classes) in the Niger Delta is shown in  Figure }\ref{fig13}. \hl{It shows the data between 2013 and 2022 based on the results of the clustering of the Landsat 8-9 OLI/TIRS images}. 
 
 \begin{table}[H]\scriptsize
 \caption{\hl{Results of the land cover class classification by pixel content in Band 4 (Red), Band 3 (Green) and Band 2 (Blue) of the Landsat-8 OLI/TIRS satellite images}.\label{tab3}}
