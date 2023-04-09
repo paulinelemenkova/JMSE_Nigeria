@@ -132,7 +132,7 @@ Remote sensing \hl{data and advanced programming methods} provide a valuable com
 Previous studies \hl{used the} Geographic Information System (GIS) to quantitatively evaluate and map environmental degradation\hl{ }and decline of vegetation \hl{of mangroves} \cite{NUMBERE2022433,FASHAE2022e01286,Olorunfemi,Fagbeja,Enaruvbe2015}. However, there is \hl{a }deficiency in functionality of the traditional GIS\hl{: }slow-speed data processing, manual operational workflow and subjectivity \hl{and biased} data analysis\hl{. }In contrast, using\hl{ }programming techniques support \hl{accurate computations and } mapping \cite{9883588,Lemenkova202227,9884244,Lemenkova202230,9964623} \hl{presenting more advanced tools }for \hl{environmental monitoring of }mangroves\hl{. }This paper is a continuation of our previous work \cite{technologies11020046} on the use of \hl{GRASS GIS} scripts for cartographic data processing, where\hl{ }spatial data \hl{were processed by} the\hl{ GRASS GIS }modules. Herein, we provide an extended application of scripts towards \hl{satellite image analysis}, and \hl{use} GRASS GIS for computing \hl{the VI} to achieve better performance compared to the traditional GIS in terms of both accuracy through automation of data processing, and computational costs due to open source availability of the GRASS GIS. \hl{Specifically, we computed several VI to evaluate their performance for monitoring mangrove ecosystems.} 
 
 \subsection{Study Focus}
-Mangroves \hl{are} a unique halophyte type of \hl{the shrubs and }forests \hl{that have a unique} complex root system with prop roots \cite{Numbere}. \hl{Mangroves exist only} in \hl{the }saline waters of \hl{the }intertidal \hl{coastal zone of }tropics and subtropics. \hl{Southern Nigeria, located along the tropical coasts of the Atlantic Ocean, has favourable environmental and climate setting for mangrove distribution. In particular, the Niger River Delta has} the most extensive area of mangroves in West Africa \cite{KINAKO197735}, and\hl{ it is }the third largest wetland in the world \cite{ZABBEY2021100571}. \hl{A wide variety of mangrove }species \hl{are} adapted to the environmental setting \hl{of Nigeria }\cite{Ukpong1991,Ufuoma}. \hl{For instance, the} Niger River Delta (Figure \ref{fig01}) provides \hl{a habitat for \emph{Rhizophora} which is the most common species located along the coasts, or shrub genera \emph{Avicennia} and \emph{Laguncularia} that growth in the lagoon areas of southern Nigeria} \cite{Akpovwovwo}. The dynamics of mangrove \hl{habitats} and \hl{the }distribution of \hl{these species depend on various factors:} salinity \cite{Amadi,Okafor,Ukpong1997}, distance from coast, \hl{repeatability of }tidal cycles and freshwater inflow. \hl{Other factors include landscape characteristics that vary in the }coastal ecosystems \hl{of} southern Nigeria\hl{ in the} lagoon, mud beach, the Niger River Delta and \hl{in }the coastal areas \hl{that extend along the coasts of the Bight of Benin in the Gulf of Guinea} \cite{Ajao}.
+Mangroves \hl{are} a unique halophyte type of \hl{the shrubs and }forests \hl{that have a unique} complex root system with prop roots \cite{Numbere}. \hl{Mangroves exist only} in \hl{the }saline waters of \hl{the }intertidal \hl{coastal zone of }tropics and subtropics. \hl{Southern Nigeria, located along the tropical coasts of the Atlantic Ocean, has favourable environmental and climate setting for mangrove distribution. In particular, the Niger River Delta has} the most extensive area of mangroves in West Africa \cite{KINAKO197735}, and\hl{ it is }the third largest wetland in the world \cite{ZABBEY2021100571}. \hl{A wide variety of mangrove }species \hl{are} adapted to the environmental setting \hl{of Nigeria }\cite{Ukpong1991,Ufuoma}. \hl{For instance, the} Niger River Delta (Figure \ref{fig01}) provides \hl{a habitat for \emph{Rhizophora} which is the most common species located along the coasts, or shrub genera \emph{Avicennia} and \emph{Laguncularia} that growth in the lagoon areas of southern Nigeria} \cite{Akpovwovwo}. The dynamics of mangrove \hl{habitats} and \hl{the }distribution of \hl{these species depend on various factors:} salinity \cite{Amadi,Okafor,Ukpong1997}, distance from coast, \hl{repeatability of }tidal cycles and freshwater inflow. \hl{Other factors include landscape characteristics that vary in the }coastal ecosystems \hl{of} southern Nigeria\hl{ in the} lagoon, mud beach, the Niger River Delta and \hl{in }the coastal areas \hl{that extend along the coasts of the Bight of Benin in the Gulf of Guinea} \cite{Ajao}. \hl{The mangrove forests have a year-round growing season which continuous vegetation cycle in the mangrove development which includes opening the forest canopy, growing rapidly young trees, and mature phase formed by the large trees} \cite{Whitmore}.
 
 \begin{figure}[H]
 \centering
@@ -358,18 +358,18 @@ The results of the\hl{} image processing show that the proposed GRASS GIS framew
 %----------- subsection ----------->
 \subsection{Difference Vegetation Index (DVI)}
 
-The DVI (Figure \ref{fig03}) is a slope-based type of VI which is more straightforward to compute compared to the NDVI, \hl{which is beneficial for mangroves since they are located at the interface between land and sea}. The DVI is sensitive to the total content of vegetation and density of canopy\hl{. }Moreover, it well distinguishes \hl{the areas }between the\hl{ bare }soil and vegetation \hl{canopies }in general and identifies urban areas \hl{in the small settlements}.
+\hl{The DVI is visualised in Figure} \ref{fig03}. 
 
 \begin{figure}[H]
 \makebox[1.00\linewidth][r]{%
 	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-			\includegraphics[width=7.5cm]{Fig_03a}
+			\includegraphics[width=7.3cm]{Fig_03a}
 		\caption{2013}
 	\end{subfigure}%
 	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-			\includegraphics[width=7.5cm]{Fig_03b}
+			\includegraphics[width=7.3cm]{Fig_03b}
 		\caption{2015}
 	\end{subfigure}%
 }\\
@@ -377,16 +377,18 @@ The DVI (Figure \ref{fig03}) is a slope-based type of VI which is more straightf
 \makebox[1.00\linewidth][r]{%
 	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-			\includegraphics[width=7.5cm]{Fig_03c}
+			\includegraphics[width=7.3cm]{Fig_03c}
 		\caption{2021}
 	\end{subfigure}
 	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-			\includegraphics[width=7.5cm]{Fig_03d}
+			\includegraphics[width=7.3cm]{Fig_03d}
 		\caption{2022}
 	\end{subfigure}%
 }\caption{DVI from the Landsat 8-9 OLI/TIRS of Niger Delta: (\textbf{a}) 2013, (\textbf{b}) 2015 (\textbf{c}) 2021, (\textbf{d}) 2022.}\label{fig03}
 \end{figure}
+
+The DVI (Figure \ref{fig03}) is a slope-based type of VI which is more straightforward to compute compared to the NDVI, \hl{which is beneficial for mangroves since they are located at the interface between land and sea}. The DVI is sensitive to the total content of vegetation and density of canopy\hl{. }Moreover, it well distinguishes \hl{the areas }between the\hl{ bare }soil and vegetation \hl{canopies }in general and identifies urban areas \hl{in the small settlements}.
 
 The majority of \hl{the }values \hl{obtained }for 2013 are located within the range of 0.06 to 0.18\hl{ since it is the index sensitive to variations in chlorophyll content}. The interpretation is as followed. \hl{The lowest }values around zero indicate bare soil\hl{; slightly higher} values \hl{0.10 to 0.12 }stand for vegetation canopies, while \hl{negative }values \hl{coloured by blue }show water bodies. The values of 2015  show similar data range with a slight increase of upper values towards 0.20. The distribution of mangrove swamps is visible as large \hl{slate-}blue-coloured spot in the left low corner of the image. The comparison of several images of 2013 and 2015 to 2021 and 2022 shows the decrease in this areas with mangroves replaced by the values dominated by bare soils \hl{and }other types of vegetation\hl{, }coloured by the inclusions of green\hl{. The bright red colours indicate tropical forests located in the northern part of the area.}
 
