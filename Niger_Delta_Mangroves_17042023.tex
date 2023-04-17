@@ -236,18 +236,18 @@ The advantages of ARVI is that it reduces the role of the atmospheric scattering
 %------------------------->
 \subsection{Green Atmospherically Resistant Vegetation Index (GARI)}
 
-The Green Atmospherically Resistant Index (GARI) is more perceptive to a wide range of chlorophyll content in leaves of mangroves\hl{. This }correlates with the difference between the reflectance of Green, Red and NIR bands, \hl{since} the Green band is used in the formula \hl{of GARI, }in addition to Red and NIR \hl{spectral bands. Adding the} Blue \hl{spectral }band makes it less dependent on possible atmospheric effects such as aerosol conditions. The \hl{theoretical computation} of GARI is based on the \hl{Equation} \ref{eq2} developed \hl{initially }by \cite{GITELSON1996289}:
+The Green Atmospherically Resistant Index (GARI) is more perceptive to a wide range of chlorophyll content in leaves of mangroves. This correlates with the difference between the reflectance of Green, Red and NIR bands, since the Green band is used in the formula of GARI, in addition to Red and NIR spectral bands. Adding the Blue spectral band makes it less dependent on possible atmospheric effects such as aerosol conditions. The theoretical computation of GARI is based on the Equation \ref{eq2} developed initially by \cite{GITELSON1996289}:
 
 \begin{equation}\label{eq2}
 	GARI = \frac{NIR - (Green - (Blue - Red))}{NIR + (Green - (Blue - Red))}
 \end{equation} 
 
-The computation of GARI in the GRASS GIS is done according to the embedded \hl{formula} and\hl{ }performed by Listing \ref{lst03}\hl{, as showed in the Appendix.} 
+The computation of GARI in the GRASS GIS is done according to the embedded formula and performed by Listing \ref{lst03}, as showed in the Appendix.
 
 %------------------------->
 \subsection{Green Vegetation Index (GVI)}
 
-The technique of the Tasselled Cap transformation in remote sensing \hl{is} originally developed by \cite{KauthThomas}. The Tasselled Cap GVI provides more detailed information on the distinct features \hl{of the }landscapes such as plant canopy, water bodies and bare land or \hl{sandy areas}. The method of \hl{the }Tasselled Cap performs a transformation of the original pixels in bands into a new 4D dimension \hl{where the following } parameters \hl{are separated}: soil brightness index, green vegetation index (GVI), yellow stuff index, and a \hl{those} related to atmospheric effects \cite{Huang2002}. Of these, we used the GVI which is based on the estimation of greenness in leaves of mangrove canopies \hl{as information on values of the weighted sums of pixels derived from the colour composites of the Landsat bands}. The computation of \hl{the }Tasselled Cap Green Vegetation Index (GVI) is based on the \hl{Equation }\ref{eq3} developed by \cite{4157507}:
+The technique of the Tasselled Cap transformation in remote sensing is originally developed by \cite{KauthThomas}. The Tasselled Cap GVI provides more detailed information on the distinct features of the landscapes such as plant canopy, water bodies and bare land or sandy areas. The method of the Tasselled Cap performs a transformation of the original pixels in bands into a new 4D dimension where the following parameters are separated: soil brightness index, green vegetation index (GVI), yellow stuff index, and a those related to atmospheric effects \cite{Huang2002}. Of these, we used the GVI which is based on the estimation of greenness in leaves of mangrove canopies as information on values of the weighted sums of pixels derived from the colour composites of the Landsat bands. The computation of the Tasselled Cap Green Vegetation Index (GVI) is based on the Equation \ref{eq3} developed by \cite{4157507}:
 
 \begin{equation}\label{eq3}
 \begin{split}
@@ -256,18 +256,18 @@ The technique of the Tasselled Cap transformation in remote sensing \hl{is} orig
 \end{split}
 \end{equation}
 
-We \hl{used} Listing \ref{lst04} for the computation of \hl{of the }GVI\hl{ as showed in the Appendix.}
+We used Listing \ref{lst04} for the computation of of the GVI as showed in the Appendix.
 
 %------------------------->
 \subsection{Difference Vegetation Index (DVI)}
 
-The advantage of the Difference Vegetation Index (DVI) \hl{consists in the discrimination of} soil \hl{from} the vegetation biomass. However, the disadvantage is that it does not considers the difference between the spectral reflectance and radiance of soil surface caused by \hl{the }atmospheric effects \cite{TUCKER1979127}. The use of \hl{the }DVI is based on the ratio between the NIR and Red \hl{spectral bands} \cite{Naji2018} \hl{as showed in the Equation} \ref{eq4}:
+The advantage of the Difference Vegetation Index (DVI) consists in the discrimination of soil from the vegetation biomass. However, the disadvantage is that it does not considers the difference between the spectral reflectance and radiance of soil surface caused by the atmospheric effects \cite{TUCKER1979127}. The use of the DVI is based on the ratio between the NIR and Red spectral bands \cite{Naji2018} as showed in the Equation \ref{eq4}:
 
 \begin{equation}\label{eq4}
 	DVI = (NIR - Red)
 \end{equation}
 
-This is the original formula used later in a modified version for computing the NDVI which is based on the DVI in the adjusted way and applied in many works \cite{TUCKER1979237,RONDEAUX199695,DATT1998111} \hl{as showed in Equation} \ref{eq5}:
+This is the original formula used later in a modified version for computing the NDVI which is based on the DVI in the adjusted way and applied in many works \cite{TUCKER1979237,RONDEAUX199695,DATT1998111} as showed in Equation \ref{eq5}:
 
 \begin{equation}\label{eq5}
 	NDVI = \frac{(NIR - Red)}{(NIR + Red)}
