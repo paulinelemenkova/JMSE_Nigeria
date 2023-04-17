@@ -294,46 +294,46 @@ Using the syntax of GRASS GIS, we define the PVI as follows in Listing \ref{lst0
 
 \subsection{Global Environmental Monitoring Index (GEMI)}
 
-The Global Environmental Monitoring Index (GEMI) \hl{was originally developed by Pinty and Verstraete in 1992} \cite{PintyVerstraete}. \hl{The formula of GEMI }has a nonlinear nature and \hl{is} more complex\hl{, }compared to the previous indices, \hl{Equation }\ref{eq8}. It is designed for global environmental monitoring \hl{using the }remote sensing data, which explains its \hl{improved performance that better }considers all types of vegetations. 
+The Global Environmental Monitoring Index (GEMI) was originally developed by Pinty and Verstraete in 1992 \cite{PintyVerstraete}. The formula of GEMI has a nonlinear nature and is more complex, compared to the previous indices, Equation \ref{eq8}. It is designed for global environmental monitoring using the remote sensing data, which explains its improved performance that better considers all types of vegetations. 
 
 \begin{align}
 GEMI = \Bigl( \frac{2*((NIR * NIR)-(Red * Red)) + 1.5*NIR+0.5*Red}{NIR + Red + 0.5} * \nonumber\\
         (1 - 0.25 * \frac{2*[(NIR * NIR)-(Red * Red) + 1.5*NIR+0.5*Red]}{NIR + Red + 0.5} \Bigr ) - \frac{Red - 0.125}{1 - Red} \label{eq8}
 \end{align}
 
-The algorithm for computing and plotting the GEMI is presented in Listing \ref{lst07}\hl{ shown in Appendix.}
+The algorithm for computing and plotting the GEMI is presented in Listing \ref{lst07} shown in Appendix.
 
 Although GEMI is in general comparable to NDVI, it shows less sensitivity to atmospheric effects. Instead, it is influenced by the brightness of the bare soil. To these reasons, it does not work well in desert arid and semi-arid regions covered by sands, rocks and soil with sparse or no vegetation. For the case of southern Nigeria, however, GEMI works well since tropical dense forests are suitable for the performance of this index. Moreover, the decline of mangroves is well depicted using comparison of GEMI several satellite images.
 
 \subsection{Normalized Difference Water Index (NDWI)}
 
-The values of the Normalized Difference Water Index (NDWI) are strongly dependent on the water content in the landscapes. Hence, the NDWI serves as an accurate indicator of the water areas and water bodies (rivers, lakes, estuaries, deltas). The NDWI is derived from the NIR and Green bands using the original formula developed by \cite{McFeeters} as a ratio of Green and NIR \hl{spectral bands, as seen in the Equation }{eq9}: 
+The values of the Normalized Difference Water Index (NDWI) are strongly dependent on the water content in the landscapes. Hence, the NDWI serves as an accurate indicator of the water areas and water bodies (rivers, lakes, estuaries, deltas). The NDWI is derived from the NIR and Green bands using the original formula developed by \cite{McFeeters} as a ratio of Green and NIR spectral bands, as seen in the Equation {eq9}: 
 
 \begin{equation}\label{eq9}
 	NDWI = \frac{green - NIR}{green + NIR}
 \end{equation} 
 
-Another formula of the NDWI is proposed by \cite{GAO1996257}, which is a different index yet having the same name, since both indices are developed simultaneously in 1996. The NDWI by \cite{GAO1996257} is focused on identification of water content in the plant leaves \hl{using the formula presented in Equation }{eq10}: 
+Another formula of the NDWI is proposed by \cite{GAO1996257}, which is a different index yet having the same name, since both indices are developed simultaneously in 1996. The NDWI by \cite{GAO1996257} is focused on identification of water content in the plant leaves using the formula presented in Equation {eq10}: 
 
 \begin{equation}\label{eq10}
 	NDWI = \frac{NIR - SWIR}{NIR + SWIR}
 \end{equation} 
 
-However, this is more actual for the semi-arid and arid regions covered by savannah. In this study, we used the NDWI proposed by \cite{McFeeters} using Green and NIR bands for detecting areas covered by Niger Delta, tributaries and lagoon.  Using the embedded algorithm in the GRASS GIS we can identify the NDWI using its syntax by the script showed in Listing \ref{lst08}\hl{ demonstrated in Appendix.}
+However, this is more actual for the semi-arid and arid regions covered by savannah. In this study, we used the NDWI proposed by \cite{McFeeters} using Green and NIR bands for detecting areas covered by Niger Delta, tributaries and lagoon.  Using the embedded algorithm in the GRASS GIS we can identify the NDWI using its syntax by the script showed in Listing \ref{lst08} demonstrated in Appendix.
 
 \subsection{Second Modified Soil Adjusted Vegetation Index (MSAVI2)}
 
-The Second Modified Soil Adjusted Vegetation Index (MSAVI2) is adjusted to provide accurate data in sparse vegetation or plant canopies with deficit of chlorophyll. \hl{Originally developed as MSAVI by Qi et al. in 1992 }\cite{QI1994119}\hl{, }MSAVI2 \hl{was slightly modified by Qi et al. in 1994 }\cite{Qi1994ExternalFC} \hl{with a novel developed formula presented in Equation }\ref{eq11} \hl{which aims at better identifying the }bare soil between the seedlings during leaf development which is useful for agricultural mapping. 
+The Second Modified Soil Adjusted Vegetation Index (MSAVI2) is adjusted to provide accurate data in sparse vegetation or plant canopies with deficit of chlorophyll. Originally developed as MSAVI by Qi et al. in 1992 \cite{QI1994119}, MSAVI2 was slightly modified by Qi et al. in 1994 \cite{Qi1994ExternalFC} with a novel developed formula presented in Equation \ref{eq11} which aims at better identifying the bare soil between the seedlings during leaf development which is useful for agricultural mapping. 
 
 \begin{equation}\label{eq11}
 	MSAVI2 = \frac{1}{2}*\Bigl(2*NIR+1-\sqrt{(2*NIR+1)^2-8*(NIR-red)}\Bigr)
 \end{equation} 
 
-\hl{According to the analysis of the parameters of MSAVI (NIR and Red bands in complex combinations) and its documentation, it allows precise detection of the seasonal vegetation patterns since includes a soil factor which varies in moisture by different seasons in Nigeria. Moreover, MSAVI2 works well in the areas of the sparse and scattered vegetation, for instance, occupied by urban infrastructure, covered by buildings and roads in the agglomerations and urbanized areas, where it shows good correlation with the NDVI} \cite{FABIJANCZYK2022100721}. \hl{Therefore, the MSAVI2 is useful for detecting urban growth in the rapidly developing towns of southern Nigeria. In GRASS GIS,} MSAVI2 is \hl{computed} using i.vi module \hl{by} Listing \ref{lst09}.
+According to the analysis of the parameters of MSAVI (NIR and Red bands in complex combinations) and its documentation, it allows precise detection of the seasonal vegetation patterns since includes a soil factor which varies in moisture by different seasons in Nigeria. Moreover, MSAVI2 works well in the areas of the sparse and scattered vegetation, for instance, occupied by urban infrastructure, covered by buildings and roads in the agglomerations and urbanized areas, where it shows good correlation with the NDVI \cite{FABIJANCZYK2022100721}. Therefore, the MSAVI2 is useful for detecting urban growth in the rapidly developing towns of southern Nigeria. In GRASS GIS, MSAVI2 is computed using i.vi module by Listing \ref{lst09}.
 
 \subsection{Infrared Percentage Vegetation Index (IPVI)}
 
-The specifics of \hl{the }Infrared Percentage Vegetation Index (IPVI) \hl{consists in the} ratio-based computationally fast approach with values ranging from 0 to 1. As one can see from the formula \hl{in the Equation }\ref{eq12}, the IPVI is based on the \hl{ratio between the Red and NIR spectral bands. With this regard, }it is similar and linearly equivalent to the NDVI, yet \hl{is implemented in a }more straightforward \hl{way, }\cite{CRIPPEN199071}:
+The specifics of the Infrared Percentage Vegetation Index (IPVI) consists in the ratio-based computationally fast approach with values ranging from 0 to 1. As one can see from the formula in the Equation \ref{eq12}, the IPVI is based on the ratio between the Red and NIR spectral bands. With this regard, it is similar and linearly equivalent to the NDVI, yet is implemented in a more straightforward way \cite{CRIPPEN199071}:
 
 \begin{equation}\label{eq12}
 	IPVI = \frac{NIR}{(NIR+Red)}
