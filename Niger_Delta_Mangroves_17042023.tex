@@ -273,24 +273,24 @@ This is the original formula used later in a modified version for computing the 
 	NDVI = \frac{(NIR - Red)}{(NIR + Red)}
 \end{equation}
 
-The above formulae are embedded \hl{in the GRASS GIS }in the function 'dvi' \hl{of the module \emph{i.vi} }used \hl{for} computing the DVI\hl{ as illustrated in} Listing \ref{lst05}\hl{.}
+The above formulae are embedded in the GRASS GIS in the function 'dvi' of the module \emph{i.vi} used for computing the DVI as illustrated in Listing \ref{lst05}.
 
 %------------------------->
 \subsection{Perpendicular Vegetation Index (PVI)}
 
-The use of \hl{the }PVI is based on the formula originally developed by \cite{Richardson}\hl{. }Sensitive to \hl{the }atmospheric variations, \hl{the PVI is intended }to monitor the productivity of range, forest\hl{ }and croplands. Similar to\hl{ }DVI, it\hl{ }measures the perpendicular distance of the pixels from the soil line\hl{, since it is }based on the assumption that soil reflectance supplies the background signal of \hl{the }vegetated surfaces. \hl{The formula used for calculation of the PVI is presented in Equation} \ref{eq6}:
+The use of the PVI is based on the formula originally developed by \cite{Richardson}. Sensitive to the atmospheric variations, the PVI is intended to monitor the productivity of range, forest and croplands. Similar to DVI, it measures the perpendicular distance of the pixels from the soil line, since it is based on the assumption that soil reflectance supplies the background signal of the vegetated surfaces. The formula used for calculation of the PVI is presented in Equation \ref{eq6}:
 
 \begin{equation}\label{eq6}
 	PVI=\frac{1}{\sqrt{a^2+1}} * (NIR - aR - b),
 \end{equation} 
 
-where \emph{a} and \emph{b} are\hl{ }constants \hl{indicating} slope and gradient of the soil line \hl{and \emph{R} is a Red band (for the Landsat OLI/TIRS sensor, it is a spectral Band 4)}. However, the embedded formula of GRASS GIS is slightly modified, because the calculation of the PVI here is made using the concept of "isovegetation". The isovegetation line shows the distribution of area covered by equal types of vegetation. Therefore, the pixels in this case are parallel to the soil line which is assigned to a=1. Hence, the constants for soil are removed and the computation of the PVI is adjusted. In this case, it includes the sine and cosine of the NIR and Red channels using the following formula \hl{showed in the Equation} \ref{eq7}, \cite{PERRY1984169}:
+where \emph{a} and \emph{b} are constants indicating slope and gradient of the soil line and \emph{R} is a Red band (for the Landsat OLI/TIRS sensor, it is a spectral Band 4). However, the embedded formula of GRASS GIS is slightly modified, because the calculation of the PVI here is made using the concept of "isovegetation". The isovegetation line shows the distribution of area covered by equal types of vegetation. Therefore, the pixels in this case are parallel to the soil line which is assigned to a=1. Hence, the constants for soil are removed and the computation of the PVI is adjusted. In this case, it includes the sine and cosine of the NIR and Red channels using the following formula showed in the Equation \ref{eq7}, \cite{PERRY1984169}:
 
 \begin{equation}\label{eq7}
 	PVI = sin(a)NIR-cos(a)Red
 \end{equation} 
 
-Using the syntax of GRASS GIS, we define the PVI as follows in Listing \ref{lst06}\hl{ shown in the Appendix.}
+Using the syntax of GRASS GIS, we define the PVI as follows in Listing \ref{lst06} shown in the Appendix.
 
 \subsection{Global Environmental Monitoring Index (GEMI)}
 
