@@ -1,0 +1,1966 @@
+%  LaTeX support: latex@mdpi.com 
+%  For support, please attach all files needed for compiling as well as the log file, and specify your operating system, LaTeX version, and LaTeX editor.
+
+%=================================================================
+\documentclass[jmse,article,accept,pdftex,moreauthors]{Definitions/mdpi} 
+
+%=================================================================
+% MDPI internal commands
+\firstpage{1} 
+\makeatletter 
+\setcounter{page}{\@firstpage} 
+\makeatother
+\pubvolume{1}
+\issuenum{1}
+\articlenumber{0}
+\pubyear{2023}
+\copyrightyear{2023}
+\externaleditor{Academic Editor: Athanassios A. Dimas, Nicholas Dodd, Theophanis V. Karambas, George Karatzas and Tiago Fazeres Ferradosa}
+\datereceived{14 March 2023} 
+\daterevised{17 April 2023} 
+\dateaccepted{18 April 2023} 
+\datepublished{} 
+\hreflink{https://doi.org/} % If needed use \linebreak
+%\doinum{}
+
+%=================================================================
+% Add packages and commands here. The following packages are loaded in our class file: fontenc, inputenc, calc, indentfirst, fancyhdr, graphicx, epstopdf, lastpage, ifthen, lineno, float, amsmath, setspace, enumitem, mathpazo, booktabs, titlesec, etoolbox, tabto, xcolor, soul, multirow, microtype, tikz, totcount, changepage, attrib, upgreek, cleveref, amsthm, hyphenat, natbib, hyperref, footmisc, url, geometry, newfloat, caption
+
+\graphicspath{{figures/}} % path to folder with figures
+\usepackage[labelformat=simple]{subcaption}\renewcommand\thesubfigure{\alph{subfigure}}
+\DeclareCaptionLabelFormat{subcaptionlabel}{\normalfont(\textbf{#2}\normalfont)}
+\captionsetup[subfigure]{labelformat=subcaptionlabel}
+\usepackage{xcolor}
+\usepackage{gensymb} % for \textdegree
+\usepackage{tabularx}
+\usepackage{makecell}
+\usepackage{array}
+\usepackage{siunitx}
+\usepackage{amsmath}
+
+\usepackage{listings}
+\usepackage{xcolor}
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepmagenta}{RGB}{195,12,214}
+\definecolor{deepgreen}{RGB}{29,122,30}
+\definecolor{mintgreen}{RGB}{192,249,192}
+\definecolor{codepurple}{RGB}{204, 0, 153}
+\definecolor{LightCyan}{rgb}{0.88,1,1}
+\definecolor{GainsboroPurple}{RGB}{247,176,247}
+\definecolor{LightSlateGrey}{RGB}{124,118,118}
+%    
+\lstdefinestyle{mystyle}{
+    commentstyle=\color{LightSlateGrey},
+    keywordstyle=\color{deepgreen}\bfseries,
+    emphstyle=\color{deepred},
+    numberstyle=\tiny\color{deepmagenta},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=t,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+\lstset{style=mystyle}
+\captionsetup[lstlisting]{position=top, margin=0cm,labelfont={bf, small, stretch=1.17}, labelsep=period, textfont={small, stretch=1.17}, aboveskip=6pt, singlelinecheck=off, justification=justified}
+\lstset{xleftmargin=0.4\parindent}
+
+%=================================================================
+% Full title of the paper (Capitalized)
+\Title{Computing Vegetation Indices from the Satellite Images Using GRASS GIS Scripts for Monitoring Mangrove Forests in the Coastal Landscapes of Niger Delta, Nigeria}
+%mdpi We have done the initial layout for your manuscript by our layout team. Please note all comments after ''%mdpi''.
+%mdpi 1. Please do not change the layout, otherwise we cannot proceed to the next step.
+%mdpi 2. Please do not delete our comments.
+%mdpi 3. Please revise and answer all questions that we proposed. Such as: “It should be italic”; “I confirm”; “I have checked and revised all.”
+%mdpi 4. Please directly correct on this version. If you need to revise somewhere in your paper, please highlight the revisions to make us known.
+%mdpi 5. Please add the information of “Author Contributions”, “Funding”, “Institutional Review Board Statement”, “Informed Consent Statement”, “Data Availability Statement”, “Acknowledgments” and “Conflicts of Interest” in the back matter.
+%mdpi 6. Please check the reference citation order. Please note, All References should be cited in the main text, and in numerical order.
+%mdpi 7. Please make sure that all the symbols in the paper are of the same format.
+% MDPI internal command: Title for citation in the left column along the Southwestern Coast of Nigeria
+\TitleCitation{Computing Vegetation Indices from the Satellite Images Using GRASS GIS Scripts for Monitoring Mangrove Forests in the Coastal Landscapes of Niger Delta, Nigeria}
+
+% Author Orchid ID: enter ID or remove command
+\newcommand{\orcidauthorA}{0000-0002-5759-1089} % Polina Add \orcidA{} behind the author's name
+\newcommand{\orcidauthorB}{0000-0002-6461-1551} % Olivier Add \orcidB{} behind the author's name
+
+% Authors, for the paper (add full first names)
+\Author{\hl{Polina Lemenkova} *\orcidA{} and Olivier Debeir \orcidB{}}
+%mdpi: Please carefully check the accuracy of names and affiliations. 
+%\longauthorlist{yes}
+
+% MDPI internal command: Authors, for metadata in PDF
+\AuthorNames{Polina Lemenkova and Olivier Debeir}
+
+% MDPI internal command: Authors, for citation in the left column
+\AuthorCitation{\hl{Lemenkova, P}.; Debeir, O.}
+%mdpi: Please check all author names carefully.
+
+% If this is a Chicago style journal: Lastname, Firstname, Firstname Lastname, and Firstname Lastname.
+
+% Affiliations / Addresses (Add [1] after \address if there is only one affiliation.)
+\address[1]{%
+ Laboratory of Image Synthesis and Analysis (LISA), École Polytechnique de Bruxelles (Brussels Faculty of Engineering), Université Libre de Bruxelles (ULB), Building L, Campus du Solbosch, ULB---LISA CP165/57, Avenue Franklin D. Roosevelt 50,  1050 Brussels, Belgium; \hl{olivier.debeir@ulb.be}
+}%mdpi: newly added email, please confirm.
+
+% Contact information of the corresponding author
+\corres{{\hangafter=1 \hangindent=1.05em \hspace{-0.82em}} Correspondence: polina.lemenkova@ulb.be; Tel.: +32-471-86-04-59}
+
+% Current address and/or shared authorship
+%\firstnote{Current address: Affiliation 3.} 
+
+% Abstract (Do not insert blank lines, i.e. \\) 
+\abstract{
+This paper addresses the issue of the satellite image processing using GRASS GIS in the mangrove forests of the Niger River Delta, southern Nigeria. The estuary of the Niger {River} Delta in the Gulf of Guinea is an essential hotspot of biodiversity on the western coast of Africa. At the same time, climate issues and anthropogenic factors {affect} vulnerable coastal ecosystems and result in the rapid decline of mangrove habitats. This motivates monitoring of the vegetation patterns using advanced cartographic methods and data analysis. As a response to this need, this study aimed to calculate and map several vegetation indices (VI) using scripts as advanced programming methods integrated in geospatial studies. The data include four Landsat 8-9 OLI/TIRS images covering the western segment of the Niger {River} Delta in the Bight of Benin for 2013, 2015, 2021, and 2022. The techniques included the \hl{\emph{i.vi}, \emph{i.landsat.toar}} and other modules of the GRASS GIS. Based on the GRASS GIS \emph{i.vi} module, ten VI were computed and mapped for the western segment of the Niger {River} Delta estuary: Atmospherically Resistant Vegetation Index (ARVI), Green Atmospherically Resistant Vegetation Index (GARI), Green Vegetation Index (GVI), Difference Vegetation Index (DVI), Perpendicular Vegetation Index (PVI), Global Environmental Monitoring Index (GEMI), Normalized Difference Water Index (NDWI), Second Modified Soil Adjusted Vegetation Index (MSAVI2), Infrared Percentage Vegetation Index (IPVI), and Enhanced Vegetation Index (EVI). The results showed variations in the vegetation patterns in mangrove habitats situated in the Niger {River} Delta over the last decade as well as the increase in urban areas (Onitsha, Sapele, Warri and Benin City) and settlements in the Delta State due to urbanization. The advanced techniques of the GRASS GIS of satellite image processing and analysis enabled us to identify and visualize changes in vegetation patterns. The technical excellence of the GRASS GIS in image processing and analysis was demonstrated in the scripts used in this study. 
+}%mdpi: Please confirm if the italics is unnecessary and can be removed. The following highlights are the same
+
+% Keywords
+\keyword{Image processing; West Africa; remote sensing; Niger River Delta; R language} 
+
+\PACS{\hl{91.10.Da}; 91.10.Jf; 91.10.Sp; 91.10.Xa; 96.25.Vt; 91.10.Fc; 95.40.+s; 95.75.Qr; 95.75.Rs; 42.68.Wt}
+\MSC{\hl{86A30}; 86-08; 86A99; 86A04}
+\JEL{\hl{Y}91; Q20; Q24; Q23; Q3; Q01; R11; O44; O13; Q5; Q51; Q55; N57; C6; C61}
+%mdpi: Please confirm if the PACS, MSC and JEL should be kept.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\section{Introduction}
+\unskip
+
+\subsection{Background}
+
+This paper presents a GRASS GIS-based mapping framework for computing and visualization Vegetation Indices (VI). The~GRASS GIS provides a principled way to calculate the VI from the bands of the satellite images using special module \hl{\emph{i.vi}}. We derived experimental performance bounds of the GRASS GIS for remote sensing data analysis, and~demonstrated its utility with a challenging task of environmental monitoring of mangroves ecosystems located in the coastal area of the Niger River Delta in southern Nigeria, West~Africa.%mdpi: Please confirm whether the italic was necessary or can be removed. Following highlights are the same.
+
+Mangroves have a high environmental and socioeconomic value. They provide important functions as a habitat for species that live in the intertidal environment~\cite{James} and services for human well-being including economic, environmental, and~social aspects~\cite{AKANNI2018387}. At~the same time, recently mangrove ecosystems threatened with extinction which is proved by the increasing rate of deforestation~\cite{Enaruvbe2016,Numbere2021,Osuji,Fasona}. Identifying the conditions and dynamics of mangrove ecosystems is possible through the comparison of the VI computed from the bands of the satellite images~\cite{HATI2022,ALATORRE201698,SATHISH2021102054}. The~VI enable the investigation of the spatial-temporal trends in the distribution of mangroves detected when comparing several~images.
+
+Remote sensing data and advanced programming methods provide a valuable combination for monitoring mangrove distribution to evaluate the level of degradation~\cite{Hu}. This is possible due to the fundamental feature of the remote sensing data of different absorption and reflectance of solar radiation by various land cover types: water, vegetation, urban spaces, deserts, sands, bare soil, and rocks. Moreover, spectral reflectance of diverse types of vegetation vary across various channels of satellite images. This enables us to detect various patterns of vegetation and discriminate them from other land cover types. The~combination of spectral bands of a satellite image enables us to calculate and visualise the distribution of vegetation patterns as characteristics of the Earth's landscapes~\cite{CHOPADE2023118839,GITAU2023102898,MISHRA2021107486}.
+
+Comparison of the VI computed from the images taken for several consecutive years enables us to evaluate the vegetation patterns~\cite{OCHEGE2017211,Lemenkova202229}. This approach builds on quantifying the difference between the values of pixels on bands in a satellite image. Since spectral reflectance of pixels corresponding to vegetation varies in selected channels, e.g.,~Near-Infrared (NIR) and Red, such properties can be used for discriminating healthy green plants. For~instance, the~Normalized Difference Vegetation Index (NDVI) is a well known indicator of vegetation health and is widely used for assessment of degradation in sensitive coastal ecosystems through the ratio of NIR and Red~\cite{alademomi2020assessing,NSE2020e00599}. Besides~the NDVI, other indices have been developed which differ in their computational approach, various combinations of Red and NIR bands or addition of other bands, e.g.,~Green, Blue, SWIR~\cite{Adamu,rs10060897}. 
+
+\textls[-15]{Previous studies used the Geographic Information System (GIS) to quantitatively evaluate and map environmental degradation and decline of vegetation of mangroves~\cite{NUMBERE2022433,FASHAE2022e01286,Olorunfemi,Fagbeja,Enaruvbe2015}}. However, there is a deficiency in functionality of the traditional GIS: slow-speed data processing, manual operational workflow and subjectivity and biased data analysis. In~contrast, using programming techniques support accurate computations and mapping~\cite{9883588,Lemenkova202227,9884244,Lemenkova202230,9964623} presenting more advanced tools for environmental monitoring of mangroves. This paper is a continuation of our previous work~\cite{technologies11020046} on the use of GRASS GIS scripts for cartographic data processing, where spatial data were processed by the GRASS GIS modules. Herein, we provided an extended application of scripts towards satellite image analysis and~used GRASS GIS for computing the VI to achieve a better performance compared to the traditional GIS in terms of both accuracy through automation of data processing, and~computational costs due to open source availability of the GRASS GIS. Specifically, we computed several VI to evaluate their performance for monitoring mangrove~ecosystems.
+
+\subsection{Study~Focus}
+Mangroves are a unique halophyte type of the shrubs and forests that have a unique complex root system with prop roots~\cite{Numbere}. Mangroves exist only in the saline waters of the intertidal coastal zone of tropics and subtropics. Southern Nigeria, located along the tropical coasts of the Atlantic Ocean, has favorable environmental and climate setting for mangrove distribution. In~particular, the~Niger River Delta has the most extensive area of mangroves in West Africa~\cite{KINAKO197735}, and~it is the third largest wetland in the world~\cite{ZABBEY2021100571}. A~wide variety of mangrove species are adapted to the environmental setting of Nigeria~\cite{Ukpong1991,Ufuoma}. For~instance, the~Niger River Delta (Figure \ref{fig01}) provides a habitat for \emph{Rhizophora} which is the most common species located along the coasts, or~shrub genera \emph{Avicennia} and \emph{Laguncularia} that growth in the lagoon areas of southern Nigeria~\cite{Akpovwovwo}. The~dynamics of mangrove habitats and the distribution of these species depend on various factors---salinity~\cite{Amadi,Okafor,Ukpong1997}, distance from coast, repeatability of tidal cycles and freshwater inflow. Other factors include landscape characteristics that vary in the coastal ecosystems of southern Nigeria in the lagoon, mud beach, the~Niger River Delta and in the coastal areas that extend along the coasts of the Bight of Benin in the Gulf of Guinea~\cite{Ajao}. The~mangrove forests have a year-round growing season which continuous vegetation cycle in the mangrove development which includes opening the forest canopy, growing rapidly young trees, and~mature phase formed by the large trees~\cite{Whitmore}.
+\vspace{-6pt}
+\begin{figure}[H]
+	\includegraphics[width=14.0 cm]{Fig_01.jpg}
+	\caption{Topographic map of Nigeria with indicated study area. Software: Generic Mapping Tools (GMT) version 6.1.1, \hl{ref}.~\cite{Wessel}. Data source: GEBCO/SRTM~\cite{GEBCO,SRTM}. Cartography source: authors.
+	\label{fig01}}%mdpi: we added “ref.”, please confirm.
+\end{figure}%mdpi: Please confirm if the logo in the figure can be removed; Please confirm if the yellow dots, red pentagrams need to add an explanation.
+
+
+The deforestation of mangrove forests in southern Nigeria has diverse reasons. The~most important are the effects from climate change such as temperature and rainfall variability~\cite{Adefolalu,AREOLA2018153,w12020385}, because~the Niger {River} Delta is the most vulnerable region to climate issues in Nigeria~\cite{BALOGUN2022100304,hydrology7010019}. Specifically, the~decrease in precipitation and rise in temperatures results in changed balance of the saline-fresh water with regard to hydrology, and~variations in the length of periods of dry and wet seasons with regard to soil-landscapes systems. As~a consequence, this results in land cover change and deforestation~\cite{Akintuyi,KHADIJAT2021983}. Furthermore, environmental processes such as droughts, soil erosion, and the invasion of external species also affect the health of mangroves ecosystems~\cite{UKPONG199761}. Finally, the~impacts of wave variability and increased frequency of flash floods changed the shape of the coastlines and contributed to sea level rise and land subsidence, which in turn affected mangrove habitats~\cite{DARAMOLA2022102167,OSINOWO2021104471}. 
+
+Another important threat to the distribution of mangroves is presented by the anthropogenic activities such as oil and gas exploration in the Niger River Delta~\cite{su142114256}, which results in environmental problems such as oil bunkering, oil spillage~\cite{OBIDA2021145854}, refining of crude oil~\cite{EYANKWARE2020100293}. Related processes include air pollution due to gas flaring, fossil fuel burning and transportation contribute to the degradation of the coastal landscapes~\cite{socsci11110525}. Oil spillage increases the concentration of the polycyclic aromatic hydrocarbons in the sediments~\cite{Sojinu}. In~turn, the~dynamics of the suspended sediments is controlled by different density in fresh and salt waters, energy of waves and tides~\cite{Munasinghe}.  In~contrast to the turbulent waters, the~pollution in the Niger River Delta is aggravated by a more complex hydromorphological structure of the tidal network~\cite{GEORGE2019103592}. 
+
+Due to a dense pattern of fluvial and tidal channels, bars and inner lakes interspersed in the lower plain of the Niger River Delta, polluted water remains stagnant. Furthermore, clayey soil texture in the meander belt of the Niger River Delta~\cite{Kamalu} creates favorable conditions for the accumulation of pollutants and toxic chemicals~\cite{w13223295,toxics11010006,UKHUREBOR2021112872}, and~retains heavy metals~\cite{Amusan,OKOYE2022100222,OKOYE2021111273}. All these factors facilitate the spread of oil into stagnant waters of delta and contribute to the decline of mangroves~\cite{ONYIA2020377,ODISU2021111993,ZABBEY2014167}. The~habitats of mangroves are also affected by industrial works such as road construction, housing, clearing waterfront vegetation~\cite{Zabbey}, and the development of seaports, which all affected the natural landscapes of the Niger River Delta~\cite{OMIUNU198957}. Finally, the~use of aquaculture reagents in the Niger River Delta lead to the pollution of waters which resulted in the decline of mangrove landscapes by up to 35\% since 1960s~\cite{Godstime}. 
+
+Losses in mangroves in the coastal landscapes at a global scale are reported to be up to 62\% between 2000 and 2016, as~a result of the land-use change, expansion of the aquaculture land, fishing, and agriculture plantations~\cite{Goldberg}. Such activities contribute to the environmental changes in the coastal regions of West Africa~\cite{land11111982,su12187349,Babanyara}. Finally, timber production, wood harvesting, expansion of agriculture and bio-fuel plantations, and~coastal development contribute to the extinction of mangroves~\cite{Feka}. The~cumulative effects from all these triggers lead to the decline of mangroves at high rates and reduce the number of their remaining habitats. As~a result, mangrove forests are nowadays among the most vulnerable marine ecosystems in West Africa~\cite{ORIJEMIE2012360}. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Materials and~Methods}
+
+The distribution of the mangroves within the coastal landscapes of Nigeria was evaluated by using ten different vegetation indices, namely: Atmospherically Resistant Vegetation Index (ARVI), Green Atmospherically Resistant Vegetation Index (GARI), Green Vegetation Index (GVI), Difference Vegetation Index (DVI), Perpendicular Vegetation Index (PVI), Global Environmental Monitoring Index (GEMI), Normalized Difference Water Index (NDWI), Second Modified Soil Adjusted Vegetation Index (MSAVI2), Infrared Percentage Vegetation Index (IPVI), and Enhanced Vegetation Index (EVI). Technically, the~methods of computing the ten VI were implemented using the GRASS GIS scripts. 
+%----------- subsection ----------->
+
+\subsection{Data}
+Rapid growth of the satellite data derived from the Earth observation sensors enhances the cartographic possibilities of the environmental monitoring of the coastal landscapes. The~Landsat 8-9 OLI/TIRS images have become a precious data source for a wide range of geospatial applications, e.g.,~monitoring the coastal ecosystems that are difficult to access, such as mangrove habitats in southern Nigeria. The~advantages of the Landsat scenes consist in multi-spectral characteristics and global temporal and spatial coverage which enable to derive information on the Earth's landscapes. The~Landsat 8-9 OLI/TIRS images have 11 spectral bands including visible, thermal, and panchromatic ones, which can be used for the analysis of the reflectance spectra for a particular land cover types and their spatial and spectral~characteristics.
+
+Specifically for inaccessible areas of mangrove ecosystems in southern Nigeria, the Landsat data provide a precious source of spatial information which enables accurate mapping and analysis of the vegetation patterns. Processing the satellite images by the advanced scripting technologies is an effective and profitable means of data analysis and information retrieval. Due to such reasons, we used the Landsat 8-9 OLI/TIRS satellite images to monitor the decline in mangrove habitats based on the computed and visualized ten VI which cover the western segment of the Niger River Delta. The~images were collected for the following years: 2013, 2015, 2021, and 2022, see Figure~\ref{fig02}. 
+
+The data capture was performed using the EarthExplorer repository of the USGS (\highlighting{\href{https://earthexplorer.usgs.gov/}{https://earthexplorer.usgs.gov/}}), with~main metadata summarized in Table~\ref{tab1}. 
+%mdpi: Please provide the access date of the URL in the following format: “URL (accessed on Day Month Year)”.
+
+\begin{figure}[H]
+\makebox[0.99\linewidth][r]{%
+	\begin{subfigure}[b]{.5\textwidth}
+		\centering
+			\hspace{40pt}\includegraphics[width=6.5cm]{Fig_02a.jpg}
+		\caption{\centering 2013}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.5\textwidth}
+		\centering
+			\hspace{40pt}\includegraphics[width=6.5cm]{Fig_02b.jpg}
+		\caption{\centering 2015}
+	\end{subfigure}%
+}\\
+\vfill 
+\makebox[0.99\linewidth][r]{%
+	\begin{subfigure}[b]{.5\textwidth}
+		\centering
+			\hspace{40pt}\includegraphics[width=6.5cm]{Fig_02c.jpg}
+		\caption{\centering 2021}
+	\end{subfigure}
+	\begin{subfigure}[b]{.5\textwidth}
+		\centering
+			\hspace{40pt}\includegraphics[width=6.5cm]{Fig_02d.jpg}
+		\caption{\centering 2022}
+	\end{subfigure}%
+}\caption{Landsat 8-9 OLI/TIRS images of {the} Niger River Delta in RGB colors for four years: (\textbf{a})~\hl{2013/12/20}, (\textbf{b}) \hl{2015/12/26}, (\textbf{c}) \hl{2021/12/18}, (\textbf{d}) \hl{2022/12/29}.}\label{fig02}
+\end{figure}%mdpi: Please confirm if the Date format should be changed to “Day month year”, e.g., 20 December 2013; There is also a year in the caption, please confirm if the year on the figure can be deleted.
+
+Among all the existing Landsat products, the~Landsat OLI/TIRS sensor has improved technical and spectral characteristics, such as narrower spectral bands including Red and NIR channels which are crucial for calculation of the VI. Moreover, it has better calibration, higher radiometric resolution and corrections signal for noise. A~thorough comparative analysis of the Landsat OLI/TIRS against earlier sensors is presented in~\cite{ROY201657}. Since the spectral characteristics of the older Landsat products (TM and MSS) have coarser parameters, we only used the images obtained from the Landsat OLI/TIRS. At~the same time, the~first Landsat 8 OLI/TIRS sensor was launched in 2013, which explains the choice of the first image selected in this study. Another important parameter for data selection was low cloudiness of the images and comparable span for a short time~series. 
+
+The images were imported into the GRASS GIS software and processed for data analysis and visualization using modules for satellite images and raster data processing. The mapping of mangroves of Nigeria using satellite images and GIS techniques has been attempted and reported earlier~\cite{Ozigis,GUNDLACH2022100831,Sobande,ijerph2006030011} with proven effectiveness of the satellite data for monitoring mangroves. We continued these and similar studies by applying the programming methods of the GRASS GIS scripts instead of the traditional approaches of GIS for computing the VI of the landscapes in southern~Nigeria. 
+
+While the Landsat 8-9 OLI/TIRS images formed the dataset for computing and visualizing the VI, the~GEBCO/SRTM raster data were used for visualizing the base map for this study using the techniques of the Generic Mapping Tools (GMT) scripts~\cite{Lemenkova202228,Lemenkova202301}. To~determine the variation in a spatial extent of the mangroves in western segment of the Niger River Delta, ten VI representing the distribution of healthy vegetation were computed to discriminate the swamp forests from the other land cover types such as water, urban areas and agricultural lands. The~image processing was implemented using the GRASS GIS, version 8.2.1, \highlighting{\href{https://grass.osgeo.org/}{https://grass.osgeo.org/}}. The~GRASS GIS scripts were used in the \emph{'i.vi'} module, which was applied for computing the VI along with auxiliary~modules. 
+
+\begin{table}[H]
+\small%mdpi: We removed the vertical lines. Please confirm.
+\caption{\hl{Satellite} images used for computing ten VIs: Landsat 8-9 OLI/TIRS from the USGS. \textsuperscript{1}\label{tab1}}
+	\begin{adjustwidth}{-\extralength}{0cm}
+%		\newcolumntype{C}{>{\centering\arraybackslash}X}
+		\begin{tabularx}{\fulllength}{ p{1.6cm} p{1.8cm} p{7.0cm} p{4.0cm}  p{2.0cm} }
+			\toprule
+			\textbf{Date} & \textbf{Spacecraft} & \textbf{Landsat Product ID} & \textbf{Scene ID} & \textbf{Cloudiness} \\
+			\midrule
+			\hl{2013/12/20} & Landsat 8 & \makecell{LC08\_L1TP\_189056\_20131220\_20200912\_02\_T1} & LC81890562013354LGN01 & 6.46 \\
+			\hl{2015/12/26} & Landsat 8 & \makecell{LC08\_L1TP\_189056\_20151226\_20200908\_02\_T1} & LC81890562015360LGN01 & 17.54 \\
+			\hl{2021/12/18} & Landsat 8 & \makecell{LC09\_L1TP\_189056\_20211218\_20220121\_02\_T1} & LC91890562021352LGN01 & 32.32 \\
+			\hl{2022/12/29} & Landsat 9 & \makecell{LC08\_L1TP\_189056\_20221229\_20230104\_02\_T1} & LC81890562022363LGN00 & 0.59 \\
+			\bottomrule
+		\end{tabularx}
+	\end{adjustwidth}
+	\noindent{\footnotesize{\textsuperscript{1} The Sensor ID is common for all the scenes: Landsat 8-9 OLI/TIRS (Operational Land Imager and Thermal Infrared Sensor), Collection 2 Level-2. Path/row parameters are common for all the images: 189/56. Coverage: Niger River Delta, southern Nigeria, the~Bight of Benin. Image source: United States Geological Survey (USGS).}}
+\end{table}
+\unskip
+%----------- subsection ----------->
+\subsection{Data~Preprocessing}
+
+The GRASS GIS code used for data preprocessing is presented in Listing \ref{lst01}. It includes the steps of importing Landsat channels by the Geospatial Data Abstraction Library (GDAL) and selected auxiliary modules. The~GDAL library was applied to import raster images of the subset with 11 Landsat bands into the GRASS GIS mapset using the \hl{\emph{r.in.gdal}} module. After~importing, the~data were checked and listed using the \emph{g.list} module which lists the available files in a working folder. Then, the~metadata of the selected random bands were inspected using the \emph{gdalinfo} module. The~raster metadata were displayed using the \emph{r.info} module for further display of the raster~maps. 
+
+The principal approach here was the conversion of the digital numbers (DN) of the pixel values into the reflectance values which were used for computing the VI, as~shown in Listing \ref{lst01}. Afterwards, the~11 Landsat bands were reformatted and copied to match the input structure of the \emph{i.landsat.toar} through the \emph{g.copy} module. The~\emph{i.landsat.toar} module was used to remove the haze effect from the original scenes by correction of the top-of-atmosphere radiance in the Landsat bands. The~conversion of the DN pixel values into the reflectance values was implemented by using the DOS1 method. Upon~the completing of the data preprocessing, the~ten VI were computed using the processed bands by the \emph{i.vi} module, as~described below in the relevant~subsections. 
+
+%------------------------->
+\subsection{Atmospherically Resistant Vegetation Index (ARVI)}
+
+The Atmospherically Resistant Vegetation Index (ARVI) is based on using the spectral bands with wavelengths ranging between 0.650~{\textmu}m and 0.865~{\textmu}m. In~the Landsat 8-9 OLI sensor, this corresponds to the Bands Red (0.64--0.67~{\textmu}m) and NIR (0.85--0.88~{\textmu}m). Additionally, the~Blue band with wavelength of 0.45--0.51~{\textmu}m in the Landsat OLI/TIRS is distracted from the Red band according to Equation~(\ref{eq1}), \cite{134076,HUETE1997440}:
+\begin{equation}\label{eq1}
+	ARVI = \frac{NIR - (2.0\times Red - Blue)}{NIR + (2.0\times Red - Blue)}.
+\end{equation}
+%mdpi: The italics of the formula is not consistent with maintext,  please confirm whether to unify into italics. Please check whole tex and revise it. Following highlights are the same.
+
+\textls[15]{In the GRASS GIS, the~\hl{ARVI} was computed using Listing \ref{lst02} presented in the} \hl{Appendix}~\ref{A2}. 
+
+
+The advantage of ARVI is that it reduces the role of the atmospheric scattering that affects the images. Such effects are caused by the aerosols of both natural origin (e.g., rain and fog) or urban air pollution (e.g., dust or smog). Initially proposed and developed for the assessment of vegetation from the Earth Observing System (EOS) Moderate Resolution Imaging Spectroradiometer (MODIS) sensor, ARVI can also be applied for the Landsat OLI/TIRS sensors since it contains necessary spectral bands: Blue, Red and NIR.
+%------------------------->
+\subsection{Green Atmospherically Resistant Vegetation Index (GARI)}
+
+The Green Atmospherically Resistant Index (GARI) is more perceptive to a wide range of chlorophyll content in leaves of mangroves. This correlates with the difference between the reflectance of Green, Red and NIR bands, since the Green band is used in the formula of GARI, in~addition to Red and NIR spectral bands. Adding the Blue spectral band makes it less dependent on possible atmospheric effects such as aerosol conditions. The~theoretical computation of GARI is based on Equation~(\ref{eq2}), developed initially by~\cite{GITELSON1996289}:
+\begin{equation}\label{eq2}
+	GARI = \frac{NIR - (Green - (Blue - Red))}{NIR + (Green - (Blue - Red))}.
+\end{equation} 
+
+The computation of \hl{GARI} in the GRASS GIS was performed according to the embedded formula and performed by Listing \ref{lst03}, as~shown in the~\hl{Appendix}~\ref{A3}.
+
+%------------------------->
+\subsection{Green Vegetation Index (GVI)}
+
+The technique of the Tasselled Cap transformation in remote sensing was originally developed by~\cite{KauthThomas}. The~Tasselled Cap GVI provides more detailed information on the distinct features of the landscapes such as plant canopy, water bodies and bare land or sandy areas. The~method of the Tasselled Cap performs a transformation of the original pixels in bands into a new 4D dimension where the following parameters are separated: soil brightness index, green vegetation index (GVI), yellow stuff index, and~those related to atmospheric effects~\cite{Huang2002}. Of~these, we used the GVI, which is based on the estimation of greenness in leaves of mangrove canopies as information on values of the weighted sums of pixels derived from the color composites of the Landsat bands. The~computation of the Tasselled Cap Green Vegetation Index (GVI) was based on Equation~(\ref{eq3}) developed by~\cite{4157507}:
+\begin{equation}\label{eq3}
+\begin{split}
+	GVI = -0.2848 \times Blue - 0.2435 \times Green - 0.5436 \times Red + \\
+	+ 0.7243 \times NIR + 0.0840 \times SWIR1- 0.1800 \times SWIR2.
+\end{split}
+\end{equation}
+
+We used Listing \ref{lst04} for the computation of of the \hl{GVI}, as shown in the~\hl{Appendix}~\ref{A4}.
+
+%------------------------->
+\subsection{Difference Vegetation Index (DVI)}
+
+The advantage of the Difference Vegetation Index (DVI) consists in the discrimination of soil from the vegetation biomass. However, the~disadvantage is that it does not considers the difference between the spectral reflectance and radiance of soil surface caused by the atmospheric effects~\cite{TUCKER1979127}. The~use of the DVI is based on the ratio between the NIR and Red spectral bands~\cite{Naji2018} as shown in Equation~(\ref{eq4}):
+\begin{equation}\label{eq4}
+	DVI = (NIR - Red).
+\end{equation}
+
+This is the original formula used later in a modified version for computing the \hl{NDVI}, which is based on the \hl{DVI} in the adjusted way and has been applied in many works~\cite{TUCKER1979237,RONDEAUX199695,DATT1998111} as shown in Equation~(\ref{eq5}):
+\begin{equation}\label{eq5}
+	NDVI = \frac{(NIR - Red)}{(NIR + Red)}.
+\end{equation}
+
+The above formulae are embedded in the GRASS GIS in the function `dvi' of the module \emph{i.vi} used for computing the DVI as illustrated in Listing \ref{lst05}.
+
+%------------------------->
+\subsection{Perpendicular Vegetation Index (PVI)}
+
+The use of the PVI is based on the formula originally developed by~\cite{Richardson}. Sensitive to the atmospheric variations, the~PVI is intended to monitor the productivity of range, forest, and croplands. Similar to DVI, it measures the perpendicular distance of the pixels from the soil line, since it is based on the assumption that soil reflectance supplies the background signal of the vegetated surfaces. The~formula used for calculation of the PVI is presented in Equation~(\ref{eq6}):
+\begin{equation}\label{eq6}
+	PVI=\frac{1}{\sqrt{a^2+1}} \times (NIR - aR - b),
+\end{equation} 
+
+\noindent where \emph{a} and \emph{b} are constants indicating slope and gradient of the soil line and \emph{R} is a Red band (for the Landsat OLI/TIRS sensor, it is a spectral Band 4). However, the~embedded formula of GRASS GIS was slightly modified, because~the calculation of the PVI here is made using the concept of ``isovegetation''. The~isovegetation line shows the distribution of area covered by equal types of vegetation. Therefore, the~pixels in this case were parallel to the soil line which was assigned to a = 1. Hence, the~constants for soil were removed and the computation of the PVI was adjusted. In~this case, it included the sine and cosine of the NIR and Red channels using the following formula shown in Equation~(\ref{eq7}), \cite{PERRY1984169}:
+\begin{equation}\label{eq7}
+	PVI = sin(a)NIR-cos(a)Red.
+\end{equation} 
+
+Using the syntax of GRASS GIS, we defined the \hl{PVI} as follows in Listing \ref{lst06}, shown in the~\hl{Appendix}~\ref{A6}.
+%mdpi: We changed Appendix to Appendix A.6., Please confirm.
+
+\subsection{Global Environmental Monitoring Index (GEMI)}
+
+The Global Environmental Monitoring Index (GEMI) was originally developed by Pinty and Verstraete in 1992~\cite{PintyVerstraete}. The~formula of GEMI has a nonlinear nature and is more complex compared to the previous indices, see Equation~(\ref{eq8}). It was designed for global environmental monitoring using the remote sensing data, which explains its improved performance, which better considers all types of vegetation.
+\begingroup\makeatletter\def\f@size{9}\check@mathfonts
+\def\maketag@@@#1{\hbox{\m@th\normalsize\normalfont#1}}
+\begin{align}
+GEMI = \Bigl( \frac{2\times[(NIR \times NIR)-(Red \times Red)] + 1.5\times NIR+0.5\times Red}{NIR + Red + 0.5} \times \nonumber\\
+        (1 - 0.25 \times \frac{2 \times[(NIR \times NIR)-(Red \times Red) + 1.5 \times NIR+0.5 \times Red]}{NIR + Red + 0.5} \Bigr ) - \frac{Red - 0.125}{1 - Red}. \label{eq8}
+\end{align}
+\endgroup
+
+The algorithm for computing and plotting the \hl{GEMI} is presented in Listing \ref{lst07}, shown in~\hl{Appendix}~\ref{A7}.
+
+Although GEMI is, in general, comparable to NDVI, it shows less sensitivity to atmospheric effects. Instead, it is influenced by the brightness of the bare soil. For~these reasons, it does not work well in desert arid and semi-arid regions covered by sands, rocks, and soil with sparse or no vegetation. For~the case of southern Nigeria, however, GEMI works well since tropical dense forests are suitable for the performance of this index. Moreover, the~decline of mangroves is well-depicted using a comparison of GEMI several satellite~images.
+
+\subsection{Normalized Difference Water Index (NDWI)}
+
+The values of the Normalized Difference Water Index (NDWI) are strongly dependent on the water content in the landscapes. Hence, the~NDWI serves as an accurate indicator of the water areas and water bodies (rivers, lakes, estuaries, deltas). The~NDWI is derived from the NIR and Green bands using the original formula developed by~\cite{McFeeters} as a ratio of Green and NIR spectral bands, as~seen in Equation \eqref{eq9}:
+\begin{equation}\label{eq9}
+	NDWI = \frac{green - NIR}{green + NIR}.
+\end{equation} 
+
+Another formula of the NDWI was proposed by~\cite{GAO1996257}, which is a different index withthe same name, since both indices were developed simultaneously in 1996. The~NDWI by~\cite{GAO1996257} focuses on the identification of water content in the plant leaves using the formula presented in Equation \eqref{eq10}:
+\begin{equation}\label{eq10}
+	NDWI = \frac{NIR - SWIR}{NIR + SWIR}.
+\end{equation} 
+
+However, this is more for the semi-arid and arid regions covered by savannah. In~this study, we used the NDWI proposed by~\cite{McFeeters}, using Green and NIR bands for detecting areas covered by Niger River Delta, tributaries and lagoon.  Using the embedded algorithm in the GRASS GIS, we can identify the NDWI using its syntax by the script shown in Listing \ref{lst08} and demonstrated in~\hl{Appendix}~\ref{A8}.
+
+\subsection{Second Modified Soil Adjusted Vegetation Index (MSAVI2)}
+
+The Second Modified Soil Adjusted Vegetation Index (MSAVI2) was adjusted to provide accurate data in sparse vegetation or plant canopies with a deficit of chlorophyll. Originally developed as MSAVI by Qi~et~al. in 1992~\cite{QI1994119}, MSAVI2 was slightly modified by Qi~et~al. in 1994~\cite{Qi1994ExternalFC} with a novel developed formula presented in Equation~(\ref{eq11}) which aims at better identifying the bare soil between the seedlings during leaf development, which is useful for agricultural mapping.
+\begin{equation}\label{eq11}
+	MSAVI2 = \frac{1}{2} \times \Bigl(2 \times NIR+1-\sqrt{(2 \times NIR+1)^2-8 \times (NIR-red)}\Bigr).
+\end{equation} 
+
+According to the analysis of the parameters of \hl{MSAVI} (NIR and Red bands in complex combinations) and its documentation, it allows the precise detection of the seasonal vegetation patterns since it includes a soil factor which varies in moisture by different seasons in Nigeria. Moreover, MSAVI2 works well in the areas of the sparse and scattered vegetation, for~instance, occupied by urban infrastructure, covered by buildings and roads in the agglomerations and urbanized areas, where it shows good correlation with the NDVI~\cite{FABIJANCZYK2022100721}. Therefore, the~MSAVI2 is useful for detecting urban growth in the rapidly developing towns of southern Nigeria. In~GRASS GIS, MSAVI2 was computed using \hl{i.vi} module by Listing \ref{lst09}.
+
+\subsection{Infrared Percentage Vegetation Index (IPVI)}
+
+The specifics of the Infrared Percentage Vegetation Index (IPVI) consist in the ratio-based computationally fast approach with values ranging from 0 to 1. As~one can see from the formula in Equation~(\ref{eq12}), the~IPVI is based on the ratio between the Red and NIR spectral bands. In~this regard, it is similar and linearly equivalent to the NDVI, yet is implemented in a more straightforward way~\cite{CRIPPEN199071}:
+\begin{equation}\label{eq12}
+	IPVI = \frac{NIR}{(NIR+Red)}.
+\end{equation} 
+
+To compute and plot the IPVI, we used the GRASS GIS script presented in Listing \ref{lst10} in the~\hl{Appendix}~\ref{A10}.
+
+\subsection{Enhanced Vegetation Index (EVI)}
+
+The Enhanced Vegetation Index (EVI) was designed to quantify vegetation greenness by the combination of NIR, Red, and Blue spectral bands. The~extended formula of EVI includes the corrections for the atmospheric conditions and considers the effects from the canopy background. Due to such properties, EVI is well-adjusted to identify the areas with dense vegetation which is suitable for mangrove mapping~\cite{HUETE2002195}. Similar to the NDVI, the~values of EVI range from $-$1 to +1, with~the range indicating healthy vegetation located between 0.2 and 0.8. The~formula of EVI is presented in the Equation~(\ref{eq13}):
+\begin{equation}\label{eq13}
+EVI = 2.5 \times \Bigl(\frac{NIR - Red}{NIR + 6.0 \times Red - 7.5 \times Blue + 1.0}\Bigr).
+\end{equation} 
+
+In the GRASS GIS, \hl{EVI} was technically implemented using Listing \ref{lst11}.
+
+%----------- section ----------->
+\section{Results}
+
+In this section, we compare and discuss the results of the computed VI with regard to their performance and suitability to identify mangrove habitats and to discriminate them against other land cover types along the coasts of southern Nigeria. The~results were obtained using the GRASS GIS framework, which aimed at image processing and analysis. Ten diverse vegetation indices were calculated with the aim of finding the variations in the distribution of the vegetation patterns and, in particular, the mangrove habitats of the coastal Nigeria. The~VI were visualized in maps and evaluated over several years for the target region in the western segment of the Niger River Delta. Sidewise histograms are placed on the left of the legend in each of the images, demonstrating the data distribution within the study area for each~index. 
+
+Computing the vegetation indices using algorithms embedded in `i.ivi' and scripting approach was integrated consistently for the comparative analysis of time series of the Landsat 8-9 OLI/TIRS images covering the Niger River Delta. The~GRASS GIS modules were used in the scripting approach for automation of data processing and accurate satellite image analysis. To~produce the color-consistent images and evaluate the spatio-temporal changes, these maps were derived from the computed vegetation indices and visualized in the identical color ranges for each set of the four images. The~results demonstrated that the scripting methods of the GRASS GIS are effective for mapping the VI in topical regions. Specifically, the~evaluation of the VI is useful for the comparative assessment of vegetation patterns and environmental monitoring in coastal Nigeria where applying and practically evaluating the programming methods for remote sensing data processing supports research on mangrove distribution through advanced cartographic~tools. 
+
+%----------- subsection ----------->
+\subsection{Difference Vegetation Index (DVI)}
+
+The DVI is visualized in Figure~\ref{fig03}. The~DVI (Figure \ref{fig03}) is a slope-based type of VI which is more straightforward to compute compared to the NDVI, which is beneficial for mangroves since they are located at the interface between land and sea. The~DVI is sensitive to the total content of vegetation and density of canopy. Moreover, it well-distinguishes the areas between the bare soil and vegetation canopies in general and identifies urban areas in the small~settlements.
+
+The majority of the values obtained for 2013 are located within the range of 0.06 to 0.18 since it is the index sensitive to variations in chlorophyll content. The~interpretation is as follows. The~lowest values around zero indicate bare soil; slightly higher values from 0.10 to 0.12 stand for vegetation canopies, while negative values colored in blue show water bodies. The~values of 2015  show a similar data range with a slight increase of upper values towards 0.20. The~distribution of mangrove swamps is visible as a large slate-blue-colored spot in the left low corner of the image. The~comparison of several images of 2013 and 2015 to 2021 and 2022 shows the decrease in this areas with mangroves, replaced by the values dominated by bare soils and other types of vegetation, colored in green. The~bright red colors indicate tropical forests located in the northern part of the~area.
+
+\begin{figure}[H]
+\hspace{-32pt}\makebox[1.00\linewidth][r]{%
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.3cm]{Fig_03a}
+		\caption{\centering 2013}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.3cm]{Fig_03b}
+		\caption{\centering 2015}
+	\end{subfigure}%
+}\\
+\vfill \vspace{1mm}
+\hspace{-32pt}\makebox[1.00\linewidth][r]{%
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.3cm]{Fig_03c}
+		\caption{\centering 2021}
+	\end{subfigure}
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.3cm]{Fig_03d}
+		\caption{\centering 2022}
+	\end{subfigure}%
+}\caption{\hl{DVI} {of} the Landsat 8-9 OLI/TIRS of Niger River Delta: (\textbf{a}) 2013, (\textbf{b}) 2015 (\textbf{c}) 2021, (\textbf{d}) 2022.}\label{fig03}
+\end{figure}
+\unskip%mdpi: Please change the hyphen (-) into a minus sign (−, “U+2212”), e.g., “-1” should be “−1”; The caption is duplicated, please confirm if the year on the figure can be deleted.
+%mdpi: The -0.10 in the figure is incomplete, please revised.
+
+%----------- subsection ----------->
+\subsection{Atmospherically Resistant Vegetation Index (ARVI)}
+
+The ARVI (Figure \ref{fig04}) was designed for regions of high atmospheric aerosol content as a robust modification of the NDVI. Therefore, it corrects the image scenes for the effects from the atmospheric scattering and air contamination related to dust and smog in the industrial areas where a high concentration of atmospheric aerosols is presented due to the oil exploration. The~sideway histograms showing distribution of pixels on the images show various values for the years 2013, 2015, 2021, and 2022. Thus, the~histogram for 2013 shows a classic bell-shaped data distribution with values ranging from $-$0.20 to +0.20, distributed equally on the histogram with a prominent mound in the center and identical tapering to the left and right flings of the~histogram. 
+
+The data for 2015 are distributed from $-$0.10 to +0.60, showing a more oblique data distribution with more data distributed within the positive interval which indicates the increased areas covered by green healthy vegetation. The~data for 2021 show variation with the diapason from $-$0.20 to 0.80 and the data for 2022 from 0.00 to 0.85 with residuals in the negative values that indicate water areas. This indicate the increase in the areas covered by the tropical forests in the northern part of the area, while decreased area of mangroves. As~mentioned above, the~advantage of using ARVI for Nigeria is that it reduces the impacts of the aerosols such as such as rain, fog, dust, smoke, or~air pollution by using the Blue band in making atmospheric corrections on the Red band. This is beneficial for Nigeria in the areas of industrial activities such as oil exploration where higher contamination of air is reported. Another important factor is a high humidity, which is around 80\% all year throughout for southern Nigeria, which makes ARVI beneficial specifically in these regions since it makes corrections for atmospheric scattering caused by high humidity and~moisture.
+
+\begin{figure}[H]
+\hspace{-32pt}\makebox[1.00\linewidth][r]{%
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Fig_04a}
+		\caption{\centering 2013}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Fig_04b}
+		\caption{\centering 2015}
+	\end{subfigure}%
+}\\
+\vfill \vspace{1mm}
+\hspace{-32pt}\makebox[1.00\linewidth][r]{%
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Fig_04c}
+		\caption{\centering 2021}
+	\end{subfigure}
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Fig_04d}
+		\caption{\centering 2022}
+	\end{subfigure}%
+}\caption{\hl{ARVI} computed from the Landsat 8-9 OLI/TIRS images of Niger River Delta for four years: (\textbf{a}) 2013, (\textbf{b}) 2015 (\textbf{c}) 2021, (\textbf{d}) 2022.}\label{fig04}
+\end{figure}%mdpi: Please change the hyphen (-) into a minus sign (−, “U+2212”), e.g., “-1” should be “−1”.; The caption is duplicated, please confirm if the year on the figure can be deleted.
+%mdpi: The -1.00 in the figure is incomplete, please revised.
+\unskip
+
+%----------- subsection ----------->
+\subsection{Green Atmospherically Resistant Vegetation Index (GARI)}
+
+The results of the computed Green Atmospherically Resistant Vegetation Index (GARI) (Figure \ref{fig05}) rely on the estimated chlorophyll content in plants linked to photosynthetic activity. Therefore, this index demonstrates the higher positive values in the areas with healthy and dense vegetation canopies, which is related to an increase in photosynthetic activity of leaves, while negative values indicate water areas as seen as a sharp peak in the histogram shape. For~all four images, the~results of Landsat OLI/TIRS images processing with GARI algorithm produce pixel values ranging from $-$0.50 to +1.0. Based on the GARI results, the~peak values in data variations were analyzed to facilitate the visual interpretation of the obtained maps, namely the range of values. Specifically for 2013, the~majority of positive values range from 0.15 to 0.45, for~2015---from 0.30 to 0.90 with a more gentle gradual shape of histogram; for 2021, the histogram has a rather narrow shape with values varying from 0.35 to 0.75, and~for 2022, from 0.20 to 0.80, see Figure~\ref{fig05}. Such variations illustrate changes in vegetation coverage and the greenness of canopies in mangroves and other vegetation types in the Niger River~Delta. 
+
+
+\begin{figure}[H]
+\hspace{-32pt}\makebox[1.00\linewidth][r]{%
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Fig_05a}
+		\caption{\centering 2013}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Fig_05b}
+		\caption{\centering 2015}
+	\end{subfigure}%
+}\\
+\vfill \vspace{1mm}
+\hspace{-32pt}\makebox[1.00\linewidth][r]{%
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Fig_05c}
+		\caption{\centering 2021}
+	\end{subfigure}
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Fig_05d}
+		\caption{\centering 2022}
+	\end{subfigure}%
+}\caption{\hl{GARI} computed from the Landsat 8-9 OLI/TIRS images of Niger River Delta for four years: (\textbf{a}) 2013, (\textbf{b}) 2015 (\textbf{c}) 2021, (\textbf{d}) 2022.}\label{fig05}
+\end{figure}%mdpi: Please change the hyphen (-) into a minus sign (−, “U+2212”), e.g., “-1” should be “−1”.; The caption is duplicated, please confirm if the year on the figure can be deleted.
+%mdpi: The -0.50 in the figure is incomplete, please revised.
+
+In 2013, the~mangrove forests were dominated by the high GARI values, i.e.,~between 0.15 and 0.20, while in the 2015, the~low-medium values corresponding to the  mangroves are replaced by the higher values (0.80 to 1.00) that indicate the other vegetation types (colored in red in Figure~\ref{fig05}). Further, values of histograms increased which indicate the replacement of the mangroves by other vegetation types (e.g., agricultural crop areas) with bright green canopies that correspond to higher values of GARI. The~mangrove habitats with moderate values of GARI are represented by the relatively scattered areas in the southern edge of the study area in the Niger River~Delta.
+
+This performance of GARI is explained by its high sensitivity to the nuances of chlorophyll content in plants since the computation of GARI is based on the use of Green, Blue and NIR spectral bands. Similar to ARVI and in contrast to NDVI, it is less sensitive to the atmospheric effects such as aerosol due to the rigorous optimization of its algorithm. Moreover, GARI is sensitive to the vegetation fraction in the canopy as can be seen in the interspersed pattern of diverse colors which represent different values of the index. As~a development of the present study, GARI can be further applied for the estimation of other biophysical properties of mangrove canopy such as Leaf Area Index (LAI), ratio of absorbed photosynthetically active radiation, and net primary production for the environmental monitoring of the Niger River~Delta.
+%----------- subsection ----------->
+\subsection{Green Vegetation Index (GVI)}
+
+The GVI is useful for classifying the land cover as it recognises the density and vigor of plants in green vegetation (bright red areas in Figure~\ref{fig06}), detects stressed plants (light blue areas in Figure~\ref{fig06}), and accurately identifies wetland areas (dark areas in Figure~\ref{fig06}). The~values of GVI range from $-$0.20 to 0.60 for 2013, and~then change to the range between $-$0.20 and 0.50 in 2015, which indicates a slight decrease in values corresponding to the green vegetation, while the urban spaces slightly increase; this can also be seen when comparing the area covered by the Benin City for 2013 and 2015. Further analysis of the GVI images for 2021 and 2022 shows the range in values varying from $-$0.20 to +0.50 for 2021 and from $-$1.00 to +0.50 for 2022 with the peaks in histogram in the narrow range of $-$0.10 to +0.10 for 2021 and from $-$0.5 to 0.15 for 2022, respectively. Here, the mean mangrove GVI values are around 10, with~a maximum value of 15 and a minimum value of~5.0. 
+
+\begin{figure}[H]
+\hspace{-32pt}\makebox[1.00\linewidth][r]{%
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Fig_06a}
+		\caption{\centering 2013}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Fig_06b}
+		\caption{\centering 2015}
+	\end{subfigure}%
+}\\
+\vfill \vspace{1mm}
+\hspace{-32pt}\makebox[1.00\linewidth][r]{%
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Fig_06c}
+		\caption{\centering 2021}
+	\end{subfigure}
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Fig_06d}
+		\caption{\centering 2022}
+	\end{subfigure}%
+}\caption{\hl{GVI} computed from the Landsat 8-9 OLI/TIRS images of Niger River Delta for four years: (\textbf{a}) 2013, (\textbf{b}) 2015 (\textbf{c}) 2021, (\textbf{d}) 2022.}\label{fig06}
+\end{figure}%mdpi: Please change the hyphen (-) into a minus sign (−, “U+2212”), e.g., “-1” should be “−1”.; The caption is duplicated, please confirm if the year on the figure can be deleted.
+%mdpi: The -1.00 in the figure is incomplete, please revised.
+
+In the mangrove forest coverage in 2013, the~obtained values of GVI have a range between 0.2 and 0.8, while for the later periods (2015, 2021 and 2022), they demonstrate lower values which can be seen on the histograms. Such fluctuations in the values of GVI indicate the environmental changes in the study area and,~specifically, the~decline of the spatial extent of the mangrove swamps. The~reasons for the decline of the mangroves areas include the effects from climate changes and anthropogenic activities such as logging, industrial and oil exploration activities, farming, and fishing. The~effects from oil exploration and related engineering works, such as dredging, contribute to the decline of mangroves mostly through water contamination. Moreover, the~expansion of the urban areas and related air pollution, as well as the effects from climate change, also create negative conditions for mangrove habitats and all contribute to the gradual extinction of~mangroves.
+
+%----------- subsection ----------->
+
+\subsection{Perpendicular Vegetation Index (PVI)}
+
+The distance-based PVI index (Figure \ref{fig07}) computes the perpendicular distance of the pixel from the soil line which linearly correlates with the area covered by the vegetation canopy. Therefore, higher PVI values which are shown as red colors point at the effects from brighter soil background in the agricultural areas in the Edo State of Nigeria. According to the sidewise histograms, the~majority of values for 2013 roughly range from 0.10 to 0.22; for~2015, from 0.06 to 0.18; for 2021, from 0.05 to 0.18 with a less distinct peak; and for 2022, from 0.06 to 0.22. The~disadvantage of the PVI consists in the atmospheric effects, where it performs less accurately compared to ARVI and~GARI. 
+
+\begin{figure}[H]
+\hspace{-32pt}\makebox[1.00\linewidth][r]{%
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Fig_07a}
+		\caption{\centering 2013}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Fig_07b}
+		\caption{\centering 2015}
+	\end{subfigure}%
+}\\
+\vfill \vspace{1mm}
+\hspace{-32pt}\makebox[1.00\linewidth][r]{%
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Fig_07c}
+		\caption{\centering 2021}
+	\end{subfigure}
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Fig_07d}
+		\caption{\centering 2022}
+	\end{subfigure}%
+}\caption{\hl{PVI} computed from the Landsat 8-9 OLI/TIRS images of Niger River Delta for four years: (\textbf{a}) 2013, (\textbf{b}) 2015 (\textbf{c}) 2021, (\textbf{d}) 2022.}\label{fig07}
+\end{figure}%mdpi: Please change the hyphen (-) into a minus sign (−, “U+2212”), e.g., “-1” should be “−1”.; The caption is duplicated, please confirm if the year on the figure can be deleted.
+%mdpi: The -0.10 in the figure is incomplete, please revised.
+
+The trend to broaden the range of values is visible in Figure~\ref{fig07} with the inclusion of lower values. Thus, the~green areas of the mangrove swamps have most values between 0.20 and 0.30 compared to the other types of vegetation (rain forests and woodlands) which cover the higher values from 0.30 to 0.80. The~decline in mangrove forests is visible in the decrease of dark blue-colored areas in the lower left segment of the images. The~PVI corrects for the difference between the soil background which, however, has a better performance in arid and semiarid regions. As~for tropical regions, such as Nigeria with its tropical climate and dense swamp forests, PVI is less effective and suitable compared to IPVI and MSAVI2. The~latter two indices better show the difference in state of the mangrove forests. Additionally, the~PVI is strongly affected by the atmospheric effects which are significant for this region, since southern Nigeria is located in the wet equatorial climate, where the mean annual temperature is 26.9°C and high relative humidity is above 88\% for Lagos. It is also characterized by a high cloudiness throughout the~country. 
+
+%----------- subsection ----------->
+\subsection{Global Environmental Monitoring Index (GEMI)}
+
+The visualized GEMI in Figure~\ref{fig08} shows the discrimination between the major vegetation classes and other land cover areas such as water bodies (dark purple areas of the Bight of Benin and the Niger River with its tributaries), landscapes of the mangrove forests (lilac color), fresh water swamps (cyan color), and rain forests near the area of the Benin City (green color), as~well as woodlands with tall grass savannah (bright red color). 
+
+\begin{figure}[H]
+\hspace{-32pt}\makebox[1.00\linewidth][r]{%
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Fig_08a}
+		\caption{\centering 2013}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Fig_08b}
+		\caption{\centering 2015}
+	\end{subfigure}%
+}\\
+\vfill \vspace{1mm}
+\hspace{-32pt}\makebox[1.00\linewidth][r]{%
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Fig_08c}
+		\caption{\centering 2021}
+	\end{subfigure}
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Fig_08d}
+		\caption{\centering 2022}
+	\end{subfigure}%
+}\caption{\hl{GEMI} computed from the Landsat 8-9 OLI/TIRS images of Niger River Delta for four years: (\textbf{a}) 2013, (\textbf{b}) 2015 (\textbf{c}) 2021, (\textbf{d}) 2022.}\label{fig08}
+\end{figure}%mdpi: Please change the hyphen (-) into a minus sign (−, “U+2212”), e.g., “-1” should be “−1”.; The caption is duplicated, please confirm if the year on the figure can be deleted.
+%mdpi: The -0.50 in the figure is incomplete, please revised.
+
+According to the sidewise histograms, the~majority of values for year 2013 roughly range from 0.40 to 0.60; for~2015, from 0.35 to 0.60; for 2021, from 0.32 to 0.62; and for 2022, from 0.30 to 0.70. GEMI corrects the computation for atmospheric and soil-related changes, mostly in the areas where bare soil is presented, which is identified by the dark pixels on the images. Hence, the~computed GEMI indicates the dynamics in vegetation activity and the separated areas of the wetlands and the dry lands. Furthermore, GEMI highlights the urban areas (dark blue) separated from the natural landscapes (red color), and~other land cover types such as water bodies (dark lilac color), mangroves with fresh water swamps (light purple), and rainforests (cyan color). The~sparse vegetation areas and agricultural fields are colored in yellow to orange hues, while the exposed surfaces are colored~green.
+
+As discussed above, the~distribution and health conditions of mangroves in th Niger River Delta exhibits complex characteristics due to the cumulative effects from climate and anthropogenic factors. Several species might be presented, including the presence of other vegetation species with similar spectral characteristics which complicate the discrimination of mangroves from similar vegetation types. Furthermore, the~distribution of mangroves is controlled by variation in salinity. Therefore, as~demonstrated above, the~distribution of mangrove habitats varies on the Landsat images taken for different~years.
+
+\subsection{Normalized Difference Water Index (NDWI)}
+
+The values of the NDWI range from $-$0.90 to $-$0.70 in 2013, and from~$-$0.90 to $-$0.50 according to the sideway histograms visualized in Figure~\ref{fig09}. 
+
+\begin{figure}[H]
+\hspace{-32pt}\makebox[1.00\linewidth][r]{%
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Fig_09a}
+		\caption{\centering 2013}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Fig_09b}
+		\caption{\centering 2015}
+	\end{subfigure}%
+}\\
+\vfill \vspace{1mm}
+\hspace{-32pt}\makebox[1.00\linewidth][r]{%
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Fig_09c}
+		\caption{\centering 2021}
+	\end{subfigure}
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Fig_09d}
+		\caption{\centering 2022}
+	\end{subfigure}%
+}\caption{\hl{NDWI} computed from the Landsat 8-9 OLI/TIRS images of Niger River Delta for four years: (\textbf{a}) 2013, (\textbf{b}) 2015 (\textbf{c}) 2021, (\textbf{d}) 2022.}\label{fig09}
+\end{figure}%mdpi: Please change the hyphen (-) into a minus sign (−, “U+2212”), e.g., “-1” should be “−1”.; The caption is duplicated, please confirm if the year on the figure can be deleted.
+%mdpi: The -1.00 in the figure is incomplete, please revised.
+
+As a general trend, this indicates a decrease in high values corresponding the green vegetation canopies. Thus, for~2021 and 2022, the~range of values lies within the interval from $-$0.85 to $-$0.45 for 2021, and~from $-$0.80 to $-$0.40 for 2022. For~the latter, the histogram has an oblique shape with a peak visibly inclined towards the lower values. Such variations in values correspond to the environmental changes in the Niger Delta River and a gradual decline in the distribution of the mangrove swamps. The~identification of vegetation biomass relies on the contrast between the spectral reflectance of the land cover types corresponding to the soil and vegetation. Therefore, the~NIR and Red wavelengths surpass other spectral bands of the Landsat images, which is beneficial for the discrimination of the green canopies of~mangroves.
+
+\subsection{Second Modified Soil Adjusted Vegetation Index (MSAVI2)}
+
+The general range of values of MSAVI2 varies from $-$1 to 1, which is similar to the classic NDVI index. More specifically for the case of southern Nigeria, the~data in 2013 show that the majority of values range between 0.05 to 0.30 according to the histogram; for 2015, from 0.05 to 0.40; for 2021, from 0.00 to 0.40 with small fluctuations of the negative data range from $-$0.15 to 0.00; in 2022, the data mostly vary from $-$0.10 to 0.50, see Figure~\ref{fig10}. 
+
+\begin{figure}[H]
+\hspace{-32pt}\makebox[1.00\linewidth][r]{%
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Fig_10a}
+		\caption{\centering 2013}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Fig_10b}
+		\caption{\centering 2015}
+	\end{subfigure}%
+}\\
+\vfill \vspace{1mm}
+\hspace{-32pt}\makebox[1.00\linewidth][r]{%
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Fig_10c}
+		\caption{\centering 2021}
+	\end{subfigure}
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Fig_10d}
+		\caption{\centering 2022}
+	\end{subfigure}%
+}\caption{\hl{MSAVI}2 computed from the Landsat 8-9 OLI/TIRS images of Niger River Delta for four years: (\textbf{a}) 2013, (\textbf{b}) 2015 (\textbf{c}) 2021, (\textbf{d}) 2022.}\label{fig10}
+\end{figure}%mdpi: Please change the hyphen (-) into a minus sign (−, “U+2212”), e.g., “-1” should be “−1”.; The caption is duplicated, please confirm if the year on the figure can be deleted.
+%mdpi: The -1.00 in the figure is incomplete, please revised.
+
+The values of MSAVI2 in the range 0.2--0.4 indicate areas covered with grasslands and shrubs which are situated mostly in the urbanized parts of the settlements such as Onitsha, Sapele, Warri, and the Benin City. Therefore, the~use of the MSAVI2 index is profitable for highlighting the heterogeneity of soil and vegetation patterns which are visible in such areas. Mangrove forests on the maps of MSAVI2 are colored in the light orange color (0.05 to 0.10); water areas---in dark orange tones (0.2 to 0.4); fresh water swamps---in light green; rainforests---in blue colors (0.20 to 0.25), urban spaces---in orange (0.1 to 0.2); and agricultural lands---in yellow colors (0.05 to 0.10). The~range of the slightly negative values ($-$0.20 to $-$0.10) indicates bare soil and areas of the exposed land, see Figure~\ref{fig10}.
+
+\textls[-15]{In contrast to SAVI, MSAVI reduces the effects from the bare soil, which is especially  for the agricultural areas. Thus, it presents the improved version of the Soil Adjusted Vegetation Index (SAVI). In~turn, SAVI better adjusts the values in the areas with sparse vegetation coverage and low density of the plant canopy, which helps to indicate the areas with the decreased vegetation or high deforestation rates. Since MSAVI2 uses the combination of the ratio of NIR (wavelength 0.85--0.88~{\textmu}m) and Red (wavelength \mbox{0.64--0.67~{\textmu}m}), where the values reflect the amount of the chlorophyll presented in the plant canopy, it is suitable for estimating the biomass, grass/plant canopy or LAI, because~healthy moist vegetation of mangroves reflects high in the NIR spectrum while absorbs more in the Red. The~contrast between these values enables us to highlight the areas of the distribution of mangrove~habitats.}
+
+\subsection{Infrared Percentage Vegetation Index (IPVI)}
+
+The distinct feature of the IPVI (Figure \ref{fig11}) consists in its always-positive~range. 
+\vspace{-3pt}
+\begin{figure}[H]
+\hspace{-32pt}\makebox[1.00\linewidth][r]{%
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Fig_11a}
+		\caption{\centering2013}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Fig_11b}
+		\caption{\centering2015}
+	\end{subfigure}%
+}\\
+\vfill \vspace{1mm}
+\hspace{-32pt}\makebox[1.00\linewidth][r]{%
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Fig_11c}
+		\caption{\centering 2021}
+	\end{subfigure}
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Fig_11d}
+		\caption{\centering2022}
+	\end{subfigure}%
+}\caption{\hl{IPVI} computed from the Landsat 8-9 OLI/TIRS images of Niger River Delta for four years: (\textbf{a}) 2013, (\textbf{b}) 2015 (\textbf{c}) 2021, (\textbf{d}) 2022.}\label{fig11}
+\end{figure}%mdpi: Please change the hyphen (-) into a minus sign (−, “U+2212”), e.g., “-1” should be “−1”.; The caption is duplicated, please confirm if the year on the figure can be deleted.
+%mdpi: The -1.00 and 0.00 in the figure is incomplete, please revised.
+
+Thus, the~data vary from 0 to +1, unlike the typical range of $-$1 to +1 for the NDVI and other indices. Specifically, according to the histogram, for~the year 2013, the~majority of the IPVI values range from 0.50 to 0.70; for 2015, from 0.50 to 0.80 with a more sharp increase in values; for 2021, from 0.70 to 0.90; and for 2022, from \hl{0.60} to 0.90. Thus, one can note the trend of the generally increasing higher values that indicate rainforests while the area of mangroves declines. The~mangroves are depicted by the dark blue colors, gradually replaced by the areas of light green color when comparing the data for 2013 with other years and, specifically, 2022, Figure~\ref{fig11}.%mdpi: We changed 0,60 to 0.60, please confirm.
+
+Although the IPVI is functionally similar to the NDVI, it is better-adjusted for detecting the vegetation in small villages and urban spaces due to a more fine gradation of the positive values. Moreover, the~analysis of values of the IPVI enabled us to better identify smaller spots of urban vegetation coverage as well as mangrove wetlands in the Niger River Delta. Further, IPVI is well-adjusted to classify urban ecosystems since the areas of the main cities in the study area are distinguishable from the nature vegetation: Warri, Onitsha, and Benin City as the largest cities, and~minor settlements such as Agbor, Sapele, and Adanisievbe villages in the Delta~State.
+
+\subsection{Enhanced Vegetation Index (EVI)}
+
+The values of EVI (Figure \ref{fig12}) quantify vegetation greenness in the Niger River~Delta. 
+
+\begin{figure}[H]
+\hspace{-32pt}\makebox[1.00\linewidth][r]{%
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Fig_12a}
+		\caption{\centering2013}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Fig_12b}
+		\caption{\centering2015}
+	\end{subfigure}%
+}\\
+\vfill \vspace{1mm}
+\hspace{-32pt}\makebox[1.00\linewidth][r]{%
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Fig_12c}
+		\caption{\centering2021}
+	\end{subfigure}
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Fig_12d}
+		\caption{\centering2022}
+	\end{subfigure}%
+}\caption{\hl{EVI} computed from the Landsat 8-9 OLI/TIRS images of Niger River Delta for four years: (\textbf{a}) 2013, (\textbf{b}) 2015 (\textbf{c}) 2021, (\textbf{d}) 2022.}\label{fig12}
+\end{figure}%mdpi: Please change the hyphen (-) into a minus sign (−, “U+2212”), e.g., “-1” should be “−1”.; The caption is duplicated, please confirm if the year on the figure can be deleted.
+
+The general data range for this index is between the values of $-$1 and +1. However, specifically for the case of Niger River Delta in southern Nigeria, most of the values are distributed between 0.00 and 0.30 in 2013, while for 2015, the~highest values increase up to 0.40. Negative values indicate water areas in all the cases, while mangrove fields colored by the bright green correspond to values ranging from 0.10 to 0.15, see Figure~\ref{fig12}.  
+
+\subsection{Statistical~Analysis}
+
+The statistical analysis of the size and number of pixels representing various classes over the study area was performed in R using the K-means method applied for Landsat bands 4-3-2 in natural color composites. {Ten} vegetation classes {correspond} to the coastal landscapes {of} southern Nigeria, see Table~\ref{tab2}. The~results of the classification by K-means clustering show that 10 distinct classes including mangrove classes can be derived from the Landsat OLI/TIRS data. These include the following land cover classes: (1) mangrove swamps; (2) water areas (river and shallow areas); (3) water areas (coastal areas of the Bight of Benin); (4) forests; (5) built-up urban areas and settlements; (6) bare soil and exposed land surfaces; (7) woodland; (8) agricultural areas; (9) farmland/grasslands; and (10) other vegetation types. The~classification is based on the modified existing studies~\cite{rs12213619,nhess1433172014,Eyoh,Udoka}. The~table is sorted by the ascending values of~pixels. 
+
+The land cover analysis of the Niger River Delta was implemented in R using the K-means clustering method of the unsupervised automatic classification. The~approach of the land cover types identification using this method was performed by the partition of the images through sampling the pixels evaluated for their DN values and assigning them to the target land  cover classes. It shows a distribution of pixels by clusters of mangroves and other land cover types using clustering of the four images in Landsat OLI/TIRS band combinations 4-3-2, i.e.,~natural band composites. The~land cover categories corresponding to the mangroves showed gradual losses from 535,828.3 in 2013 (ID Class 3 for 2013), to~432,318.7 in 2018 (ID Class 4 for 2018), 408,108.2 in 2021 (ID Class 5 for 2021), and 416,219.5 in 2022 (ID Class 4 for 2022), Table~\ref{tab2}.
+
+\begin{table}[H]%mdpi: We removed the vertical lines. Please confirm.
+\caption{\hl{Results} of the land cover class computations of the Landsat-8 OLI/TIRS satellite images \textsuperscript{1}.\label{tab2}}
+\begin{adjustwidth}{-\extralength}{0cm}
+\newcolumntype{C}{>{\centering\small\arraybackslash}X}
+    \begin{tabularx}{\fulllength}{ CCC  CC  CC CC}
+    \toprule
+        \bf{Class} & \multicolumn{2}{c}{\bf{2013}} & \multicolumn{2}{c}{\bf{2015}} & \multicolumn{2}{c}{\bf{2021}} & \multicolumn{2}{c}{\bf{2021}} \\ \midrule
+        \emph{\hl{ID}} & \emph{nr. of pixels} & \emph{cluster size} & \emph{nr. of pixels} & \emph{cluster size} & \emph{nr. of pixels} & \emph{cluster size} & \emph{nr. of pixels} & \emph{cluster size} \\ \midrule%mdpi: Please confirm if the italics is unnecessary and can be removed. The following highlights are the same
+        1 & 0.0 & 1 & 99,304.0 & 2 & 0.0 & 1 & 0.0 & 1 \\ \midrule
+        2 & 24,202.5 & 2 & 793,875.9 & 3 & 179,803.3 & 3 & 324,638.7 & 1 \\ \midrule
+        3 & 535,828.3 & 4 & 768,423.9 & 3 & 249,647.7 & 6 & 367,419.8 & 3 \\ \midrule
+        4 & 686,438.4 & 8 & 432,318.7 & 4 & 305,940.8 & 11 & 416,219.5 & 6 \\ \midrule
+        5 & 740,729.6 & 9 & 426,391.2 & 8 & 408,108.2 & 11 & 556,665.7 & 9 \\ \midrule
+        6 & 783,803.7 & 9 & 291,778.8 & 10 & 603,527.3 & 12 & 647,066.0 & 9 \\ \midrule
+        7 & 906,337.9 & 10 & 263,588.5 & 14 & 628,916.8 & 12 & 750,900.1 & 12 \\ \midrule
+        8 & 915,597.2 & 16 & 259,272.9 & 16 & 629,041.5 & 13 & 984,741.4 & 13 \\ \midrule
+        9 & 999,878.2 & 18 & 1,483,831.7 & 20 & 645,075.3 & 14 & 1,162,375.3 & 18 \\ \midrule
+        10 & 2,292,524.5 & 23 & 1,094,319.1 & 20 & 1,372,956.2 & 17 & 1,516,837.6 & 18 \\ 
+        \bottomrule
+    \end{tabularx}
+\end{adjustwidth}
+\noindent{\footnotesize{\textsuperscript{1} The statistical summary is computed within cluster sum of squares by cluster using K-means performed in R library 'raster'. The~table is sorted by ascending values of the pixels in land cover types.}}
+\end{table}
+
+The heat map graph shows the confusion matrix plotted using Python showing the probability cases for pixel distribution according to land cover classes (10 selected ID classes) in the Niger River Delta, Nigeria, Figure~\ref{fig13}. 
+
+\begin{figure}[H]
+\hspace{-22pt}\makebox[1.00\linewidth][r]{%
+	\begin{subfigure}[b]{.65\textwidth}
+		\caption{\centering}\vspace{4mm}
+%		\centering
+			\hspace{30pt}\includegraphics[width=0.95\textwidth]{Fig_13a.png}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.63\textwidth}
+	\caption{\centering}\vspace{4mm}
+%		\centering
+			\hspace{30pt}\includegraphics[width=0.95\textwidth]{Fig_13b.png}
+	\end{subfigure}%
+}
+\caption{\hl{Correlation} matrices of land cover classes (10 ID classes) in the Niger River Delta between 2013 and 2022, based on the Landsat 8-9 OLI/TIRS images: (\textbf{a}) Kendall correlation for average values; (\textbf{b}) Spearman correlation for pixels by bands 4 (Red), 3 (Green) and 2 (Blue) used for classification of land cover types. Visualization: Python. Source: authors.}\label{fig13}
+\end{figure}%mdpi: Please change the hyphen (-) into a minus sign (−, “U+2212”), e.g., “-1” should be “−1”.
+
+The data were evaluated between 2013 and 2022, based on clustering of the Landsat 8-9 OLI/TIRS images. The~Kendall correlation shows the average values, while the Spearman correlation shows the pixels by bands 4 (Red), 3 (Green), and 2 (Blue) used for the classification of land cover types. The~correlation plots showing probability cases for pixel distribution according to land cover classes (10 selected ID classes) in the Niger River Delta are shown in  Figure~\ref{fig13}; they show the data between 2013 and 2022, based on the results of the clustering of the Landsat 8-9 OLI/TIRS~images. 
+
+%mdpi: Please cite the table in the text and ensure that the first citation of each table appears in numerical order.
+\begin{table}[H]\scriptsize%mdpi: We removed the vertical lines. Please confirm.
+\caption{\hl{Results} of the land cover class classification by pixel content in Band 4 (Red), Band 3 (Green) and Band 2 (Blue) of the Landsat-8 OLI/TIRS satellite~images.\label{tab3}}
+\begin{adjustwidth}{-\extralength}{0cm}
+\newcolumntype{C}{>{\centering\scriptsize\arraybackslash}X}
+    \begin{tabularx}{\fulllength}{ C CCC CCC CCC CCC}
+    \toprule
+        \bf{Class} & ~ & \bf{2013} & ~ & ~ & \bf{2018} & ~ & ~ & \bf{2021} & ~ & ~ & \bf{2022} & ~ \\ \hline
+         \emph{\hl{ID}} & \emph{B4} & \emph{B3} & \emph{B2} & \emph{B4} & \emph{B3} & \emph{B2} & \emph{B4} & \emph{B3} & \emph{B2} & \emph{B4} & \emph{B3} & \emph{B2} \\ \hline
+        1 & 9362.333 & 9803.222 & 8742.333 & 10,352.65 & 10,539.35 & 8699.400 & 9150.500 & 9643.167 & 8150.667 & 11,409.333 & 11,031.333 & 9693.000 \\ \midrule
+        2 & 9631.111 & 9699.000 & 8448.778 & 10,848.50 & 11,077.50 & 9607.300 & 11,394.000 & 11,449.667 & 9541.667 & 9672.556 & 9612.056 & 8631.333 \\ \midrule
+        3 & 12,549.750 & 12,197.500 & 10,335.750 & 10,879.55 & 10,833.90 & 8936.950 & 9900.929 & 10,211.571 & 8387.929 & 23,552.000 & 22,211.000 & 18,896.000 \\ \midrule
+        4 & 8920.261 & 9311.826 & 8221.783 & 9816.75 & 10,058.75 & 8333.625 & 10,262.692 & 10,408.692 & 8676.462 & 10,117.556 & 9809.111 & 8729.111 \\ \midrule
+        5 & 10,144.625 & 10,144.875 & 8946.250 & 9825.25 & 10,284.50 & 8776.500 & 9463.333 & 9956.667 & 8546.000 & 8466.667 & 8940.750 & 8148.417 \\ \midrule
+        6 & 8151.000 & 9824.000 & 8126.500 & 10,372.43 & 10,680.93 & 9107.500 & 10,811.182 & 10,739.182 & 8965.091 & 8179.333 & 8705.333 & 7906.833 \\ \midrule
+        7 & 8658.938 & 9129.000 & 8067.750 & 11,872.33 & 11,513.67 & 9631.333 & 9408.917 & 9741.917 & 8132.583 & 8887.889 & 9152.389 & 8166.667 \\ \midrule
+        8 & 8276.889 & 8930.222 & 8045.611 & 10,080.38 & 10,360.25 & 8400.188 & 15,769.000 & 14,325.000 & 12,446.000 & 9110.308 & 9375.154 & 8483.538 \\ \midrule
+        9 & 8939.500 & 9494.900 & 8524.100 & 11,897.50 & 11,900.00 & 10,818.000 & 9763.182 & 10,158.000 & 8879.636 & 10,554.909 & 10,198.455 & 9056.000 \\ \midrule
+        10 & 9217.000 & 10,015.000 & 5465.000 & 13,052.00 & 12,427.00 & 10,482.333 & 9559.706 & 9997.765 & 8030.059 & 9374.222 & 9420.889 & 8187.556 \\ 
+\bottomrule
+\end{tabularx}
+\end{adjustwidth}
+\end{table}
+\unskip
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Discussion}
+
+This paper demonstrated that the scripting techniques of the GRASS GIS used with freely-available Landsat OLI/TIRS satellite images are beneficial for evaluating the spatial patterns in the vegetation areas of coastal Nigeria. The~results obtained from the satellite image processing and computing the VI for assessing mangrove distribution show that MSAVI2 (Figure \ref{fig10}) and GVI (Figure \ref{fig06}) indices ranked the highest with the most accurate presented areas of the mangrove fields, while EVI (Figure \ref{fig12}) and GEMI (Figure \ref{fig08}) were judged to rank the lowest. Changes in mangrove fields for the four different time periods estimated by the atmospherically adjusted indices ARVI and GARI are presented in Figure~\ref{fig04} and Figure~\ref{fig05}, showing the VI corrected for the atmospheric effects. Here the distribution of the mangrove fields (showed by the light orange colors) recorded the highest value in 2013, while the lowest value was in 2022 due to the declined area of distribution of mangrove habitats, as~discussed above. The~DVI (Figure \ref{fig03}) and PVI (Figure \ref{fig07}) indices demonstrated the comparable results with visible reduction of mangroves, showed as the reduced area in both the PVI and DVI. Nevertheless, the~use of the DVI is less effective for mapping mangroves and densely vegetated areas of tropical forests, since this index is better identifies urban areas and settlements. The~NDWI (Figure \ref{fig09}) and the IPVI (Figure \ref{fig11}) also highlighted the decline of mangrove swamps as areas in the lower left segment of the images colored in yellow-green for the NDWI and light blue for the~IPVI.
+
+The results of the classified images are also confirmed by the existing studies on changes in mangrove habitats in southern Nigeria reporting the environmental degradation~\cite{BAMIDELE2023103274,TOBORE2022158}. For~instance,~\cite{Godstime2007} confirms the losses in mangroves in southern Nigeria since mid-1980s through the early 2000s due to the urbanization, dredging, and~oil and gas industrial activities. The~effects from the rapid urbanization on deforestation are also reported in other relevant works~\cite{AyanladeDrake,su141811289} and are reflected in the undertaken measures on creating the sustainable green infrastructure~\cite{ADEGUN2021e01044}. Despite their environmental value, mangrove forests along the West African coasts are subject to a range of natural threats which motivate environmental monitoring. The~environmental mapping of the coastal landscapes of the Niger River Delta proposed and presented above using the application of the GRASS GIS modules has provided the capability to integrate remote sensing of multi-temporal data, covering a target region in southern Nigeria with scripting~techniques. 
+
+Given the level of mangrove degradation in the Niger River Delta, there is a need for mangrove conservation in the coastal communities~\cite{ONYENA2020e00961}. With~this regard, the~presented cartographic framework based on the use of the GRASS GIS contributes to this issue by presenting a case of computed and mapped VI showing recent changes in vegetation communities of southern Nigeria. To~evaluate these changes, we visualized ten vegetation indices using the remote sensing data and scripting techniques of selected modules of the GRASS GIS. To~this end, we applied and proposed several modules of the GRASS GIS including the 'i.vi' which is specially adjusted for satellite image processing. Using these tools, we performed an analysis of the vegetation patterns in the coastal regions of Nigeria using the Landsat 8-9 OLI/TIRS scenes. The~VI were computed on the western segment of the Niger River Delta situated along the Bight of Benin in the Gulf of Guinea, southern Nigeria. Ten computed and visualized VI were processed using GRASS GIS scripts. A~comparative analysis of the environmental changes was applied for the following vegetation indices: ARVI, GARI, GVI, DVI, PVI, GEMI, NDWI, MSAVI2, IPVI, and EVI. The~use of the advanced scripting methods for mapping changes in the VI within a western segment of the Niger River Delta revealed declining mangrove swamp habitats in southern~Nigeria. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusions}
+
+Identifying spatiotemporal trends in the vegetation patterns is one of the fundamental problems in environmental assessment. Using several satellite images for computing a time series of VI helps to estimate the extent to which mangrove communities are declining. The~use of time series of the satellite-derived VI to perform change detection in the distribution of mangroves through the comparative analysis of images has been reported previously to show temporal variations in the Niger River Delta. In~this paper, we illustrated the benefits of using scripts for satellite image processing with a special aim of computing and visualizing the vegetation indices in the mangrove landscapes of Nigeria. Specifically, we applied the GRASS GIS for computing the VI, aiming to evaluate the health and greenness of vegetation patterns in southern~Nigeria. 
+
+The use of the GRASS GIS programming scripts is an efficient optimization method of remote sensing data processing. Its benefits for computing the VIs consist in a superior performance with respect to the speed and accuracy of mapping compared to the traditional GIS software. Using modules of the GRASS GIS, we have extracted information from the Landsat OLI/TIRS images for the analysis of vegetation patterns in southern Nigeria and compared the results over several years. The~algorithms of the GRASS GIS demonstrated powerful functionality in satellite image processing which resulted in an accurately-produced series of maps based on the calculated VI in the western segment of the Niger River Delta for the years 2013, 2015, 2021, and 2022, respectively. This allowed for a better understanding of vegetation patterns derived from the analysis of the remote sensing~data. 
+
+Moreover, image processing implemented by the GRASS GIS scripts supports effective environmental monitoring due to rapid and accurate mapping. As~a result, this novel cartographic results in a series of VI-based maps which can be used to support the protection of sensitive ecosystems in the Niger River Delta. Thus, mapping the VI helps to evaluate vegetation health, using the information for adaptive planning and identifying the decline in the mangrove habitats which play a crucial role in the environmental sustainability of Nigeria. The environmental monitoring of the coastal areas of West Africa supports measures aimed at minimizing the threats to mangroves and maintaining the human--nature balance for sustainable development in~Nigeria. 
+\vspace{6pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\authorcontributions{Supervision, conceptualization, methodology, software, resources, funding acquisition, and~project administration, O.D.; writing---original draft preparation, methodology, software, data curation, visualization, formal analysis, validation, writing---review and editing, and~investigation, P.L. All authors have read and agreed to the published version of the manuscript.}
+
+\funding{The publication was funded by the Editorial Office of JMSE, Multidisciplinary Digital Publishing Institute (MDPI), by~providing 100\% discount for the APC of this manuscript. This project was supported by the Federal Public Planning Service Science Policy or Belgian Science Policy Office, Federal Science Policy--BELSPO (B2/202/P2/SEISMOSTORM).}
+
+\institutionalreview{Not applicable.}
+
+\informedconsent{Not applicable.}
+
+\dataavailability{Not applicable} 
+
+\acknowledgments{The authors thank the three anonymous reviewers for critical reading of the paper, and~provided suggestions and comments that improved an earlier version of this~manuscript.}
+
+\conflictsofinterest{The authors declare no conflict of~interest.} 
+
+\abbreviations{Abbreviations}{
+The following abbreviations are used in this manuscript:\\
+
+\noindent 
+\begin{tabular}{@{}ll}
+ARVI & Atmospherically Resistant Vegetation Index \\
+DN & Digital Number \\
+DVI & Difference Vegetation Index \\
+EOS & Earth Observing System \\  
+EVI & Enhanced Vegetation Index \\
+GARI & Green Atmospherically Resistant Vegetation Index \\
+GDAL & Geospatial Data Abstraction Library \\
+GEMI & Global Environmental Monitoring Index \\
+GIS & Geographic Information System \\
+GMT & Generic Mapping Tools\\
+GRASS GIS & Geographic Resources Analysis Support System GIS \\
+GVI & Green Vegetation Index \\
+IPVI & Infrared Percentage Vegetation Index \\
+Landsat 8-9 OLI/TIRS & Landsat 8-9 Operational Land Imager and Thermal Infrared \\
+%LAI & Leaf Area Index \\
+%MODIS & Moderate Resolution Imaging Spectroradiometer \\
+%MSAVI2 & Second Modified Soil Adjusted Vegetation Index \\
+%NDVI & Normalized Difference Vegetation Index \\
+%NDWI & Normalized Difference Water Index \\
+%NIR & Near Infrared \\
+%PVI & Perpendicular Vegetation Index \\
+%SAVI & Soil Adjusted Vegetation Index \\ 
+\end{tabular}
+
+
+\noindent 
+\begin{tabular}{@{}ll}
+%ARVI & Atmospherically Resistant Vegetation Index \\
+%DN & Digital Number \\
+%DVI & Difference Vegetation Index \\
+%EOS & Earth Observing System \\  
+%EVI & Enhanced Vegetation Index \\
+%GARI & Green Atmospherically Resistant Vegetation Index \\
+%GDAL & Geospatial Data Abstraction Library \\
+%GEMI & Global Environmental Monitoring Index \\
+%GIS & Geographic Information System \\
+%GMT & Generic Mapping Tools\\
+%GRASS GIS & Geographic Resources Analysis Support System GIS \\
+%GVI & Green Vegetation Index \\
+%IPVI & Infrared Percentage Vegetation Index \\
+%Landsat 8-9 OLI/TIRS & Landsat 8-9 Operational Land Imager and Thermal Infrared \\
+LAI & ~~~~~~~~~~~ ~~~~~~~~~~~~~Leaf Area Index \\
+MODIS & ~~~~~~~~~~~ ~~~~~~~~~~~~~Moderate Resolution Imaging Spectroradiometer \\
+MSAVI2 & ~~~~~~~~~~~ ~~~~~~~~~~~~~Second Modified Soil Adjusted Vegetation Index \\
+NDVI & ~~~~~~~~~~~ ~~~~~~~~~~~~~Normalized Difference Vegetation Index \\
+NDWI & ~~~~~~~~~~~ ~~~~~~~~~~~~~Normalized Difference Water Index \\
+NIR & ~~~~~~~~~~~ ~~~~~~~~~~~~~Near Infrared \\
+PVI & ~~~~~~~~~~~ ~~~~~~~~~~~~~Perpendicular Vegetation Index \\
+SAVI & ~~~~~~~~~~~ ~~~~~~~~~~~~~Soil Adjusted Vegetation Index \\ 
+\end{tabular}
+}
+
+\appendixtitles{yes} % Leave argument "no" if all appendix headings stay EMPTY (then no dot is printed after "Appendix A"). If~the appendix sections contain a heading then change the argument to "yes".
+\appendixstart
+\appendix
+
+\section[\appendixname~\thesection]{GRASS GIS Scripts Used for Computing and Plotting the Vegetation~Indices}
+
+\subsection[\appendixname~\thesubsection]{\hl{GRASS} GIS Script for Correction of the Top-of-Atmosphere Radiance\label{A1}}
+\renewcommand\thelstlisting{A\arabic{lstlisting}} %mdpi: We changed Listing 1-11 to Listing A1-A11, Please confirm.
+\begin{lstlisting}[language=bash,caption=GRASS GIS script for converting the DN pixel values to reflectance for correction of the top-of-atmosphere radiance.,style=mystyle,label={lst01}]
+#!/bin/sh
+r.info -r LC08_L2SP_189056_20131220_20200912_02_T1_SR_B1
+gdalinfo LC08_L2SP_189056_20131220_20200912_02_T1_SR_B7.TIF
+r.in.gdal LC08_L2SP_189056_20131220_20200912_02_T1_SR_B1.TIF out=L8_2013_01
+r.in.gdal LC08_L2SP_189056_20131220_20200912_02_T1_SR_B2.TIF out=L8_2013_02
+r.in.gdal LC08_L2SP_189056_20131220_20200912_02_T1_SR_B3.TIF out=L8_2013_03
+r.in.gdal LC08_L2SP_189056_20131220_20200912_02_T1_SR_B4.TIF out=L8_2013_04
+r.in.gdal LC08_L2SP_189056_20131220_20200912_02_T1_SR_B5.TIF out=L8_2013_05
+# repeated likewise until Band 11
+g.list rast
+g.copy raster=L8_2013_01,lsat8_2013.1
+g.copy raster=L8_2013_02,lsat8_2013.2
+g.copy raster=L8_2013_03,lsat8_2013.3
+g.copy raster=L8_2013_04,lsat8_2013.4
+g.copy raster=L8_2013_05,lsat8_2013.5
+# repeated likewise until Band 11
+i.landsat.toar input=lsat8_2013. output=lsat8_2013_toar. sensor=oli8 \
+    method=dos1 date=2013-12-20 sun_elevation=51.85549756 \
+    product_date=2013-12-20 gain=HHHLHLHHL
+\end{lstlisting}
+
+\subsection[\appendixname~\thesubsection]{GRASS GIS Script for Computing the ARVI\label{A2}}
+\begin{lstlisting}[language=bash,caption=GRASS GIS script for computing the ARVI.,style=mystyle,label={lst02}]
+g.region raster=lsat8_2013_toar.3 -p
+i.vi blue=lsat8_2013_toar.2 red=lsat8_2013_toar.4 nir=lsat8_2013_toar.5 \
+       viname=arvi output=lsat8_2013.arvi --overwrite
+r.colors lsat8_2013.arvi color=bcyr -e
+d.mon wx1
+d.rast lsat8_2013.arvi
+d.legend raster=lsat8_2013.arvi range=-0.7,0.3 title="ARVI" title_fontsize=14 font=Helvetica fontsize=12 -t -s -b border_color=white thin=12 label_step=0.1 -d
+d.out.file output=Nigeria_ARVI_2013 format=jpg --overwrite
+\end{lstlisting}
+
+\subsection[\appendixname~\thesubsection]{GRASS GIS Script for Computing the GARI\label{A3}}
+\begin{lstlisting}[language=bash,caption=GRASS GIS script for computing the GARI.,style=mystyle,label={lst03}]
+g.region raster=lsat8_2013_toar.3 -p
+i.vi blue=lsat8_2013_toar.2 green=lsat8_2013_toar.3 red=lsat8_2013_toar.4 \
+     nir=lsat8_2013_toar.5 viname=gari output=lsat8_2013.gari --overwrite
+r.colors lsat8_2013.gari color=rainbow -e
+d.mon wx2
+d.rast lsat8_2013.gari
+d.legend raster=lsat8_2013.gari range=-0.5,0.7 title="GARI" title_fontsize=14 font="Helvetica" fontsize=12 -t -b bgcolor=white label_step=0.1 border_color=white thin=8 -d
+d.out.file output=Nigeria_GARI_2013 format=jpg --overwrite
+\end{lstlisting}
+
+\subsection[\appendixname~\thesubsection]{GRASS GIS Script for Computing the GVI\label{A4}}
+\begin{lstlisting}[language=bash,caption=GRASS GIS script for computing the GVI.,style=mystyle,label={lst04}]
+g.region raster=lsat8_2013_toar.3 -p
+i.vi blue=lsat8_2013_toar.2 green=lsat8_2013_toar.3 red=lsat8_2013_toar.4 nir=lsat8_2013_toar.5 band5=lsat8_2013_toar.6 band7=lsat8_2013_toar.7 viname=gvi output=lsat8_2013.gvi --overwrite
+r.colors.stddev lsat8_2013.gvi
+d.mon wx3
+d.rast lsat8_2013.gvi
+d.legend raster=lsat8_2013.gvi range=-1,0.7 title="GVI" title_fontsize=14 font="Helvetica" fontsize=12 -t -b bgcolor=white label_step=0.1 border_color=white thin=8 -d
+d.out.file output=Nigeria_GVI_2013 format=jpg --overwrite
+\end{lstlisting}
+
+\subsection[\appendixname~\thesubsection]{GRASS GIS Script for Computing the DVI\label{A5}}
+\begin{lstlisting}[language=bash,caption=GRASS GIS script for computing the DVI.,style=mystyle,label={lst05}]
+g.region raster=lsat8_2013_toar.1 -p
+i.vi blue=lsat8_2013_toar.2 red=lsat8_2013_toar.4 nir=lsat8_2013_toar.5 viname=dvi output=lsat8_2013.dvi --overwrite
+r.colors lsat8_2013.dvi color=bgyr -e
+d.mon wx4
+d.rast lsat8_2013.dvi
+d.legend raster=lsat8_2013.dvi range=-0.1,0.3 title="DVI" title_fontsize=14 font="Helvetica" fontsize=12 -t -b bgcolor=white label_step=0.02 border_color=white thin=8 -d
+d.out.file output=Nigeria_DVI_2013 format=jpg --overwrite
+\end{lstlisting}
+
+\subsection[\appendixname~\thesubsection]{GRASS GIS Script for Computing the PVI \label{A6}}
+\begin{lstlisting}[language=bash,caption=GRASS GIS script for computing the PVI.,style=mystyle,label={lst06}]
+g.region raster=lsat8_2013_toar.1 -p
+i.vi red=lsat8_2013_toar.4 nir=lsat8_2013_toar.5 viname=pvi output=lsat8_2013.pvi --overwrite
+r.colors lsat8_2013.pvi color=bgyr -e
+d.mon wx5
+d.rast lsat8_2013.pvi
+d.legend raster=lsat8_2013.pvi range=-0.1,0.3 title="PVI" title_fontsize=14 font="Helvetica" fontsize=12 -t -b bgcolor=white label_step=0.02 border_color=white thin=8 -d
+d.out.file output=Nigeria_PVI_2013 format=jpg --overwrite
+\end{lstlisting}
+
+\subsection[\appendixname~\thesubsection]{GRASS GIS Script for Computing the GEMI \label{A7}}
+\begin{lstlisting}[language=bash,caption=GRASS GIS script for computing the GEMI.,style=mystyle,label={lst07}]
+# Calculation of GEMI: Global Environmental Monitoring Index
+g.region raster=lsat8_2013_toar.1 -p
+i.vi red=lsat8_2013_toar.4 nir=lsat8_2013_toar.5 viname=gemi output=lsat8_2013.gemi --overwrite
+r.colors lsat8_2013.gemi color=roygbiv -e
+d.erase
+d.rast lsat8_2013.gemi
+d.legend raster=lsat8_2013.gemi range=-0.5,1.0 title="GEMI" title_fontsize=14 font="Helvetica" fontsize=12 -t -b bgcolor=white label_step=0.1 border_color=white thin=8 -d
+d.out.file output=Nigeria_GEMI_2013 format=jpg --overwrite
+\end{lstlisting}
+
+\subsection[\appendixname~\thesubsection]{GRASS GIS Script for Computing the NDWI \label{A8}}
+\begin{lstlisting}[language=bash,caption=GRASS GIS script for computing the NDWI.,style=mystyle,label={lst08}]
+g.region raster=lsat8_2013_toar.1 -p
+i.vi green=lsat8_2013_toar.3 nir=lsat8_2013_toar.5 viname=ndwi output=lsat8_2013.ndwi --overwrite
+r.colors lsat8_2013.ndwi color=viridis -e
+d.mon wx0
+d.rast lsat8_2013.ndwi
+d.legend raster=lsat8_2013.ndwi range=-1.0,0.5 title="NDWI" title_fontsize=14 font="Helvetica" fontsize=12 -t -b bgcolor=white label_step=0.1 border_color=white thin=8 -d
+d.out.file output=Nigeria_NDWI_2013 format=jpg --overwrite
+\end{lstlisting}
+
+\subsection[\appendixname~\thesubsection]{GRASS GIS Script for Computing the MSAVI2}
+\begin{lstlisting}[language=bash,caption=GRASS GIS script for computing the MSAVI2.,style=mystyle,label={lst09}]
+g.region raster=lsat8_2013_toar.1 -p
+i.vi red=lsat8_2013_toar.4 nir=lsat8_2013_toar.5 viname=msavi2 output=lsat8_2013.msavi2 --overwrite
+r.colors lsat8_2013.msavi2 color=soilmoisture -e
+d.mon wx0
+d.rast lsat8_2013.msavi2
+d.legend raster=lsat8_2013.msavi2 range=-1.0,0.5 title="MSAVI2" title_fontsize=14 font="Helvetica" fontsize=12 -t -b bgcolor=white label_step=0.1 border_color=white thin=8 -d
+d.out.file output=Nigeria_MSAVI2_2013 format=jpg --overwrite
+\end{lstlisting}
+
+\subsection[\appendixname~\thesubsection]{GRASS GIS Script for Computing the IPVI \label{A10}}
+\begin{lstlisting}[language=bash,caption=GRASS GIS script for computing the IPVI.,style=mystyle,label={lst10}]
+g.region raster=lsat8_2013_toar.1 -p
+i.vi red=lsat8_2013_toar.4 nir=lsat8_2013_toar.5 viname=ipvi output=lsat8_2013.ipvi --overwrite
+r.colors lsat8_2013.ipvi color=haxby -e
+d.mon wx0
+d.rast lsat8_2013.ipvi
+d.legend raster=lsat8_2013.ipvi range=-1.0,1.0 title="IPVI" title_fontsize=14 font="Helvetica" fontsize=12 -t -b bgcolor=white label_step=0.1 border_color=white thin=8 -d
+d.out.file output=Nigeria_IPVI_2013 format=jpg --overwrite
+\end{lstlisting}
+
+\subsection[\appendixname~\thesubsection]{GRASS GIS Script for Computing the EVI}
+\begin{lstlisting}[language=bash,caption=GRASS GIS script for computing the EVI.,style=mystyle,label={lst11}]
+g.region raster=lsat8_2013_toar.1 -p
+i.vi blue=lsat8_2013_toar.2 red=lsat8_2013_toar.4 nir=lsat8_2013_toar.5 viname=evi output=lsat8_2013.evi --overwrite
+r.colors lsat8_2013.evi color=elevation -e
+d.mon wx0
+d.rast lsat8_2013.evi
+d.legend raster=lsat8_2013.evi range=-1.0,1.0 title="EVI" title_fontsize=14 font="Helvetica" fontsize=12 -t -b bgcolor=white label_step=0.1 border_color=white thin=8 -d
+d.out.file output=Nigeria_EVI_2013 format=jpg --overwrite
+\end{lstlisting}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%=====================================
+% References: external bibliography
+%=====================================
+\begin{adjustwidth}{-\extralength}{0cm}
+\reftitle{References}
+\begin{thebibliography}{999}
+
+\bibitem[James \em{et~al.}(2011)James, Adegoke, Saba, Nwilo, Akinyede, and
+  Osagie]{James}
+\textls[-15]{James, G.K.; Adegoke, J.O.; Saba, E.; Nwilo, P.; Akinyede, J.; Osagie, S.
+  Economic Valuation of Mangroves in the Niger Delta.
+\newblock In {\em World Fisheries}; John Wiley \& Sons, Ltd.: \hl{Hoboken, NJ, USA},  2011; Chapter~15,
+  pp. 265--280. %mdpi: We added the name of the publisher and location. Please confirm.
+\newblock {{https://doi.org/10.1002/9781444392241.ch15}}.}
+
+\bibitem[Akanni \em{et~al.}(2018)Akanni, Onwuteaka, Uwagbae, Mulwa, and
+  Elegbede]{AKANNI2018387}
+Akanni, A.; Onwuteaka, J.; Uwagbae, M.; Mulwa, R.; Elegbede, I.O.
+\newblock The Values of Mangrove Ecosystem Services in the Niger
+  Delta Region of Nigeria. In {\em The Political Ecology of Oil and Gas
+  Activities in the Nigerian Aquatic Ecosystem}; Ndimele, P.E., Ed.; Academic
+  Press: \hl{Cambridge, MA, USA},  2018; \hl{Chapter 25}, pp. 387--437.
+\newblock {{https://doi.org/10.1016/B978-0-12-809399-3.00025-2}}.
+%mdpi: We moved Chapter 25 to here, please confirm.
+
+\bibitem[Enaruvbe and Atafo(2016)]{Enaruvbe2016}
+Enaruvbe, G.O.; Atafo, O.P.
+\newblock Analysis of deforestation pattern in the Niger Delta region of
+  Nigeria.
+\newblock {\em J. Land Use Sci.} {\bf 2016}, {\em 11},~113--130.
+\newblock {{https://doi.org/10.1080/1747423X.2014.965279}}.
+
+\bibitem[Numbere(2021)]{Numbere2021}
+Numbere, A.O.
+\newblock Natural seedling recruitment and regeneration in deforested and
+  sand-filled Mangrove forest at Eagle Island, Niger Delta, Nigeria.
+\newblock {\em Ecol. Evol.} {\bf 2021}, {\em 11},~3148--3158.
+\newblock {{https://doi.org/10.1002/ece3.7262}}.
+
+\bibitem[Osuji \em{et~al.}(2010)Osuji, Erondu, and Ogali]{Osuji}
+Osuji, L.; Erondu, E.; Ogali, R.
+\newblock Upstream Petroleum Degradation of Mangroves and Intertidal Shores:
+  The Niger Delta Experience.
+\newblock {\em Chem. Biodivers.} {\bf 2010}, {\em 7},~116--128.
+\newblock {{https://doi.org/10.1002/cbdv.200900203}}.
+
+\bibitem[Fasona and Omojola(2009)]{Fasona}
+Fasona, M.; Omojola, A.
+\newblock Land cover change and land degradation in parts of the southwest
+  coast of Nigeria.
+\newblock {\em Afr. J. Ecol.} {\bf 2009}, {\em 47},~30--38.
+\newblock {{https://doi.org/10.1111/j.1365-2028.2008.01047.x}}.
+
+\bibitem[Hati \em{et~al.}(2022)Hati, Chaube, Hazra, Goswami, Pramanick,
+  Samanta, Chanda, Mitra, and Mukhopadhyay]{HATI2022}
+Hati, J.P.; Chaube, N.R.; Hazra, S.; Goswami, S.; Pramanick, N.; Samanta, S.;
+  Chanda, A.; Mitra, D.; Mukhopadhyay, A.
+\newblock Mangrove monitoring in Lothian Island using airborne hyperspectral
+  AVIRIS-NG data.
+\newblock {\em Adv. Space Res.} {\bf \hl{2022}}.
+\newblock {{https://doi.org/10.1016/j.asr.2022.05.063}}.
+%mdpi: Please provide the volume and pages number.
+
+\bibitem[Alatorre \em{et~al.}(2016)Alatorre, Sánchez-Carrillo,
+  Miramontes-Beltrán, Medina, Torres-Olave, Bravo, Wiebe, Granados, Adams,
+  Sánchez, and Uc]{ALATORRE201698}
+Alatorre, L.C.; Sánchez-Carrillo, S.; Miramontes-Beltrán, S.; Medina, R.J.;
+  Torres-Olave, M.E.; Bravo, L.C.; Wiebe, L.C.; Granados, A.; Adams, D.K.;
+  Sánchez, E.;  et~al.
+\newblock Temporal changes of NDVI for qualitative environmental assessment of
+  mangroves: Shrimp farming impact on the health decline of the arid mangroves
+  in the Gulf of California (1990–2010).
+\newblock {\em J. Arid Environ.} {\bf 2016}, {\em 125},~98--109.
+\newblock {{https://doi.org/10.1016/j.jaridenv.2015.10.010}}.
+
+\bibitem[Sathish \em{et~al.}(2021)Sathish, Nakhawa, Bharti, Jaiswar, and
+  Deshmukhe]{SATHISH2021102054}
+Sathish, C.; Nakhawa, A.; Bharti, V.S.; Jaiswar, A.; Deshmukhe, G.
+\newblock Estimation of extent of the mangrove defoliation caused by insect
+  Hyblaea puera (Cramer, 1777) around Dharamtar creek, India using Sentinel 2
+  images.
+\newblock {\em Reg. Stud. Mar. Sci.} {\bf 2021}, {\em 48},~102054.
+\newblock {{https://doi.org/10.1016/j.rsma.2021.102054}}.
+
+\bibitem[Hu \em{et~al.}(2018)Hu, Li, and Xu]{Hu}
+Hu, L.; Li, W.; Xu, B.
+\newblock The role of remote sensing on studying mangrove forest extent change.
+\newblock {\em Int. J. Remote Sens.} {\bf 2018}, {\em 39},~6440--6462.
+\newblock {{https://doi.org/10.1080/01431161.2018.1455239}}.
+
+\bibitem[Chopade \em{et~al.}(2023)Chopade, Mahajan, and
+  Chaube]{CHOPADE2023118839}
+Chopade, M.R.; Mahajan, S.; Chaube, N.
+\newblock Assessment of land use, land cover change in the mangrove forest of
+  Ghogha area, Gulf of Khambhat, Gujarat.
+\newblock {\em Expert Syst. Appl.} {\bf 2023}, {\em 212},~118839.
+\newblock {{https://doi.org/10.1016/j.eswa.2022.118839}}.
+
+\bibitem[Gitau \em{et~al.}(2023)Gitau, Duvail, and Verschuren]{GITAU2023102898}
+Gitau, P.N.; Duvail, S.; Verschuren, D.
+\newblock Evaluating the combined impacts of hydrological change, coastal
+  dynamics and human activity on mangrove cover and health in the Tana River
+  delta, Kenya.
+\newblock {\em Reg. Stud. Mar. Sci.} {\bf 2023}, {\em 61},~102898.
+\newblock {{https://doi.org/10.1016/j.rsma.2023.102898}}.
+
+\bibitem[Mishra \em{et~al.}(2021)Mishra, Acharyya, Santos, da~Silva, Kar,
+  {Mustafa Kamal}, and Raulo]{MISHRA2021107486}
+Mishra, M.; Acharyya, T.; Santos, C.A.G.; da~Silva, R.M.; Kar, D.; {Mustafa
+  Kamal}, A.H.; Raulo, S.
+\newblock Geo-ecological impact assessment of severe cyclonic storm Amphan on
+  Sundarban mangrove forest using geospatial technology.
+\newblock {\em Estuar. Coast. Shelf Sci.} {\bf 2021}, {\em 260},~107486.
+\newblock {{https://doi.org/10.1016/j.ecss.2021.107486}}.
+
+\bibitem[Ochege \em{et~al.}(2017)Ochege, George, Dike, and
+  Okpala-Okaka]{OCHEGE2017211}
+\textls[-15]{Ochege, F.U.; George, R.T.; Dike, E.C.; Okpala-Okaka, C.
+\newblock Geospatial assessment of vegetation status in Sagbama oilfield
+  environment in the Niger Delta region, Nigeria.
+\newblock {\em Egypt. J. Remote Sens. Space Sci.} {\bf 2017}, {\em
+  20},~211--221.
+\newblock {{https://doi.org/10.1016/j.ejrs.2017.05.001}}.}
+
+\bibitem[Lemenkova and Debeir(2022)]{Lemenkova202229}
+Lemenkova, P.; Debeir, O.
+\newblock {R Libraries for Remote Sensing Data Classification by k-means
+  Clustering and NDVI Computation in Congo River Basin, DRC}.
+\newblock {\em Appl. Sci.} {\bf 2022}, {\em 12},~12554.
+\newblock {{https://doi.org/10.3390/app122412554}}.
+
+\bibitem[Alademomi \em{et~al.}(2020)Alademomi, Okolie, Daramola, Agboola, and
+  Salami]{alademomi2020assessing}
+Alademomi, A.S.; Okolie, C.J.; Daramola, O.E.; Agboola, R.O.; Salami, T.J.
+\newblock Assessing the relationship of LST, NDVI and EVI with land cover
+  changes in the Lagos Lagoon environment.
+\newblock {\em Quaest. Geogr.} {\bf 2020}, {\em 39},~111--123.
+
+\bibitem[Nse \em{et~al.}(2020)Nse, Okolie, and Nse]{NSE2020e00599}
+Nse, O.U.; Okolie, C.J.; Nse, V.O.
+\newblock Dynamics of land cover, land surface temperature and NDVI in Uyo
+  City, Nigeria.
+\newblock {\em Sci. Afr.} {\bf 2020}, {\em 10},~e00599.
+\newblock {{https://doi.org/10.1016/j.sciaf.2020.e00599}}.
+
+\bibitem[Adamu \em{et~al.}(2015)Adamu, Tansey, and Ogutu]{Adamu}
+Adamu, B.; Tansey, K.; Ogutu, B.
+\newblock Using vegetation spectral indices to detect oil pollution in the
+  Niger Delta.
+\newblock {\em Remote Sens. Lett.} {\bf 2015}, {\em 6},~145--154.
+\newblock {{https://doi.org/10.1080/2150704X.2015.1015656}}.
+
+\bibitem[Onyia \em{et~al.}(2018)Onyia, Balzter, and Berrio]{rs10060897}
+Onyia, N.N.; Balzter, H.; Berrio, J.C.
+\newblock Normalized Difference Vegetation Vigour Index: A New Remote Sensing
+  Approach to Biodiversity Monitoring in Oil Polluted Regions.
+\newblock {\em Remote Sens.} {\bf 2018}, {\em 10}, 897.
+\newblock {{https://doi.org/10.3390/rs10060897}}.
+
+\bibitem[Numbere(2022)]{NUMBERE2022433}
+Numbere, A.O.
+\newblock Application of GIS and remote sensing towards forest
+  resource management in mangrove forest of Niger Delta. In {\em Natural
+  Resources Conservation and Advances for Sustainability}; Jhariya, M.K.,
+  Meena, R.S., Banerjee, A., Meena, S.N., Eds.; Elsevier: \hl{Amsterdam, The Netherlands},  2022; \hl{Chapter 20}, pp. 433--459.
+\newblock {{https://doi.org/10.1016/B978-0-12-822976-7.00024-7}}.
+
+\bibitem[Fashae \em{et~al.}(2022)Fashae, Tijani, Adekoya, Tijani, Adagbasa, and
+  Aladejana]{FASHAE2022e01286}
+Fashae, O.A.; Tijani, M.N.; Adekoya, A.E.; Tijani, S.A.; Adagbasa, E.G.;
+  Aladejana, J.A.
+\newblock Comparative Assessment of the Changing Pattern of Land cover along
+  the Southwestern Coast of Nigeria using GIS and Remote Sensing techniques.
+\newblock {\em Sci. Afr.} {\bf 2022}, {\em 17},~e01286.
+\newblock {{https://doi.org/10.1016/j.sciaf.2022.e01286}}.
+
+\bibitem[Olorunfemi \em{et~al.}(2020)Olorunfemi, Fasinmirin, Olufayo, and
+  Komolafe]{Olorunfemi}
+Olorunfemi, I.E.; Fasinmirin, J.; Olufayo, A.A.; Komolafe, A.A.
+\newblock {GIS and remote sensing-based analysis of the impacts of land
+  use/land cover change (LULCC) on the environmental sustainability of Ekiti
+  State, southwestern Nigeria}.
+\newblock {\em Environ. Dev. Sustain.} {\bf 2020}, {\em 22},~661--692.
+\newblock {{https://doi.org/10.1007/s10668-018-0214-z}}.
+
+\bibitem[Fagbeja \em{et~al.}(2017)Fagbeja, Hill, Chatterton, Longhurst,
+  Akpokodje, Agbaje, and Halilu]{Fagbeja}
+Fagbeja, M.; Hill, J.L.; Chatterton, T.J.; Longhurst, J.W.S.; Akpokodje, J.E.;
+  Agbaje, G.I.; Halilu, S.A.
+\newblock {Challenges and opportunities in the design and construction of a
+  GIS-based emission inventory infrastructure for the Niger Delta region of
+  Nigeria}.
+\newblock {\em Environ. Sci. Pollut. Res.} {\bf 2017}, {\em 24},~7788--7808.
+\newblock {{https://doi.org/10.1007/s11356-017-8481-z}}.
+
+\bibitem[Enaruvbe and Ige-Olumide(2015)]{Enaruvbe2015}
+Enaruvbe, G.O.; Ige-Olumide, O.
+\newblock Geospatial analysis of land-use change processes in a densely
+  populated coastal city: The case of Port Harcourt, south-east Nigeria.
+\newblock {\em Geocarto Int.} {\bf 2015}, {\em 30},~441--456.
+\newblock {{https://doi.org/10.1080/10106049.2014.883435}}.
+
+\bibitem[Cuartero \em{et~al.}(2022)Cuartero, Paoletti, Presas, and
+  Haut]{9883588}
+Cuartero, A.; Paoletti, M.E.; Presas, A.R.; Haut, J.M.
+\newblock Bi-Dimensional Vector Data Analysis of Positional Accuracy of
+  Landsat-8 Image with Pycircularstats.
+\newblock In Proceedings of the IGARSS 2022--2022 IEEE International
+  Geoscience and Remote Sensing Symposium,  \hl{Kuala Lumpur, Malaysia,  17--22 July 2022}; pp. 2442--2445.
+\newblock {{https://doi.org/10.1109/IGARSS46834.2022.9883588}}.%mdpi: We added the location and date of the conference. Please confirm.
+
+\bibitem[Lemenkova and Debeir(2022)]{Lemenkova202227}
+Lemenkova, P.; Debeir, O.
+\newblock {Satellite Image Processing by Python and R Using Landsat 9 OLI/TIRS
+  and SRTM DEM Data on Côte d’Ivoire, West Africa}.
+\newblock {\em J. Imaging} {\bf 2022}, {\em 8},~317.
+\newblock {{https://doi.org/10.3390/jimaging8120317}}.
+
+\bibitem[Adugna \em{et~al.}(2022)Adugna, Xu, Haitao, and Fan]{9884244}
+Adugna, T.; Xu, W.; Haitao, J.; Fan, J.
+\newblock Comparison of FY-3C VIRR and MODIS Time-Series Composite Data for
+  Regional Land Cover Mapping of a Part of Africa.
+\newblock In Proceedings of the IGARSS 2022--2022 IEEE International
+  Geoscience and Remote Sensing Symposium,  \hl{Kuala Lumpur, Malaysia,  17--22 July 2022};  pp. 3163--3166.
+\newblock {{https://doi.org/10.1109/IGARSS46834.2022.9884244}}.
+
+\bibitem[Lemenkova and Debeir(2022)]{Lemenkova202230}
+Lemenkova, P.; Debeir, O.
+\newblock {Satellite Altimetry and Gravimetry Data for Mapping Marine Geodetic
+  and Geophysical Setting of the Seychelles and the Somali Sea, Indian Ocean}.
+\newblock {\em J. Appl. Eng. Sci.} {\bf 2022}, {\em 12},~191--202.
+\newblock {{https://doi.org/10.2478/jaes-2022-0026}}.
+
+\bibitem[Yadav \em{et~al.}(2022)Yadav, Saraswat, and Faujdar]{9964623}
+Yadav, A.; Saraswat, S.; Faujdar, N.
+\newblock Geological Information Extraction from Satellite Imagery Using
+  Machine Learning.
+\newblock In Proceedings of the 2022 10th International Conference on
+  Reliability, Infocom Technologies and Optimization (Trends and Future
+  Directions) (ICRITO),  \hl{Noida, India, 13--14 October 2022}; pp. 1--5.
+\newblock {{https://doi.org/10.1109/ICRITO56286.2022.9964623}}.
+
+\bibitem[Lemenkova and Debeir(2023)]{technologies11020046}
+Lemenkova, P.; Debeir, O.
+\newblock GDAL and PROJ Libraries Integrated with GRASS GIS for Terrain
+  Modelling of the Georeferenced Raster Image.
+\newblock {\em Technologies} {\bf 2023}, {\em 11}, 46.
+\newblock {{https://doi.org/10.3390/technologies11020046}}.
+
+\bibitem[Numbere and Camilo(2017)]{Numbere}
+Numbere, A.O.; Camilo, G.R.
+\newblock Mangrove leaf litter decomposition under mangrove forest stands with
+  different levels of pollution in the Niger River Delta, Nigeria.
+\newblock {\em Afr. J. Ecol.} {\bf 2017}, {\em 55},~162--167.
+\newblock {{https://doi.org/10.1111/aje.12335}}.
+
+\bibitem[Kinako(1977)]{KINAKO197735}
+Kinako, P.D.
+\newblock Conserving the mangrove forest of the Niger Delta.
+\newblock {\em Biol. Conserv.} {\bf 1977}, {\em 11},~35--39.
+\newblock {{https://doi.org/10.1016/0006-3207(77)90025-8}}.
+
+\bibitem[Zabbey \em{et~al.}(2021)Zabbey, Kpaniku, Sam, Nwipie, Okoro, Zabbey,
+  and Babatunde]{ZABBEY2021100571}
+Zabbey, N.; Kpaniku, N.; Sam, K.; Nwipie, G.; Okoro, O.; Zabbey, F.; Babatunde,
+  B.
+\newblock Could community science drive environmental management in Nigeria's
+  degrading coastal Niger delta? Prospects and challenges.
+\newblock {\em Environ. Dev.} {\bf 2021}, {\em 37},~100571.
+\newblock {{https://doi.org/10.1016/j.envdev.2020.100571}}.
+
+\bibitem[Ukpong(1991)]{Ukpong1991}
+Ukpong, I.E.
+\newblock {The performance and distribution of species along soil salinity
+  gradients of mangrove swamps in southeastern Nigeria}.
+\newblock {\em Vegetatio} {\bf 1991}, {\em 95},~63--70.
+\newblock {{https://doi.org/10.1007/BF00124954}}.
+
+\bibitem[Akpovwovwo and Gbadegesin(2022)]{Ufuoma}
+Akpovwovwo, U.E.; Gbadegesin, A.
+\newblock Species composition and distribution patterns of the Mangrove forests
+  of the Western Niger Delta, Nigeria.
+\newblock {\em Afr. Geogr. Rev.} {\bf 2022}, {\em 41},~468--482.
+\newblock {{https://doi.org/10.1080/19376812.2021.1947333}}.
+
+\bibitem[Akpovwovwo(2020)]{Akpovwovwo}
+Akpovwovwo, U.E.
+\newblock {Mangrove growth dynamics and sediment relations in South Western
+  Nigeria}.
+\newblock {\em J. Nat. Resour. Environ. Manag.} {\bf 2020}, {\em 10},~688--698.
+\newblock {{https://doi.org/10.29244/jpsl.10.4.688-698}}.
+
+\bibitem[Amadi(1990)]{Amadi}
+Amadi, A.
+\newblock {A comparative ecology of estuaries in Nigeria}.
+\newblock {\em Hydrobiologia} {\bf 1990}, {\em 208},~27--38.
+\newblock {{https://doi.org/10.1007/BF00008440}}.
+
+\bibitem[Okafor and Olojede-Nelson(1985)]{Okafor}
+Okafor, L.I.; Olojede-Nelson, S.O.
+\newblock {Salinity changes of tidal irrigation water of mangrove swamp at
+  Warri, Nigeria}.
+\newblock {\em Plant Soil} {\bf 1985}, {\em 84},~23--27.
+\newblock {{https://doi.org/10.1007/BF02197863}}.
+
+\bibitem[Ukpong(1997)]{Ukpong1997}
+Ukpong, I.E.
+\newblock {Vegetation and its relation to soil nutrient and salinity in the
+  Calabar mangrove swamp, Nigeria}.
+\newblock {\em Mangroves Salt Marshes} {\bf 1997}, {\em 1},~211--218.
+\newblock {{https://doi.org/10.1023/A:1009952700317}}.
+
+\bibitem[Ajao(1994)]{Ajao}
+Ajao, E.A.
+\newblock Coastal Aquatic Ecosystems, Conservation and Management Strategies in
+  Nigeria.
+\newblock {\em South. Afr. J. Aquat. Sci.} {\bf 1994}, {\em 20},~3--22.
+\newblock {{https://doi.org/10.1080/10183469.1994.9631346}}.
+
+\bibitem[Whitmore(1984)]{Whitmore}
+Whitmore, T.
+\newblock {\em Tropical rain forests of the Far East}, 2nd ed.; Clarendon Press:
+  Oxford, UK,  1984;
+\newblock 352p.
+
+\bibitem[Wessel \em{et~al.}(2019)Wessel, Luis, Uieda, Scharroo, Wobbe, Smith,
+  and Tian]{Wessel}
+Wessel, P.; Luis, J.F.; Uieda, L.; Scharroo, R.; Wobbe, F.; Smith, W.H.F.;
+  Tian, D.
+\newblock The Generic Mapping Tools Version 6.
+\newblock {\em Geochem. Geophys. Geosyst.} {\bf 2019}, {\em 20},~5556--5564.
+\newblock {{https://doi.org/10.1029/2019GC008515}}.
+
+\bibitem[{GEBCO Compilation Group}(2022)]{GEBCO}
+{GEBCO Compilation Group}.
+\newblock {GEBCO\_2022 Grid}.
+\newblock  2022.
+\newblock Available online: {\url{https://doi.org/10.5285/e0f0bb80-ab44-2739-e053-6c86abc0289c}} (\hl{accessed on}).
+
+\bibitem[{NASA JPL}(2013)]{SRTM}
+{NASA JPL}.
+\newblock {NASA Shuttle Radar Topography Mission Global 3 Arc Second}.
+\newblock Data Set. NASA EOSDIS Land Processes DAAC. 2013.
+  Available online: {\url{https://doi.org/10.5067/MEaSUREs/SRTM/SRTMGL3.003}}  (\hl{accessed on}).
+  %mdpi: Please add the access date (format: Date Month Year), e.g., accessed on 1 January 2020.
+
+\bibitem[Adefolalu(1986)]{Adefolalu}
+Adefolalu, D.O.
+\newblock {Rainfall trends in Nigeria}.
+\newblock {\em Theor. Appl. Climatol.} {\bf 1986}, {\em 37},~205--219.
+\newblock {{https://doi.org/10.1007/BF00867578}}.
+
+\bibitem[Areola and Fasona(2018)]{AREOLA2018153}
+Areola, M.; Fasona, M.
+\newblock Sensitivity of vegetation to annual rainfall variations over Nigeria.
+\newblock {\em Remote Sens. Appl.  Soc. Environ.} {\bf 2018}, {\em
+  10},~153--162.
+\newblock {{https://doi.org/10.1016/j.rsase.2018.03.006}}.
+
+\bibitem[Hassan \em{et~al.}(2020)Hassan, Kalin, White, and
+  Aladejana]{w12020385}
+Hassan, I.; Kalin, R.M.; White, C.J.; Aladejana, J.A.
+\newblock Selection of CMIP5 GCM Ensemble for the Projection of Spatio-Temporal
+  Changes in Precipitation and Temperature over the Niger Delta, Nigeria.
+\newblock {\em Water} {\bf 2020}, {\em 12}, 385.
+\newblock {{https://doi.org/10.3390/w12020385}}.
+
+\bibitem[Balogun and Onokerhoraye(2022)]{BALOGUN2022100304}
+Balogun, V.S.; Onokerhoraye, A.G.
+\newblock Climate change vulnerability mapping across ecological zones in Delta
+  State, Niger Delta Region of Nigeria.
+\newblock {\em Clim. Serv.} {\bf 2022}, {\em 27},~100304.
+\newblock {{https://doi.org/10.1016/j.cliser.2022.100304}}.
+
+\bibitem[Hassan \em{et~al.}(2020)Hassan, Kalin, Aladejana, and
+  White]{hydrology7010019}
+Hassan, I.; Kalin, R.M.; Aladejana, J.A.; White, C.J.
+\newblock Potential Impacts of Climate Change on Extreme Weather Events in the
+  Niger Delta Part of Nigeria.
+\newblock {\em Hydrology} {\bf 2020}, {\em 7}, 19.
+\newblock {{https://doi.org/10.3390/hydrology7010019}}.
+
+\bibitem[Akintuyi \em{et~al.}(2021)Akintuyi, Fasona, Ayeni, and
+  Soneye]{Akintuyi}
+Akintuyi, A.O.; Fasona, M.J.; Ayeni, A.O.; Soneye, A.S.
+\newblock {Land use/land cover and climate change interaction in the derived
+  savannah region of Nigeria}.
+\newblock {\em Environ. Monit. Assess.} {\bf 2021}, {\em 193},~848.
+\newblock {{https://doi.org/10.1007/s10661-021-09642-6}}.
+
+\bibitem[Khadijat \em{et~al.}(2021)Khadijat, Anthony, Ganiyu, and
+  Bolarinwa]{KHADIJAT2021983}
+Khadijat, A.; Anthony, T.; Ganiyu, O.; Bolarinwa, S.
+\newblock Forest cover change in Onigambari reserve, Ibadan, Nigeria:
+  Application of vegetation index and Markov chain techniques.
+\newblock {\em Egypt. J. Remote Sens. Space Sci.} {\bf 2021}, {\em
+  24},~983--990.
+\newblock {{https://doi.org/10.1016/j.ejrs.2021.08.004}}.
+
+\bibitem[Ukpong(1997)]{UKPONG199761}
+Ukpong, I.
+\newblock Mangrove swamp at a saline/fresh water interface near Creek Town,
+  Southeastern Nigeria.
+\newblock {\em CATENA} {\bf 1997}, {\em 29},~61--71.
+\newblock {{https://doi.org/10.1016/S0341-8162(96)00058-6}}.
+
+\bibitem[Daramola \em{et~al.}(2022)Daramola, Li, Otoo, Idowu, and
+  Gong]{DARAMOLA2022102167}
+Daramola, S.; Li, H.; Otoo, E.; Idowu, T.; Gong, Z.
+\newblock Coastal evolution assessment and prediction using remotely sensed
+  front vegetation line along the Nigerian Transgressive Mahin mud coast.
+\newblock {\em Reg. Stud. Mar. Sci.} {\bf 2022}, {\em 50},~102167.
+\newblock {{https://doi.org/10.1016/j.rsma.2022.102167}}.
+
+\bibitem[Osinowo and Popoola(2021)]{OSINOWO2021104471}
+Osinowo, A.A.; Popoola, S.O.
+\newblock Long-term spatio-temporal trends in extreme wave events in the Niger
+  delta coastlines.
+\newblock {\em Cont. Shelf Res.} {\bf 2021}, {\em 224},~104471.
+\newblock {{https://doi.org/10.1016/j.csr.2021.104471}}.
+
+\bibitem[Ansah \em{et~al.}(2022)Ansah, Abu, Kleemann, Mahmoud, and
+  Thiel]{su142114256}
+Ansah, C.E.; Abu, I.O.; Kleemann, J.; Mahmoud, M.I.; Thiel, M.
+\newblock Environmental Contamination of a Biodiversity Hotspot---Action
+  Needed for Nature Conservation in the Niger Delta, Nigeria.
+\newblock {\em Sustainability} {\bf 2022}, {\em 14}, 14256.
+\newblock {{https://doi.org/10.3390/su142114256}}.
+
+\bibitem[Obida \em{et~al.}(2021)Obida, Blackburn, Whyatt, and
+  Semple]{OBIDA2021145854}
+Obida, C.B.; Blackburn, G.A.; Whyatt, J.D.; Semple, K.T.
+\newblock Counting the cost of the Niger Delta's largest oil spills: Satellite
+  remote sensing reveals extensive environmental damage with >1million people
+  in the impact zone.
+\newblock {\em Sci. Total Environ.} {\bf 2021}, {\em 775},~145854.
+\newblock {{https://doi.org/10.1016/j.scitotenv.2021.145854}}.
+
+\bibitem[Eyankware \em{et~al.}(2020)Eyankware, Aleke, Selemo, and
+  Nnabo]{EYANKWARE2020100293}
+Eyankware, M.; Aleke, C.; Selemo, A.; Nnabo, P.
+\newblock Hydrogeochemical studies and suitability assessment of groundwater
+  quality for irrigation at Warri and environs., Niger delta basin, Nigeria.
+\newblock {\em Groundw. Sustain. Dev.} {\bf 2020}, {\em 10},~100293.
+\newblock {{https://doi.org/10.1016/j.gsd.2019.100293}}.
+
+\bibitem[Echendu \em{et~al.}(2022)Echendu, Okafor, and Iyiola]{socsci11110525}
+Echendu, A.J.; Okafor, H.F.; Iyiola, O.
+\newblock Air Pollution, Climate Change and Ecosystem Health in the Niger
+  Delta.
+\newblock {\em Soc. Sci.} {\bf 2022}, {\em 11}, 525.
+\newblock {{https://doi.org/10.3390/socsci11110525}}.
+
+\bibitem[Sojinu \em{et~al.}(2013)Sojinu, Sonibare, and Zeng]{Sojinu}
+Sojinu, O.S.; Sonibare, O.O.; Zeng, E.
+\newblock Polycyclic Aromatic Hydrocarbons (PAHs) in Sediments from the Ologe
+  Lagoon, Nigeria.
+\newblock {\em Energy Sources Part A Recovery Util. Environ. Eff.} {\bf 2013},
+  {\em 35},~1524--1531.
+\newblock {{https://doi.org/10.1080/15567036.2010.528291}}.
+
+\bibitem[Munasinghe \em{et~al.}(2021)Munasinghe, Cohen, and
+  Gadiraju]{Munasinghe}
+Munasinghe, D.; Cohen, S.; Gadiraju, K.A.
+\newblock {Review of Satellite Remote Sensing Techniques of River Delta
+  Morphology Change}.
+\newblock {\em Remote Sens. Earth Syst. Sci.} {\bf 2021}, {\em 4},~44--75.
+\newblock {{https://doi.org/10.1007/s41976-021-00044-3}}.
+
+\bibitem[George \em{et~al.}(2019)George, Macdonald, and
+  Spagnolo]{GEORGE2019103592}
+George, C.F.; Macdonald, D.I.; Spagnolo, M.
+\newblock Deltaic sedimentary environments in the Niger Delta, Nigeria.
+\newblock {\em J. Afr. Earth Sci.} {\bf 2019}, {\em 160},~103592.
+\newblock {{https://doi.org/10.1016/j.jafrearsci.2019.103592}}.
+
+\bibitem[Kamalu \em{et~al.}(2002)Kamalu, Isirimah, Ugwa, and Orimoloye]{Kamalu}
+Kamalu, O.; Isirimah, N.; Ugwa, I.; Orimoloye, J.
+\newblock Evaluating the Characteristics of the Meander Belt Soils of the Niger
+  Delta, Southeastern Nigeria.
+\newblock {\em Singap. J. Trop. Geogr.} {\bf 2002}, {\em 23},~207--216.
+\newblock {{https://doi.org/10.1111/1467-9493.00125}}.
+
+\bibitem[Howard \em{et~al.}(2021)Howard, Okpara, and Techato]{w13223295}
+Howard, I.C.; Okpara, K.E.; Techato, K.
+\newblock Toxicity and Risks Assessment of Polycyclic Aromatic Hydrocarbons in
+  River Bed Sediments of an Artisanal Crude Oil Refining Area in the Niger
+  Delta, Nigeria.
+\newblock {\em Water} {\bf 2021}, {\em 13}, 3295.
+\newblock {{https://doi.org/10.3390/w13223295}}.
+
+\bibitem[Chris and Anyanwu(2023)]{toxics11010006}
+Chris, D.I.; Anyanwu, B.O.
+\newblock Pollution and Potential Ecological Risk Evaluation Associated with
+  Toxic Metals in an Impacted Mangrove Swamp in Niger Delta, Nigeria.
+\newblock {\em Toxics} {\bf 2023}, {\em 11}, 6.
+\newblock {{https://doi.org/10.3390/toxics11010006}}.
+
+\bibitem[Ukhurebor \em{et~al.}(2021)Ukhurebor, Athar, Adetunji, Aigbe,
+  Onyancha, and Abifarin]{UKHUREBOR2021112872}
+Ukhurebor, K.E.; Athar, H.; Adetunji, C.O.; Aigbe, U.O.; Onyancha, R.B.;
+  Abifarin, O.
+\newblock Environmental implications of petroleum spillages in the Niger Delta
+  region of Nigeria: A review.
+\newblock {\em J. Environ. Manag.} {\bf 2021}, {\em 293},~112872.
+\newblock {{https://doi.org/10.1016/j.jenvman.\\2021.112872}}.
+
+\bibitem[Amusan and Adeniyi(2005)]{Amusan}
+Amusan, A.A.; Adeniyi, I.F.
+\newblock Characterization and Heavy Metal Retention Capacity of Soils in
+  Mangrove Forest of the Niger Delta, Nigeria.
+\newblock {\em Commun. Soil Sci. Plant Anal.} {\bf 2005}, {\em 36},~2033--2045.
+\newblock {{https://doi.org/10.1080/00103620500192225}}.
+
+\bibitem[Okoye \em{et~al.}(2022)Okoye, Ezejiofor, Nwaogazie, Frazzoli, and
+  Orisakwe]{OKOYE2022100222}
+Okoye, E.A.; Ezejiofor, A.N.; Nwaogazie, I.L.; Frazzoli, C.; Orisakwe, O.E.
+\newblock Heavy metals and arsenic in soil and vegetation of Niger Delta,
+  Nigeria: Ecological risk assessment.
+\newblock {\em Case Stud. Chem. Environ. Eng.} {\bf 2022}, {\em 6},~100222.
+\newblock {{https://doi.org/10.1016/j.cscee.2022.100222}}.
+
+\bibitem[Okoye \em{et~al.}(2021)Okoye, Bocca, Ruggieri, Ezejiofor, Nwaogazie,
+  Domingo, Rovira, Frazzoli, and Orisakwe]{OKOYE2021111273}
+Okoye, E.A.; Bocca, B.; Ruggieri, F.; Ezejiofor, A.N.; Nwaogazie, I.L.;
+  Domingo, J.L.; Rovira, J.; Frazzoli, C.; Orisakwe, O.E.
+\newblock Metal pollution of soil, plants, feed and food in the Niger Delta,
+  Nigeria: Health risk assessment through meat and fish consumption.
+\newblock {\em Environ. Res.} {\bf 2021}, {\em 198},~111273.
+\newblock {{https://doi.org/10.1016/j.envres.2021.111273}}.
+
+\bibitem[Onyia \em{et~al.}(2020)Onyia, Balzter, and Berrío]{ONYIA2020377}
+Onyia, N.N.; Balzter, H.; Berrío, J.C.
+\newblock 19--Evaluating the performance of vegetation indices for detecting
+  oil pollution effects on vegetation using hyperspectral (Hyperion EO-1) and
+  multispectral (Sentinel-2A) data in the Niger Delta. In {\em Hyperspectral
+  Remote Sensing}; Pandey, P.C., Srivastava, P.K., Balzter, H., Bhattacharya,
+  B., Petropoulos, G.P., Eds.; Earth Observation, Elsevier: \hl{Amsterdam, The Netherlands},  2020; pp.
+  377--399.
+\newblock {{https://doi.org/10.1016/B978-0-08-102894-0.00018-8}}.
+
+\bibitem[Odisu \em{et~al.}(2021)Odisu, Okieimen, and Ogbeide]{ODISU2021111993}
+Odisu, T.; Okieimen, C.; Ogbeide, S.
+\newblock Oil spill model development and application for predicting vertical
+  transport of non-volatile aliphatic hydrocarbons in stagnant water: Case of
+  Nigerian Niger Delta mangrove swamps.
+\newblock {\em Mar. Pollut. Bull.} {\bf 2021}, {\em 164},~111993.
+\newblock {{https://doi.org/10.1016/j.marpolbul.2021.111993}}.
+
+\bibitem[Zabbey and Uyi(2014)]{ZABBEY2014167}
+Zabbey, N.; Uyi, H.
+\newblock Community responses of intertidal soft-bottom macrozoobenthos to oil
+  pollution in a tropical mangrove ecosystem, Niger Delta, Nigeria.
+\newblock {\em Mar. Pollut. Bull.} {\bf 2014}, {\em 82},~167--174.
+\newblock {{https://doi.org/10.1016/j.marpolbul.2014.03.002}}.
+
+\bibitem[Zabbey \em{et~al.}(2021)Zabbey, Ekpenyong, Nwipie, Davies, and
+  Sam]{Zabbey}
+Zabbey, N.; Ekpenyong, I.; Nwipie, G.; Davies, I.; Sam, K.
+\newblock Effects of fragmented mangroves on macrozoobenthos: A case study of
+  mangrove clearance for powerline right-of-way at Oproama Creek, Niger Delta,
+  Nigeria.
+\newblock {\em Afr. J. Aquat. Sci.} {\bf 2021}, {\em 46},~185--195.
+\newblock {{https://doi.org/10.2989/16085914.2020.1832437}}.
+
+\bibitem[Omiunu(1989)]{OMIUNU198957}
+Omiunu, F.G.
+\newblock The port factor in the growth and decline of Warri and Sapele
+  townships in the western Niger Delta region of Nigeria.
+\newblock {\em Appl. Geogr.} {\bf 1989}, {\em 9},~57--69.
+\newblock {{https://doi.org/10.1016/0143-6228(89)90005-2}}.
+
+\bibitem[James \em{et~al.}(2013)James, Adegoke, Osagie, Ekechukwu, Nwilo, and
+  Akinyede]{Godstime}
+James, G.K.; Adegoke, J.O.; Osagie, S.; Ekechukwu, S.; Nwilo, P.; Akinyede, J.
+\newblock Social valuation of mangroves in the Niger Delta region of Nigeria.
+\newblock {\em Int. J. Biodivers. Sci. Ecosyst. Serv. Manag.} {\bf 2013},
+  {\em 9},~311--323.
+\newblock {{https://doi.org/10.1080/21513732.2013.842611}}.
+
+\bibitem[Goldberg \em{et~al.}(2020)Goldberg, Lagomasino, Thomas, and
+  Fatoyinbo]{Goldberg}
+Goldberg, L.; Lagomasino, D.; Thomas, N.; Fatoyinbo, T.
+\newblock Global declines in human-driven mangrove loss.
+\newblock {\em Glob. Chang. Biol.} {\bf 2020}, {\em 26},~5844--5855.
+\newblock {{https://doi.org/10.1111/gcb.15275}}.
+
+\bibitem[Onyenekwe \em{et~al.}(2022)Onyenekwe, Okpara, Opata, Egyir, and
+  Sarpong]{land11111982}
+Onyenekwe, C.S.; Okpara, U.T.; Opata, P.I.; Egyir, I.S.; Sarpong, D.B.
+\newblock The Triple Challenge: Food Security and Vulnerabilities of Fishing
+  and Farming Households in~Situations Characterized by Increasing Conflict,
+  Climate Shock, and Environmental Degradation.
+\newblock {\em Land} {\bf 2022}, {\em 11}, 1982.
+\newblock {{https://doi.org/10.3390/land11111982}}.
+
+\bibitem[Ebhuoma \em{et~al.}(2020)Ebhuoma, Simatele, Leonard, Ebhuoma, Donkor,
+  and Tantoh]{su12187349}
+Ebhuoma, E.E.; Simatele, M.D.; Leonard, L.; Ebhuoma, O.O.; Donkor, F.K.;
+  Tantoh, H.B.
+\newblock Theorising Indigenous Farmers’ Utilisation of Climate Services:
+  Lessons from the Oil-Rich Niger Delta.
+\newblock {\em Sustainability} {\bf 2020}, {\em 12}, 7349.
+\newblock {{https://doi.org/10.3390/su12187349}}.
+
+\bibitem[Babanyara \em{et~al.}(2010)Babanyara, Usman, and Saleh]{Babanyara}
+Babanyara, Y.; Usman, H.; Saleh, U.
+\newblock An Overview of Urban Poverty and Environmental Problems in Nigeria.
+\newblock {\em J. Hum. Ecol.} {\bf 2010}, {\em 31},~135--143.
+\newblock {{https://doi.org/10.1080/09709274.2010.11906304}}.
+
+\bibitem[Feka and Ajonina(2011)]{Feka}
+Feka, N.Z.; Ajonina, G.N.
+\newblock Drivers causing decline of mangrove in West-Central Africa: A review.
+\newblock {\em Int. J. Biodivers. Sci. Ecosyst. Serv. Manag.} {\bf 2011},
+  {\em 7},~217--230.
+\newblock {{https://doi.org/10.1080/21513732.2011.634436}}.
+
+\bibitem[Orijemie(2012)]{ORIJEMIE2012360}
+Orijemie, E.A.
+\newblock Holocene Mangrove Dynamics and Environmental Changes in the Coastal
+  region of South Western Nigeria.
+\newblock {\em Quat. Int.} {\bf 2012}, {\em 279--280},~360--\hl{361}. 
+  {{https://doi.org/10.1016/j.quaint.2012.08.1094}}. %mdpi: We removed “XVIII INQUA Congress, 21st–27th July, 2011, Bern, Switzerland,”,  please confirm.
+
+\bibitem[Roy \em{et~al.}(2016)Roy, Kovalskyy, Zhang, Vermote, Yan, Kumar, and
+  Egorov]{ROY201657}
+Roy, D.; Kovalskyy, V.; Zhang, H.; Vermote, E.; Yan, L.; Kumar, S.; Egorov, A.
+\newblock Characterization of Landsat-7 to Landsat-8 reflective wavelength and
+  normalized difference vegetation index continuity.
+\newblock {\em Remote Sens. Environ.} {\bf 2016}, {\em 185},~57--\hl{70}. %mdpi: We removed “Landsat 8 Science Results,”,  please confirm.
+{{https://doi.org/10.1016/j.rse.2015.12.024}}.
+
+\bibitem[Ozigis \em{et~al.}(2019)Ozigis, Kaduk, and Jarvis]{Ozigis}
+Ozigis, M.S.; Kaduk, J.D.; Jarvis, C.
+\newblock {Mapping terrestrial oil spill impact using machine learning random
+  forest and Landsat 8 OLI imagery: A case site within the Niger Delta region
+  of Nigeria}.
+\newblock {\em Environ. Sci. Pollut. Res.} {\bf 2019}, {\em 26},~3621--3635.
+\newblock {{https://doi.org/10.1007/s11356-018-3824-y}}.
+
+\bibitem[Gundlach \em{et~al.}(2022)Gundlach, Bonte, Story, and
+  Iroakasi]{GUNDLACH2022100831}
+Gundlach, E.R.; Bonte, M.; Story, N.I.; Iroakasi, O.
+\newblock Using high-resolution imagery from 2013 and 2020 to establish
+  baseline vegetation in oil-damaged mangrove habitat prior to large-scale
+  post-remediation planting in Bodo, Eastern Niger Delta, Nigeria.
+\newblock {\em Remote Sens. Appl. Soc. Environ.} {\bf 2022}, {\em
+  28},~100831.
+\newblock {{https://doi.org/10.1016/j.rsase.2022.100831}}.
+
+\bibitem[Sobande(1997)]{Sobande}
+Sobande, A.A.
+\newblock Remote Sensing Applications to Evaluating Patterns of Coastal Erosion
+  around the Niger River Delta, West Africa.
+\newblock {\em Environ. Geosci.} {\bf 1997}, {\em 4},~133--136.
+\newblock {{https://doi.org/10.1111/j.1526-0984.1997.00034.pp.x}}.
+
+\bibitem[Twumasi and Merem(2006)]{ijerph2006030011}
+Twumasi, Y.A.; Merem, E.C.
+\newblock GIS and Remote Sensing Applications in the Assessment of Change
+  within a Coastal Environment in the Niger Delta Region of Nigeria.
+\newblock {\em Int. J. Environ. Res. Public Health} {\bf 2006}, {\em
+  3},~98--106.
+\newblock {{https://doi.org/10.3390/ijerph2006030011}}.
+
+\bibitem[Lemenkova and Debeir(2022)]{Lemenkova202228}
+Lemenkova, P.; Debeir, O.
+\newblock {Seismotectonics of Shallow-Focus Earthquakes in Venezuela with Links
+  to Gravity Anomalies and Geologic Heterogeneity Mapped by a GMT Scripting
+  Language}.
+\newblock {\em Sustainability} {\bf 2022}, {\em 14},~15966.
+\newblock {{https://doi.org/10.3390/su142315966}}.
+
+\bibitem[Lemenkova and Debeir(2023)]{Lemenkova202301}
+Lemenkova, P.; Debeir, O.
+\newblock {Quantitative Morphometric 3D Terrain Analysis of Japan Using Scripts
+  of GMT and R}.
+\newblock {\em Land} {\bf 2023}, {\em 12},~261.
+\newblock {{https://doi.org/10.3390/land12010261}}.
+
+\bibitem[Kaufman and Tanre(1992)]{134076}
+Kaufman, Y.; Tanre, D.
+\newblock Atmospherically resistant vegetation index (ARVI) for EOS-MODIS.
+\newblock {\em IEEE Trans. Geosci. Remote Sens.} {\bf 1992}, {\em
+  30},~261--270.
+\newblock {{https://doi.org/10.1109/36.134076}}.
+
+\bibitem[Huete \em{et~al.}(1997)Huete, Liu, Batchily, and {van
+  Leeuwen}]{HUETE1997440}
+Huete, A.; Liu, H.; Batchily, K.; {van Leeuwen}, W.
+\newblock A comparison of vegetation indices over a global set of TM images for
+  EOS-MODIS.
+\newblock {\em Remote Sens. Environ.} {\bf 1997}, {\em 59},~440--451.
+\newblock {{https://doi.org/10.1016/S0034-4257(96)00112-5}}.
+
+\bibitem[Gitelson \em{et~al.}(1996)Gitelson, Kaufman, and
+  Merzlyak]{GITELSON1996289}
+Gitelson, A.A.; Kaufman, Y.J.; Merzlyak, M.N.
+\newblock Use of a green channel in remote sensing of global vegetation from
+  EOS-MODIS.
+\newblock {\em Remote Sens. Environ.} {\bf 1996}, {\em 58},~289--298.
+\newblock {{https://doi.org/10.1016/S0034-4257(96)00072-7}}.
+
+\bibitem[Kauth and Thomas(1976)]{KauthThomas}
+Kauth, R.J.; Thomas, G.S.
+\newblock {The Tasselled Cap---A Graphic Description of the Spectral-Temporal
+  Development of Agricultural Crops as Seen by LANDSAT}.
+\newblock { In Proceedings of the Symposium on Machine Processing of Remotely Sensed
+Data, \hl{West Lafayette, IN, USA}, 29  June--1 July 1976}; pp. 1--13.
+
+\bibitem[Huang \em{et~al.}(2002)Huang, Wylie, Yang, Homer, and
+  Zylstra]{Huang2002}
+Huang, C.; Wylie, B.; Yang, L.; Homer, C.; Zylstra, G.
+\newblock Derivation of a tasselled cap transformation based on Landsat 7
+  at-satellite reflectance.
+\newblock {\em Int. J. Remote Sens.} {\bf 2002}, {\em 23},~1741--1748.
+\newblock {{https://doi.org/10.1080/01431160110106113}}.
+
+\bibitem[Crist and Cicone(1984)]{4157507}
+Crist, E.P.; Cicone, R.C.
+\newblock A Physically-Based Transformation of Thematic Mapper Data---The TM
+  Tasseled Cap.
+\newblock {\em IEEE Trans. Geosci. Remote Sens.} {\bf 1984}, {\em
+  GE-22},~256--263.
+\newblock {{https://doi.org/10.1109/TGRS.1984.350619}}.
+
+\bibitem[Tucker(1979)]{TUCKER1979127}
+Tucker, C.J.
+\newblock Red and photographic infrared linear combinations for monitoring
+  vegetation.
+\newblock {\em Remote Sens. Environ.} {\bf 1979}, {\em 8},~127--150.
+\newblock {{https://doi.org/10.1016/0034-4257(79)90013-0}}.
+
+\bibitem[Naji(2018)]{Naji2018}
+Naji, T.A.H.
+\newblock Study of vegetation cover distribution using DVI, PVI, WDVI indices
+  with 2D-space plot.
+\newblock {\em J. Phys. Conf. Ser.} {\bf 2018}, {\em 1003},~012083.
+\newblock {{https://doi.org/10.1088/1742-6596/1003/1/012083}}.
+
+\bibitem[Tucker \em{et~al.}(1979)Tucker, Elgin, McMurtrey, and
+  Fan]{TUCKER1979237}
+Tucker, C.; Elgin, J.; McMurtrey, J.; Fan, C.
+\newblock Monitoring corn and soybean crop development with hand-held
+  radiometer spectral data.
+\newblock {\em Remote Sens. Environ.} {\bf 1979}, {\em 8},~237--248.
+\newblock {{https://doi.org/10.1016/0034-4257(79)90004-X}}.
+
+\bibitem[Rondeaux \em{et~al.}(1996)Rondeaux, Steven, and Baret]{RONDEAUX199695}
+Rondeaux, G.; Steven, M.; Baret, F.
+\newblock Optimization of soil-adjusted vegetation indices.
+\newblock {\em Remote Sens. Environ.} {\bf 1996}, {\em 55},~95--107.
+\newblock {{https://doi.org/10.1016/0034-4257(95)00186-7}}.
+
+\bibitem[Datt(1998)]{DATT1998111}
+Datt, B.
+\newblock Remote Sensing of Chlorophyll a, Chlorophyll b, Chlorophyll a+b, and
+  Total Carotenoid Content in Eucalyptus Leaves.
+\newblock {\em Remote Sens. Environ.} {\bf 1998}, {\em 66},~111--121.
+\newblock {{https://doi.org/10.1016/S0034-4257(98)00046-7}}.
+
+\bibitem[Richardson and Wiegand(1977)]{Richardson}
+Richardson, A.J.; Wiegand, C.L.
+\newblock {Distinguishing Vegetation from Soil Background Information}.
+\newblock {\em Photogramm. Eng. Remote Sens.} {\bf 1977}, {\em 43},~1541--1552.
+
+\bibitem[Perry and Lautenschlager(1984)]{PERRY1984169}
+Perry, C.R.; Lautenschlager, L.F.
+\newblock Functional equivalence of spectral vegetation indices.
+\newblock {\em Remote Sens. Environ.} {\bf 1984}, {\em 14},~169--182.
+\newblock {{https://doi.org/10.1016/0034-4257(84)90013-0}}.
+
+\bibitem[Pinty and Verstraete(1992)]{PintyVerstraete}
+Pinty, B.; Verstraete, M.M.
+\newblock {GEMI: A non-linear index to monitor global vegetation from
+  satellites}.
+\newblock {\em Plant Ecol.} {\bf 1992}, {\em 101},~15--20.
+\newblock {{https://doi.org/10.1007/BF00031911}}.
+
+\bibitem[McFeeters(1996)]{McFeeters}
+McFeeters, S.K.
+\newblock The use of the Normalized Difference Water Index (NDWI) in the
+  delineation of open water features.
+\newblock {\em Int. J. Remote Sens.} {\bf 1996}, {\em 17},~1425--1432.
+\newblock {{https://doi.org/10.1080/01431169608948714}}.
+
+\bibitem[Gao(1996)]{GAO1996257}
+Gao, B.
+\newblock NDWI—A normalized difference water index for remote sensing of
+  vegetation liquid water from space.
+\newblock {\em Remote Sens. Environ.} {\bf 1996}, {\em 58},~257--266.
+\newblock {{https://doi.org/10.1016/S0034-4257(96)00067-3}}.
+
+\bibitem[Qi \em{et~al.}(1994{\natexlab{a}})Qi, Chehbouni, Huete, Kerr, and
+  Sorooshian]{QI1994119}
+Qi, J.; Chehbouni, A.; Huete, A.; Kerr, Y.; Sorooshian, S.
+\newblock A modified soil adjusted vegetation index.
+\newblock {\em Remote Sens. Environ.} {\bf 1994}, {\em 48},~119--126.
+\newblock {{https://doi.org/10.1016/0034-4257(94)90134-1}}.
+
+\bibitem[Qi \em{et~al.}(1994{\natexlab{b}})Qi, Kerr, and
+  Chehbouni]{Qi1994ExternalFC}
+Qi, J.; Kerr, Y.H.; Chehbouni, A.
+\newblock External factor consideration in vegetation index development.
+\newblock In Proceedings of the Physical Measurements and
+  Signatures in Remote Sensing ISPRS,  Val d'Isère, \hl{France, 17--21 January 1994}; pp. 723--730.
+
+\bibitem[Fabijańczyk and Zawadzki(2022)]{FABIJANCZYK2022100721}
+Fabijańczyk, P.; Zawadzki, J.
+\newblock Spatial correlations of NDVI and MSAVI2 indices of green and forested
+  areas of urban agglomeration, case study Warsaw, Poland.
+\newblock {\em Remote Sens. Appl.  Soc. Environ.} {\bf 2022}, {\em
+  26},~100721.
+\newblock {{https://doi.org/10.1016/j.rsase.2022.100721}}.
+
+\bibitem[Crippen(1990)]{CRIPPEN199071}
+Crippen, R.E.
+\newblock Calculating the vegetation index faster.
+\newblock {\em Remote Sens. Environ.} {\bf 1990}, {\em 34},~71--73.
+\newblock {{https://doi.org/10.1016/0034-4257(90)90085-Z}}.
+
+\bibitem[Huete \em{et~al.}(2002)Huete, Didan, Miura, Rodriguez, Gao, and
+  Ferreira]{HUETE2002195}
+Huete, A.; Didan, K.; Miura, T.; Rodriguez, E.; Gao, X.; Ferreira, L.
+\newblock Overview of the radiometric and biophysical performance of the MODIS
+  vegetation indices.
+\newblock {\em Remote Sens. Environ.} {\bf 2002}, {\em 83},~195--213.
+\newblock {{https://doi.org/10.1016/S0034-4257(02)00096-2}}.
+
+\bibitem[Nababa \em{et~al.}(2020)Nababa, Symeonakis, Koukoulas, Higginbottom,
+  Cavan, and Marsden]{rs12213619}
+Nababa, I.I.; Symeonakis, E.; Koukoulas, S.; Higginbottom, T.P.; Cavan, G.;
+  Marsden, S.
+\newblock Land Cover Dynamics and Mangrove Degradation in the Niger Delta
+  Region.
+\newblock {\em Remote Sens.} {\bf 2020}, {\em 12}.
+\newblock {{https://doi.org/10.3390/rs12213619}}.
+
+\bibitem[Musa \em{et~al.}(2014)Musa, Popescu, and Mynett]{nhess1433172014}
+Musa, Z.N.; Popescu, I.; Mynett, A.
+\newblock The Niger Delta's vulnerability to river floods due to sea level
+  rise.
+\newblock {\em Nat. Hazards Earth Syst. Sci.} {\bf 2014}, {\em 14},~3317--3329.
+\newblock {{https://doi.org/10.5194/nhess-14-3317-2014}}.
+
+\bibitem[Eyoh and Okwuashi(2017)]{Eyoh}
+Eyoh, A.; Okwuashi, O.
+\newblock {Spatial and Temporal Evaluation of Land Use/Land Cover Change of the
+  Niger Delta Region of Nigeria from 1986-2016}.
+\newblock {\em {SSRG Int. J. Geoinform. Geol. Sci.}} {\bf 2017}, {\em
+  4},~20--28.
+\newblock {{https://doi.org/10.14445/23939206/IJGGS-V4I2P103}}.
+
+\bibitem[Udoka \em{et~al.}(2015)Udoka, Opara, Nwankwor, and Ebhuoma]{Udoka}
+Udoka, U.P.; Opara, A.I.; Nwankwor, G.I.; Ebhuoma, O.O.
+\newblock {Mapping Land Use and Land Cover in parts of the Niger Delta for
+  Effective Planning and Administration}.
+\newblock {\em Int. J. Sci. Eng. Res.} {\bf 2015}, {\em 6},~274--281.
+
+\bibitem[Bamidele and Erameh(2023)]{BAMIDELE2023103274}
+Bamidele, S.; Erameh, N.I.
+\newblock Environmental degradation and sustainable peace dialogue in the Niger
+  delta region of Nigeria.
+\newblock {\em Resour. Policy} {\bf 2023}, {\em 80},~103274.
+\newblock {{https://doi.org/10.1016/j.resourpol.2022.103274}}.
+
+\bibitem[Tobore and Bamidele(2022)]{TOBORE2022158}
+Tobore, A.; Bamidele, S.
+\newblock Wetland change prediction of Ogun-River Basin, Nigeria: Application
+  of cellular automata Markov and remote sensing techniques.
+\newblock {\em Watershed Ecol. Environ.} {\bf 2022}, {\em 4},~158--168.
+\newblock {{https://doi.org/10.1016/j.wsee.2022.11.001}}.
+
+\bibitem[James \em{et~al.}(2007)James, Adegoke, Saba, Nwilo, and
+  Akinyede]{Godstime2007}
+James, G.K.; Adegoke, J.O.; Saba, E.; Nwilo, P.; Akinyede, J.
+\newblock Satellite-Based Assessment of the Extent and Changes in the Mangrove
+  Ecosystem of the Niger Delta.
+\newblock {\em Mar. Geod.} {\bf 2007}, {\em 30},~249--267.
+\newblock {{https://doi.org/10.1080/01490410701438224}}.
+
+\bibitem[Ayanlade and Drake(2016)]{AyanladeDrake}
+Ayanlade, A.; Drake, N.
+\newblock {Forest loss in different ecological zones of the Niger Delta,
+  Nigeria: Evidence from remote sensing}.
+\newblock {\em GeoJournal} {\bf 2016}, {\em 81},~717--735.
+\newblock {{https://doi.org/10.1007/s10708-015-9658-y}}.
+
+\bibitem[Edegbene \em{et~al.}(2022)Edegbene, Akamagwuna, Odume, Arimoro,
+  Edegbene~Ovie, Akumabor, Ogidiaka, Kaine, and Nwaka]{su141811289}
+Edegbene, A.O.; Akamagwuna, F.C.; Odume, O.N.; Arimoro, F.O.; Edegbene~Ovie,
+  T.T.; Akumabor, E.C.; Ogidiaka, E.; Kaine, E.A.; Nwaka, K.H.
+\newblock A Macroinvertebrate-Based Multimetric Index for Assessing Ecological
+  Condition of Forested Stream Sites Draining Nigerian Urbanizing Landscapes.
+\newblock {\em Sustainability} {\bf 2022}, {\em 14}, 11289.
+\newblock {{https://doi.org/10.3390/su141811289}}.
+
+\bibitem[Adegun \em{et~al.}(2021)Adegun, Ikudayisi, Morakinyo, and
+  Olusoga]{ADEGUN2021e01044}
+Adegun, O.B.; Ikudayisi, A.E.; Morakinyo, T.E.; Olusoga, O.O.
+\newblock Urban green infrastructure in Nigeria: A review.
+\newblock {\em Sci. Afr.} {\bf 2021}, {\em 14},~e01044.
+\newblock {{https://doi.org/10.1016/j.sciaf.2021.e01044}}.
+
+\bibitem[Onyena and Sam(2020)]{ONYENA2020e00961}
+Onyena, A.P.; Sam, K.
+\newblock A review of the threat of oil exploitation to mangrove ecosystem:
+  Insights from Niger Delta, Nigeria.
+\newblock {\em Glob. Ecol. Conserv.} {\bf 2020}, {\em 22},~e00961.
+\newblock {{https://doi.org/10.1016/j.gecco.2020.e00961}}.
+
+\end{thebibliography}
+
+
+\PublishersNote{}
+\end{adjustwidth}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
