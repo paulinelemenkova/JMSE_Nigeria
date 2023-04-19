@@ -174,8 +174,8 @@ Rapid growth of the satellite data derived from the Earth observation sensors en
 
 Specifically for inaccessible areas of mangrove ecosystems in southern Nigeria, the Landsat data provide a precious source of spatial information which enables accurate mapping and analysis of the vegetation patterns. Processing the satellite images by the advanced scripting technologies is an effective and profitable means of data analysis and information retrieval. Due to such reasons, we used the Landsat 8-9 OLI/TIRS satellite images to monitor the decline in mangrove habitats based on the computed and visualized ten VI which cover the western segment of the Niger River Delta. The~images were collected for the following years: 2013, 2015, 2021, and 2022, see Figure~\ref{fig02}. 
 
-The data capture was performed using the EarthExplorer repository of the USGS (\highlighting{\href{https://earthexplorer.usgs.gov/}{https://earthexplorer.usgs.gov/}}), with~main metadata summarized in Table~\ref{tab1}. 
-%mdpi: Please provide the access date of the URL in the following format: “URL (accessed on Day Month Year)”.
+The data capture was performed using the EarthExplorer repository of the USGS (URL \href{https://earthexplorer.usgs.gov/}{https://earthexplorer.usgs.gov/} (accessed on 3 March 2023)), with~main metadata summarized in Table~\ref{tab1}. 
+%mdpi: Please provide the access date of the URL in the following format: “URL (accessed on Day Month Year)”. % <- Authors' reply: corrected (access date inserted).
 
 \begin{figure}[H]
 \makebox[0.99\linewidth][r]{%
@@ -202,28 +202,28 @@ The data capture was performed using the EarthExplorer repository of the USGS (\
 			\hspace{40pt}\includegraphics[width=6.5cm]{Fig_02d.jpg}
 		\caption{\centering 2022}
 	\end{subfigure}%
-}\caption{Landsat 8-9 OLI/TIRS images of {the} Niger River Delta in RGB colors for four years: (\textbf{a})~\hl{2013/12/20}, (\textbf{b}) \hl{2015/12/26}, (\textbf{c}) \hl{2021/12/18}, (\textbf{d}) \hl{2022/12/29}.}\label{fig02}
-\end{figure}%mdpi: Please confirm if the Date format should be changed to “Day month year”, e.g., 20 December 2013; There is also a year in the caption, please confirm if the year on the figure can be deleted.
+}\caption{Landsat 8-9 OLI/TIRS images of {the} Niger River Delta in RGB colors for four years: (\textbf{a})~20 December 2013, (\textbf{b}) 26 December 2015, (\textbf{c}) 18 December 2021, (\textbf{d}) 29 December 2022.}\label{fig02}
+\end{figure}%mdpi: Please confirm if the Date format should be changed to “Day month year”, e.g., 20 December 2013; There is also a year in the caption, please confirm if the year on the figure can be deleted. % <- Authors' reply: yes, I changed the Date format to “Day month year”.
 
 Among all the existing Landsat products, the~Landsat OLI/TIRS sensor has improved technical and spectral characteristics, such as narrower spectral bands including Red and NIR channels which are crucial for calculation of the VI. Moreover, it has better calibration, higher radiometric resolution and corrections signal for noise. A~thorough comparative analysis of the Landsat OLI/TIRS against earlier sensors is presented in~\cite{ROY201657}. Since the spectral characteristics of the older Landsat products (TM and MSS) have coarser parameters, we only used the images obtained from the Landsat OLI/TIRS. At~the same time, the~first Landsat 8 OLI/TIRS sensor was launched in 2013, which explains the choice of the first image selected in this study. Another important parameter for data selection was low cloudiness of the images and comparable span for a short time~series. 
 
 The images were imported into the GRASS GIS software and processed for data analysis and visualization using modules for satellite images and raster data processing. The mapping of mangroves of Nigeria using satellite images and GIS techniques has been attempted and reported earlier~\cite{Ozigis,GUNDLACH2022100831,Sobande,ijerph2006030011} with proven effectiveness of the satellite data for monitoring mangroves. We continued these and similar studies by applying the programming methods of the GRASS GIS scripts instead of the traditional approaches of GIS for computing the VI of the landscapes in southern~Nigeria. 
 
-While the Landsat 8-9 OLI/TIRS images formed the dataset for computing and visualizing the VI, the~GEBCO/SRTM raster data were used for visualizing the base map for this study using the techniques of the Generic Mapping Tools (GMT) scripts~\cite{Lemenkova202228,Lemenkova202301}. To~determine the variation in a spatial extent of the mangroves in western segment of the Niger River Delta, ten VI representing the distribution of healthy vegetation were computed to discriminate the swamp forests from the other land cover types such as water, urban areas and agricultural lands. The~image processing was implemented using the GRASS GIS, version 8.2.1, \highlighting{\href{https://grass.osgeo.org/}{https://grass.osgeo.org/}}. The~GRASS GIS scripts were used in the \emph{'i.vi'} module, which was applied for computing the VI along with auxiliary~modules. 
+While the Landsat 8-9 OLI/TIRS images formed the dataset for computing and visualizing the VI, the~GEBCO/SRTM raster data were used for visualizing the base map for this study using the techniques of the Generic Mapping Tools (GMT) scripts~\cite{Lemenkova202228,Lemenkova202301}. To~determine the variation in a spatial extent of the mangroves in western segment of the Niger River Delta, ten VI representing the distribution of healthy vegetation were computed to discriminate the swamp forests from the other land cover types such as water, urban areas and agricultural lands. The~image processing was implemented using the GRASS GIS, version 8.2.1, URL \href{https://grass.osgeo.org/}{https://grass.osgeo.org/} (access date 3 March 2023). The~GRASS GIS scripts were used in the \emph{'i.vi'} module, which was applied for computing the VI along with auxiliary~modules. 
 
 \begin{table}[H]
-\small%mdpi: We removed the vertical lines. Please confirm.
-\caption{\hl{Satellite} images used for computing ten VIs: Landsat 8-9 OLI/TIRS from the USGS. \textsuperscript{1}\label{tab1}}
+\small%mdpi: We removed the vertical lines. Please confirm. % <- Authors' reply: yes, we confirm.
+\caption{Satellite images used for computing ten VIs: Landsat 8-9 OLI/TIRS from the USGS. \textsuperscript{1}\label{tab1}}
 	\begin{adjustwidth}{-\extralength}{0cm}
 %		\newcolumntype{C}{>{\centering\arraybackslash}X}
-		\begin{tabularx}{\fulllength}{ p{1.6cm} p{1.8cm} p{7.0cm} p{4.0cm}  p{2.0cm} }
+		\begin{tabularx}{\fulllength}{ p{2.6cm} p{1.8cm} p{6.5cm} p{4.0cm}  p{1.5cm} }
 			\toprule
 			\textbf{Date} & \textbf{Spacecraft} & \textbf{Landsat Product ID} & \textbf{Scene ID} & \textbf{Cloudiness} \\
 			\midrule
-			\hl{2013/12/20} & Landsat 8 & \makecell{LC08\_L1TP\_189056\_20131220\_20200912\_02\_T1} & LC81890562013354LGN01 & 6.46 \\
-			\hl{2015/12/26} & Landsat 8 & \makecell{LC08\_L1TP\_189056\_20151226\_20200908\_02\_T1} & LC81890562015360LGN01 & 17.54 \\
-			\hl{2021/12/18} & Landsat 8 & \makecell{LC09\_L1TP\_189056\_20211218\_20220121\_02\_T1} & LC91890562021352LGN01 & 32.32 \\
-			\hl{2022/12/29} & Landsat 9 & \makecell{LC08\_L1TP\_189056\_20221229\_20230104\_02\_T1} & LC81890562022363LGN00 & 0.59 \\
+			20 December 2013 & Landsat 8 & \makecell{LC08\_L1TP\_189056\_20131220\_20200912\_02\_T1} & LC81890562013354LGN01 & 6.46 \\
+			26 December 2015 & Landsat 8 & \makecell{LC08\_L1TP\_189056\_20151226\_20200908\_02\_T1} & LC81890562015360LGN01 & 17.54 \\
+			18 December 2021 & Landsat 8 & \makecell{LC09\_L1TP\_189056\_20211218\_20220121\_02\_T1} & LC91890562021352LGN01 & 32.32 \\
+			29 December 2022 & Landsat 9 & \makecell{LC08\_L1TP\_189056\_20221229\_20230104\_02\_T1} & LC81890562022363LGN00 & 0.59 \\
 			\bottomrule
 		\end{tabularx}
 	\end{adjustwidth}
@@ -247,7 +247,6 @@ The Atmospherically Resistant Vegetation Index (ARVI) is based on using the spec
 %mdpi: The italics of the formula is not consistent with maintext,  please confirm whether to unify into italics. Please check whole tex and revise it. Following highlights are the same.
 
 \textls[15]{In the GRASS GIS, the~\hl{ARVI} was computed using Listing \ref{lst02} presented in the} \hl{Appendix}~\ref{A2}. 
-
 
 The advantage of ARVI is that it reduces the role of the atmospheric scattering that affects the images. Such effects are caused by the aerosols of both natural origin (e.g., rain and fog) or urban air pollution (e.g., dust or smog). Initially proposed and developed for the assessment of vegetation from the Earth Observing System (EOS) Moderate Resolution Imaging Spectroradiometer (MODIS) sensor, ARVI can also be applied for the Landsat OLI/TIRS sensors since it contains necessary spectral bands: Blue, Red and NIR.
 %------------------------->
@@ -695,7 +694,7 @@ The distinct feature of the IPVI (Figure \ref{fig11}) consists in its always-pos
 \end{figure}%mdpi: Please change the hyphen (-) into a minus sign (−, “U+2212”), e.g., “-1” should be “−1”.; The caption is duplicated, please confirm if the year on the figure can be deleted.
 %mdpi: The -1.00 and 0.00 in the figure is incomplete, please revised.
 
-Thus, the~data vary from 0 to +1, unlike the typical range of $-$1 to +1 for the NDVI and other indices. Specifically, according to the histogram, for~the year 2013, the~majority of the IPVI values range from 0.50 to 0.70; for 2015, from 0.50 to 0.80 with a more sharp increase in values; for 2021, from 0.70 to 0.90; and for 2022, from \hl{0.60} to 0.90. Thus, one can note the trend of the generally increasing higher values that indicate rainforests while the area of mangroves declines. The~mangroves are depicted by the dark blue colors, gradually replaced by the areas of light green color when comparing the data for 2013 with other years and, specifically, 2022, Figure~\ref{fig11}.%mdpi: We changed 0,60 to 0.60, please confirm.
+Thus, the~data vary from 0 to +1, unlike the typical range of $-$1 to +1 for the NDVI and other indices. Specifically, according to the histogram, for~the year 2013, the~majority of the IPVI values range from 0.50 to 0.70; for 2015, from 0.50 to 0.80 with a more sharp increase in values; for 2021, from 0.70 to 0.90; and for 2022, from 0.60 to 0.90. Thus, one can note the trend of the generally increasing higher values that indicate rainforests while the area of mangroves declines. The~mangroves are depicted by the dark blue colors, gradually replaced by the areas of light green color when comparing the data for 2013 with other years and, specifically, 2022, Figure~\ref{fig11}.%mdpi: We changed 0,60 to 0.60, please confirm. % <- Authors' reply: yes, we confirm.
 
 Although the IPVI is functionally similar to the NDVI, it is better-adjusted for detecting the vegetation in small villages and urban spaces due to a more fine gradation of the positive values. Moreover, the~analysis of values of the IPVI enabled us to better identify smaller spots of urban vegetation coverage as well as mangrove wetlands in the Niger River Delta. Further, IPVI is well-adjusted to classify urban ecosystems since the areas of the main cities in the study area are distinguishable from the nature vegetation: Warri, Onitsha, and Benin City as the largest cities, and~minor settlements such as Agbor, Sapele, and Adanisievbe villages in the Delta~State.
 
